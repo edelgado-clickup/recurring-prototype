@@ -1,0 +1,27 @@
+{
+  "prototypes": [
+    {
+      "id": "angular-prototype",
+      "name": "Angular Prototype",
+      "icon": "🅰️",
+      "framework": "Angular 21",
+      "description": "Task management interface built with Angular and Supernova design tokens",
+      "url": "http://localhost:4200",
+      "port": 4200,
+      "status": "active",
+      "author": "Design System Team",
+      "lastUpdated": "2025-12-08",
+      "features": [
+        "Design Tokens Integration",
+        "Component Specifications",
+        "Asset Management",
+        "Responsive Design"
+      ]
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "lastUpdated": "2025-12-08",
+    "totalPrototypes": 1
+  }
+}

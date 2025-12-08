@@ -1,0 +1,5 @@
+<app-header [currentPage]="currentPage" (pageChange)="onPageChange($event)"></app-header>
+<main>
+  <app-form-section *ngIf="currentPage === 'calendar'"></app-form-section>
+  <app-task-details *ngIf="currentPage === 'task'"></app-task-details>
+</main>

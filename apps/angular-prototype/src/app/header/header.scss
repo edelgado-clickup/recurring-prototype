@@ -1,0 +1,202 @@
+@use '../../styles/tokens/token-aliases' as *;
+
+.app-header {
+  background: var(--cu-background-primary);
+  color: var(--cu-content-primary);
+  padding: $spacing-md 0;
+  box-shadow: var(--cu-shadow-sm);
+  border-bottom: $border-width-thin solid var(--cu-border-subtle);
+  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+}
+
+.header-container {
+  width: 100%;
+  padding: 0 $spacing-xl;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: $spacing-lg;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  justify-self: start; // Left align in grid
+
+  .logo-icon {
+    width: 28px;
+    height: 28px;
+    background: #7b68ee;
+    color: white;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  h1 {
+  margin: 0;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    color: var(--cu-content-primary);
+    letter-spacing: -0.3px;
+    transition: color 200ms ease;
+  }
+
+  .divider {
+    color: $color-text-tertiary;
+    font-weight: 300;
+  }
+
+  .subtitle {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    font-weight: $font-weight-normal;
+  }
+}
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  justify-self: center; // Center align in grid
+}
+
+.tab {
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: $border-radius-md;
+  font-family: 'SF Pro', $font-family-primary;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--cu-content-secondary);
+  cursor: pointer;
+  transition: all 150ms ease;
+  letter-spacing: -0.15px;
+
+  &:hover:not(.active) {
+    background: var(--cu-hover-background);
+  }
+
+  &.active {
+    background: var(--cu-background-subtle-offset);
+    color: var(--cu-content-default);
+    border-color: var(--cu-border-default);
+  }
+}
+
+.nav-links {
+  display: flex;
+  gap: $spacing-sm;
+}
+
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px $spacing-md;
+  background: none;
+  border: $border-width-thin solid transparent;
+  border-radius: $border-radius-sm;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  cursor: pointer;
+  transition: all $transition-fast ease;
+
+  span {
+    font-size: 16px;
+  }
+
+  &:hover {
+    background: $color-background-secondary;
+  }
+
+  &.primary {
+    background: #7b68ee;
+  color: white;
+    border-color: #7b68ee;
+
+    &:hover {
+      background: #6a5acd;
+    }
+  }
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 150ms ease;
+  justify-self: end; // Right align in grid
+  
+  &:hover {
+    background: var(--cu-hover-background);
+    border-color: var(--cu-border-default);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  .theme-icon {
+    width: 20px;
+    height: 20px;
+    opacity: 0.7;
+    transition: opacity 150ms ease;
+    filter: none;
+  }
+
+  &:hover .theme-icon {
+    opacity: 1;
+  }
+}
+
+// Dark mode specific adjustments
+:root.dark-mode {
+  .theme-toggle {
+    .theme-icon {
+      // Invert the icon colors for better visibility in dark mode
+      filter: brightness(1.2);
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 1024px) {
+  .header-container {
+    padding: 0 $spacing-md;
+  }
+
+  .logo {
+    .subtitle {
+      display: none;
+    }
+    .divider {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .logo h1 {
+    font-size: $font-size-md;
+  }
+
+  .nav-btn {
+    padding: 6px $spacing-sm;
+    font-size: 12px;
+  }
+}
+

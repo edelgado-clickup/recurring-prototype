@@ -1,0 +1,23 @@
+{
+  "name": "@supernova-test/root",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Monorepo for Supernova design system prototypes",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspaces --if-present",
+    "build": "npm run build --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "fetch-supernova": "npm run fetch-all -w @supernova-test/supernova-sdk",
+    "gallery": "npm run dev -w @supernova-test/gallery"
+  },
+  "packageManager": "npm@10.9.3",
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=10.0.0"
+  }
+}

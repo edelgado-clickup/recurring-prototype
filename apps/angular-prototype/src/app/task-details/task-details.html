@@ -1,0 +1,218 @@
+<div class="task-details">
+  <!-- Top bar (breadcrumbs) -->
+  <div class="top-bar">
+    <!-- Left: Navigation arrows -->
+    <div class="nav-arrows">
+      <button class="nav-btn">
+        <img [src]="SupernovaAssets['chevron-down']" alt="Down" class="nav-icon" />
+      </button>
+      <button class="nav-btn disabled">
+        <img [src]="SupernovaAssets['chevron-up']" alt="Up" class="nav-icon disabled-icon" />
+      </button>
+    </div>
+
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs">
+      <div class="breadcrumb-item">
+        <div class="space-icon">C</div>
+      </div>
+      <span class="separator">/</span>
+      <div class="breadcrumb-item">
+        <img [src]="SupernovaAssets['folder']" alt="Folder" class="folder-icon" />
+      </div>
+      <span class="separator">/</span>
+      <div class="breadcrumb-item">
+        <span class="breadcrumb-text">Madison – BoB</span>
+        <span class="extra-count">+2</span>
+        <img [src]="SupernovaAssets['dropdown-down']" alt="" class="dropdown-icon" />
+      </div>
+      <span class="separator">/</span>
+      <div class="breadcrumb-item current">
+        <span class="task-id">6w350Ag</span>
+      </div>
+      <button class="icon-btn">
+        <img [src]="SupernovaAssets['move']" alt="Move" class="btn-icon" />
+      </button>
+      <button class="icon-btn">
+        <img [src]="SupernovaAssets['favorite']" alt="Favorite" class="btn-icon" />
+      </button>
+    </div>
+
+    <!-- Right: Top bar actions -->
+    <div class="top-actions">
+      <button class="action-btn">Share</button>
+      <button class="action-btn ask-btn">
+        <img [src]="SupernovaAssets['brain-ai-colored']" alt="AI" class="ai-icon" />
+        <span>Ask</span>
+      </button>
+      <div class="action-group">
+        <button class="icon-btn">
+          <img [src]="SupernovaAssets['ellipsis-regular']" alt="More" class="btn-icon" />
+        </button>
+        <button class="icon-btn">
+          <img [src]="SupernovaAssets['minimize']" alt="Minimize" class="btn-icon" />
+        </button>
+        <button class="icon-btn">
+          <img [src]="SupernovaAssets['close-regular']" alt="Close" class="btn-icon" />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Task content wrapper -->
+  <div class="task-content">
+    <!-- Task type badge -->
+    <div class="task-type">
+    <img [src]="SupernovaAssets['task']" alt="Task" class="type-icon" />
+    <span>Task</span>
+  </div>
+
+  <!-- Main title -->
+  <h1 class="task-title">Email endpoint API fails 25%</h1>
+
+  <!-- Properties grid -->
+  <div class="properties-grid">
+    <!-- Left column -->
+    <div class="properties-column">
+      <!-- Status -->
+      <div class="property-row">
+        <div class="property-label">
+          <img [src]="SupernovaAssets['check-circle']" alt="" class="property-icon" />
+          <span>Status</span>
+        </div>
+        <div class="property-value">
+          <div class="status-tag">
+            <div class="status-icon"></div>
+            <span>Open</span>
+          </div>
+          <button class="finish-btn">
+            <img [src]="SupernovaAssets['check-bold']" alt="Finish" class="btn-icon" />
+          </button>
+        </div>
+      </div>
+
+      <!-- Dates -->
+      <div class="property-row">
+        <div class="property-label">
+          <img [src]="SupernovaAssets['calendar']" alt="" class="property-icon" />
+          <span>Dates</span>
+        </div>
+        <div class="property-value date-value">
+          <button class="date-btn">
+            <img [src]="SupernovaAssets['date-start']" alt="" class="btn-icon" />
+            <span>Start</span>
+          </button>
+          <span class="arrow">→</span>
+          <button class="date-btn">
+            <img [src]="SupernovaAssets['date-due']" alt="" class="btn-icon" />
+            <span>Due</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Time estimate -->
+      <div class="property-row">
+        <div class="property-label">
+          <img [src]="SupernovaAssets['time-estimate']" alt="" class="property-icon" />
+          <span>Time estimate</span>
+        </div>
+        <div class="property-value">
+          <span class="empty-value">Empty</span>
+        </div>
+      </div>
+
+      <!-- Track time -->
+      <div class="property-row">
+        <div class="property-label">
+          <img [src]="SupernovaAssets['time-tracking']" alt="" class="property-icon" />
+          <span>Track time</span>
+        </div>
+        <div class="property-value">
+          <button class="date-btn">
+            <img [src]="SupernovaAssets['play-filled']" alt="" class="btn-icon" />
+            <span>Start</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right column -->
+    <div class="properties-column">
+      <!-- Assignee -->
+      <div class="property-row">
+        <div class="property-label">
+          <img [src]="SupernovaAssets['user']" alt="" class="property-icon" />
+          <span>Assignee</span>
+        </div>
+        <div class="property-value">
+          <span class="empty-value">Empty</span>
+        </div>
+      </div>
+
+      <!-- Priority -->
+      <div class="property-row">
+        <div class="property-label">
+          <img [src]="SupernovaAssets['priority']" alt="" class="property-icon" />
+          <span>Priority</span>
+        </div>
+        <div class="property-value">
+          <span class="empty-value">Empty</span>
+        </div>
+      </div>
+
+      <!-- Sprint points -->
+      <div class="property-row">
+        <div class="property-label">
+          <img [src]="SupernovaAssets['sprint-points']" alt="" class="property-icon" />
+          <span>Sprint points</span>
+        </div>
+        <div class="property-value">
+          <span class="empty-value">Empty</span>
+        </div>
+      </div>
+
+      <!-- Tags -->
+      <div class="property-row">
+        <div class="property-label">
+          <img [src]="SupernovaAssets['tag']" alt="" class="property-icon" />
+          <span>Tags</span>
+        </div>
+        <div class="property-value">
+          <span class="empty-value">Empty</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Description -->
+  <div class="description-area">
+    <p class="description-placeholder">
+      Add description, or write with
+      <span class="ai-link">
+        <img [src]="SupernovaAssets['ai-write']" alt="AI" class="ai-icon-small" />
+        AI
+      </span>
+    </p>
+  </div>
+
+  <!-- Right sidebar -->
+  <div class="right-sidebar">
+    <button class="sidebar-btn">
+      <img [src]="SupernovaAssets['close-right']" alt="Close" class="sidebar-icon" />
+    </button>
+    <button class="sidebar-btn active">
+      <img [src]="SupernovaAssets['chat-bubble']" alt="Comments" class="sidebar-icon" />
+    </button>
+    <button class="sidebar-btn">
+      <img [src]="SupernovaAssets['cf-website']" alt="Website" class="sidebar-icon" />
+    </button>
+    <button class="sidebar-btn">
+      <img [src]="SupernovaAssets['arrow-right-up']" alt="Open" class="sidebar-icon" />
+    </button>
+    <button class="sidebar-btn">
+      <img [src]="SupernovaAssets['app-add']" alt="Add" class="sidebar-icon" />
+    </button>
+  </div>
+  </div>
+</div>
+

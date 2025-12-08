@@ -1,0 +1,19 @@
+{
+  "name": "@supernova-test/gallery",
+  "version": "1.0.0",
+  "description": "Gallery page showcasing all Supernova design system prototypes",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve . -p 3000",
+    "build": "echo 'Gallery is static - no build needed'",
+    "serve": "npx serve . -p 3000"
+  },
+  "devDependencies": {
+    "serve": "^14.2.3"
+  },
+  "keywords": [
+    "gallery",
+    "prototypes",
+    "design-system"
+  ]
+}

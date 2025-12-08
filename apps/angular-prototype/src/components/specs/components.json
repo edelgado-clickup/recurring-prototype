@@ -1,0 +1,1791 @@
+{
+  "generated": "2025-11-25T18:40:24.936Z",
+  "source": "Supernova Design System",
+  "components": [
+    {
+      "id": "27861900",
+      "name": "Checkbox",
+      "description": "Checkboxes allow users to select multiple items from a list of individual items, or to mark one individual item as selected. A checkbox group is a grouping of checkboxes that are related to each other.",
+      "category": "Uncategorized",
+      "properties": [
+        {
+          "id": "644231",
+          "persistentId": "11a12cc9-9d40-483b-9515-80d34d4e5284",
+          "designSystemVersionId": "609393",
+          "name": "Documentation link",
+          "codeName": "documentationLink",
+          "description": "There is a connected documentation page in Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "DocumentationPage",
+          "options": null
+        },
+        {
+          "id": "644230",
+          "persistentId": "1e3fc1d9-7633-4704-b4e9-cc56eb219e0b",
+          "designSystemVersionId": "609393",
+          "name": "Documented",
+          "codeName": "isDocumented",
+          "description": "The component is fully documented",
+          "propertyType": "Boolean",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        },
+        {
+          "id": "644228",
+          "persistentId": "c11c4768-f998-4057-a2b3-676ea16ca82d",
+          "designSystemVersionId": "609393",
+          "name": "Figma component",
+          "codeName": "figmaComponent",
+          "description": "Includes a link to a Figma component that has been imported to Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "FigmaComponent",
+          "options": null
+        },
+        {
+          "id": "644229",
+          "persistentId": "c6b05c53-f42e-4af8-a0f9-04973a3eba6e",
+          "designSystemVersionId": "609393",
+          "name": "Status",
+          "codeName": "status",
+          "description": "The component has a health status indicated",
+          "propertyType": "Select",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": [
+            {
+              "id": "status-healthy",
+              "name": "Healthy",
+              "backgroundColor": "#d3fedeff"
+            },
+            {
+              "id": "status-known-issues",
+              "name": "Known issues",
+              "backgroundColor": "#fcf4d6ff"
+            },
+            {
+              "id": "status-deprecated",
+              "name": "Deprecated",
+              "backgroundColor": "#fff0f0ff"
+            }
+          ]
+        },
+        {
+          "id": "644232",
+          "persistentId": "d6ed1c47-144c-447a-a764-31d1cb4c6cd9",
+          "designSystemVersionId": "609393",
+          "name": "Repository",
+          "codeName": "repository",
+          "description": "Includes a link to an external code repository",
+          "propertyType": "URL",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        }
+      ],
+      "variants": []
+    },
+    {
+      "id": "28442916",
+      "name": "Avatars",
+      "description": "",
+      "category": "Uncategorized",
+      "properties": [
+        {
+          "id": "644231",
+          "persistentId": "11a12cc9-9d40-483b-9515-80d34d4e5284",
+          "designSystemVersionId": "609393",
+          "name": "Documentation link",
+          "codeName": "documentationLink",
+          "description": "There is a connected documentation page in Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "DocumentationPage",
+          "options": null
+        },
+        {
+          "id": "644230",
+          "persistentId": "1e3fc1d9-7633-4704-b4e9-cc56eb219e0b",
+          "designSystemVersionId": "609393",
+          "name": "Documented",
+          "codeName": "isDocumented",
+          "description": "The component is fully documented",
+          "propertyType": "Boolean",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        },
+        {
+          "id": "644228",
+          "persistentId": "c11c4768-f998-4057-a2b3-676ea16ca82d",
+          "designSystemVersionId": "609393",
+          "name": "Figma component",
+          "codeName": "figmaComponent",
+          "description": "Includes a link to a Figma component that has been imported to Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "FigmaComponent",
+          "options": null
+        },
+        {
+          "id": "644229",
+          "persistentId": "c6b05c53-f42e-4af8-a0f9-04973a3eba6e",
+          "designSystemVersionId": "609393",
+          "name": "Status",
+          "codeName": "status",
+          "description": "The component has a health status indicated",
+          "propertyType": "Select",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": [
+            {
+              "id": "status-healthy",
+              "name": "Healthy",
+              "backgroundColor": "#d3fedeff"
+            },
+            {
+              "id": "status-known-issues",
+              "name": "Known issues",
+              "backgroundColor": "#fcf4d6ff"
+            },
+            {
+              "id": "status-deprecated",
+              "name": "Deprecated",
+              "backgroundColor": "#fff0f0ff"
+            }
+          ]
+        },
+        {
+          "id": "644232",
+          "persistentId": "d6ed1c47-144c-447a-a764-31d1cb4c6cd9",
+          "designSystemVersionId": "609393",
+          "name": "Repository",
+          "codeName": "repository",
+          "description": "Includes a link to an external code repository",
+          "propertyType": "URL",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        }
+      ],
+      "variants": []
+    },
+    {
+      "id": "28442917",
+      "name": "Alert banner",
+      "description": "",
+      "category": "Uncategorized",
+      "properties": [
+        {
+          "id": "644231",
+          "persistentId": "11a12cc9-9d40-483b-9515-80d34d4e5284",
+          "designSystemVersionId": "609393",
+          "name": "Documentation link",
+          "codeName": "documentationLink",
+          "description": "There is a connected documentation page in Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "DocumentationPage",
+          "options": null
+        },
+        {
+          "id": "644230",
+          "persistentId": "1e3fc1d9-7633-4704-b4e9-cc56eb219e0b",
+          "designSystemVersionId": "609393",
+          "name": "Documented",
+          "codeName": "isDocumented",
+          "description": "The component is fully documented",
+          "propertyType": "Boolean",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        },
+        {
+          "id": "644228",
+          "persistentId": "c11c4768-f998-4057-a2b3-676ea16ca82d",
+          "designSystemVersionId": "609393",
+          "name": "Figma component",
+          "codeName": "figmaComponent",
+          "description": "Includes a link to a Figma component that has been imported to Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "FigmaComponent",
+          "options": null
+        },
+        {
+          "id": "644229",
+          "persistentId": "c6b05c53-f42e-4af8-a0f9-04973a3eba6e",
+          "designSystemVersionId": "609393",
+          "name": "Status",
+          "codeName": "status",
+          "description": "The component has a health status indicated",
+          "propertyType": "Select",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": [
+            {
+              "id": "status-healthy",
+              "name": "Healthy",
+              "backgroundColor": "#d3fedeff"
+            },
+            {
+              "id": "status-known-issues",
+              "name": "Known issues",
+              "backgroundColor": "#fcf4d6ff"
+            },
+            {
+              "id": "status-deprecated",
+              "name": "Deprecated",
+              "backgroundColor": "#fff0f0ff"
+            }
+          ]
+        },
+        {
+          "id": "644232",
+          "persistentId": "d6ed1c47-144c-447a-a764-31d1cb4c6cd9",
+          "designSystemVersionId": "609393",
+          "name": "Repository",
+          "codeName": "repository",
+          "description": "Includes a link to an external code repository",
+          "propertyType": "URL",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        }
+      ],
+      "variants": []
+    },
+    {
+      "id": "28442918",
+      "name": "Button",
+      "description": "Buttons allow users to perform an action or to navigate to another page.",
+      "category": "Uncategorized",
+      "properties": [
+        {
+          "id": "644231",
+          "persistentId": "11a12cc9-9d40-483b-9515-80d34d4e5284",
+          "designSystemVersionId": "609393",
+          "name": "Documentation link",
+          "codeName": "documentationLink",
+          "description": "There is a connected documentation page in Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "DocumentationPage",
+          "options": null
+        },
+        {
+          "id": "644230",
+          "persistentId": "1e3fc1d9-7633-4704-b4e9-cc56eb219e0b",
+          "designSystemVersionId": "609393",
+          "name": "Documented",
+          "codeName": "isDocumented",
+          "description": "The component is fully documented",
+          "propertyType": "Boolean",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        },
+        {
+          "id": "644228",
+          "persistentId": "c11c4768-f998-4057-a2b3-676ea16ca82d",
+          "designSystemVersionId": "609393",
+          "name": "Figma component",
+          "codeName": "figmaComponent",
+          "description": "Includes a link to a Figma component that has been imported to Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "FigmaComponent",
+          "options": null
+        },
+        {
+          "id": "644229",
+          "persistentId": "c6b05c53-f42e-4af8-a0f9-04973a3eba6e",
+          "designSystemVersionId": "609393",
+          "name": "Status",
+          "codeName": "status",
+          "description": "The component has a health status indicated",
+          "propertyType": "Select",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": [
+            {
+              "id": "status-healthy",
+              "name": "Healthy",
+              "backgroundColor": "#d3fedeff"
+            },
+            {
+              "id": "status-known-issues",
+              "name": "Known issues",
+              "backgroundColor": "#fcf4d6ff"
+            },
+            {
+              "id": "status-deprecated",
+              "name": "Deprecated",
+              "backgroundColor": "#fff0f0ff"
+            }
+          ]
+        },
+        {
+          "id": "644232",
+          "persistentId": "d6ed1c47-144c-447a-a764-31d1cb4c6cd9",
+          "designSystemVersionId": "609393",
+          "name": "Repository",
+          "codeName": "repository",
+          "description": "Includes a link to an external code repository",
+          "propertyType": "URL",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        }
+      ],
+      "variants": []
+    },
+    {
+      "id": "28442919",
+      "name": "Menu",
+      "description": "Menus are containers used to display transient content such as options, additional actions, and more. They visually stand out through stroke and drop shadow and float on top of the interface.",
+      "category": "Uncategorized",
+      "properties": [
+        {
+          "id": "644231",
+          "persistentId": "11a12cc9-9d40-483b-9515-80d34d4e5284",
+          "designSystemVersionId": "609393",
+          "name": "Documentation link",
+          "codeName": "documentationLink",
+          "description": "There is a connected documentation page in Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "DocumentationPage",
+          "options": null
+        },
+        {
+          "id": "644230",
+          "persistentId": "1e3fc1d9-7633-4704-b4e9-cc56eb219e0b",
+          "designSystemVersionId": "609393",
+          "name": "Documented",
+          "codeName": "isDocumented",
+          "description": "The component is fully documented",
+          "propertyType": "Boolean",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        },
+        {
+          "id": "644228",
+          "persistentId": "c11c4768-f998-4057-a2b3-676ea16ca82d",
+          "designSystemVersionId": "609393",
+          "name": "Figma component",
+          "codeName": "figmaComponent",
+          "description": "Includes a link to a Figma component that has been imported to Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "FigmaComponent",
+          "options": null
+        },
+        {
+          "id": "644229",
+          "persistentId": "c6b05c53-f42e-4af8-a0f9-04973a3eba6e",
+          "designSystemVersionId": "609393",
+          "name": "Status",
+          "codeName": "status",
+          "description": "The component has a health status indicated",
+          "propertyType": "Select",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": [
+            {
+              "id": "status-healthy",
+              "name": "Healthy",
+              "backgroundColor": "#d3fedeff"
+            },
+            {
+              "id": "status-known-issues",
+              "name": "Known issues",
+              "backgroundColor": "#fcf4d6ff"
+            },
+            {
+              "id": "status-deprecated",
+              "name": "Deprecated",
+              "backgroundColor": "#fff0f0ff"
+            }
+          ]
+        },
+        {
+          "id": "644232",
+          "persistentId": "d6ed1c47-144c-447a-a764-31d1cb4c6cd9",
+          "designSystemVersionId": "609393",
+          "name": "Repository",
+          "codeName": "repository",
+          "description": "Includes a link to an external code repository",
+          "propertyType": "URL",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        }
+      ],
+      "variants": []
+    },
+    {
+      "id": "28442920",
+      "name": "Combobox",
+      "description": "",
+      "category": "Uncategorized",
+      "properties": [
+        {
+          "id": "644231",
+          "persistentId": "11a12cc9-9d40-483b-9515-80d34d4e5284",
+          "designSystemVersionId": "609393",
+          "name": "Documentation link",
+          "codeName": "documentationLink",
+          "description": "There is a connected documentation page in Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "DocumentationPage",
+          "options": null
+        },
+        {
+          "id": "644230",
+          "persistentId": "1e3fc1d9-7633-4704-b4e9-cc56eb219e0b",
+          "designSystemVersionId": "609393",
+          "name": "Documented",
+          "codeName": "isDocumented",
+          "description": "The component is fully documented",
+          "propertyType": "Boolean",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        },
+        {
+          "id": "644228",
+          "persistentId": "c11c4768-f998-4057-a2b3-676ea16ca82d",
+          "designSystemVersionId": "609393",
+          "name": "Figma component",
+          "codeName": "figmaComponent",
+          "description": "Includes a link to a Figma component that has been imported to Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "FigmaComponent",
+          "options": null
+        },
+        {
+          "id": "644229",
+          "persistentId": "c6b05c53-f42e-4af8-a0f9-04973a3eba6e",
+          "designSystemVersionId": "609393",
+          "name": "Status",
+          "codeName": "status",
+          "description": "The component has a health status indicated",
+          "propertyType": "Select",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": [
+            {
+              "id": "status-healthy",
+              "name": "Healthy",
+              "backgroundColor": "#d3fedeff"
+            },
+            {
+              "id": "status-known-issues",
+              "name": "Known issues",
+              "backgroundColor": "#fcf4d6ff"
+            },
+            {
+              "id": "status-deprecated",
+              "name": "Deprecated",
+              "backgroundColor": "#fff0f0ff"
+            }
+          ]
+        },
+        {
+          "id": "644232",
+          "persistentId": "d6ed1c47-144c-447a-a764-31d1cb4c6cd9",
+          "designSystemVersionId": "609393",
+          "name": "Repository",
+          "codeName": "repository",
+          "description": "Includes a link to an external code repository",
+          "propertyType": "URL",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        }
+      ],
+      "variants": []
+    },
+    {
+      "id": "28442921",
+      "name": "Confirmation modal",
+      "description": "",
+      "category": "Uncategorized",
+      "properties": [
+        {
+          "id": "644231",
+          "persistentId": "11a12cc9-9d40-483b-9515-80d34d4e5284",
+          "designSystemVersionId": "609393",
+          "name": "Documentation link",
+          "codeName": "documentationLink",
+          "description": "There is a connected documentation page in Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "DocumentationPage",
+          "options": null
+        },
+        {
+          "id": "644230",
+          "persistentId": "1e3fc1d9-7633-4704-b4e9-cc56eb219e0b",
+          "designSystemVersionId": "609393",
+          "name": "Documented",
+          "codeName": "isDocumented",
+          "description": "The component is fully documented",
+          "propertyType": "Boolean",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        },
+        {
+          "id": "644228",
+          "persistentId": "c11c4768-f998-4057-a2b3-676ea16ca82d",
+          "designSystemVersionId": "609393",
+          "name": "Figma component",
+          "codeName": "figmaComponent",
+          "description": "Includes a link to a Figma component that has been imported to Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "FigmaComponent",
+          "options": null
+        },
+        {
+          "id": "644229",
+          "persistentId": "c6b05c53-f42e-4af8-a0f9-04973a3eba6e",
+          "designSystemVersionId": "609393",
+          "name": "Status",
+          "codeName": "status",
+          "description": "The component has a health status indicated",
+          "propertyType": "Select",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": [
+            {
+              "id": "status-healthy",
+              "name": "Healthy",
+              "backgroundColor": "#d3fedeff"
+            },
+            {
+              "id": "status-known-issues",
+              "name": "Known issues",
+              "backgroundColor": "#fcf4d6ff"
+            },
+            {
+              "id": "status-deprecated",
+              "name": "Deprecated",
+              "backgroundColor": "#fff0f0ff"
+            }
+          ]
+        },
+        {
+          "id": "644232",
+          "persistentId": "d6ed1c47-144c-447a-a764-31d1cb4c6cd9",
+          "designSystemVersionId": "609393",
+          "name": "Repository",
+          "codeName": "repository",
+          "description": "Includes a link to an external code repository",
+          "propertyType": "URL",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        }
+      ],
+      "variants": []
+    },
+    {
+      "id": "28506804",
+      "name": "Radio group",
+      "description": "A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.",
+      "category": "Uncategorized",
+      "properties": [
+        {
+          "id": "644231",
+          "persistentId": "11a12cc9-9d40-483b-9515-80d34d4e5284",
+          "designSystemVersionId": "609393",
+          "name": "Documentation link",
+          "codeName": "documentationLink",
+          "description": "There is a connected documentation page in Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "DocumentationPage",
+          "options": null
+        },
+        {
+          "id": "644230",
+          "persistentId": "1e3fc1d9-7633-4704-b4e9-cc56eb219e0b",
+          "designSystemVersionId": "609393",
+          "name": "Documented",
+          "codeName": "isDocumented",
+          "description": "The component is fully documented",
+          "propertyType": "Boolean",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        },
+        {
+          "id": "644228",
+          "persistentId": "c11c4768-f998-4057-a2b3-676ea16ca82d",
+          "designSystemVersionId": "609393",
+          "name": "Figma component",
+          "codeName": "figmaComponent",
+          "description": "Includes a link to a Figma component that has been imported to Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "FigmaComponent",
+          "options": null
+        },
+        {
+          "id": "644229",
+          "persistentId": "c6b05c53-f42e-4af8-a0f9-04973a3eba6e",
+          "designSystemVersionId": "609393",
+          "name": "Status",
+          "codeName": "status",
+          "description": "The component has a health status indicated",
+          "propertyType": "Select",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": [
+            {
+              "id": "status-healthy",
+              "name": "Healthy",
+              "backgroundColor": "#d3fedeff"
+            },
+            {
+              "id": "status-known-issues",
+              "name": "Known issues",
+              "backgroundColor": "#fcf4d6ff"
+            },
+            {
+              "id": "status-deprecated",
+              "name": "Deprecated",
+              "backgroundColor": "#fff0f0ff"
+            }
+          ]
+        },
+        {
+          "id": "644232",
+          "persistentId": "d6ed1c47-144c-447a-a764-31d1cb4c6cd9",
+          "designSystemVersionId": "609393",
+          "name": "Repository",
+          "codeName": "repository",
+          "description": "Includes a link to an external code repository",
+          "propertyType": "URL",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        }
+      ],
+      "variants": []
+    },
+    {
+      "id": "28506806",
+      "name": "Switch",
+      "description": "A control that allows the user to toggle between checked and not checked.",
+      "category": "Uncategorized",
+      "properties": [
+        {
+          "id": "644231",
+          "persistentId": "11a12cc9-9d40-483b-9515-80d34d4e5284",
+          "designSystemVersionId": "609393",
+          "name": "Documentation link",
+          "codeName": "documentationLink",
+          "description": "There is a connected documentation page in Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "DocumentationPage",
+          "options": null
+        },
+        {
+          "id": "644230",
+          "persistentId": "1e3fc1d9-7633-4704-b4e9-cc56eb219e0b",
+          "designSystemVersionId": "609393",
+          "name": "Documented",
+          "codeName": "isDocumented",
+          "description": "The component is fully documented",
+          "propertyType": "Boolean",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        },
+        {
+          "id": "644228",
+          "persistentId": "c11c4768-f998-4057-a2b3-676ea16ca82d",
+          "designSystemVersionId": "609393",
+          "name": "Figma component",
+          "codeName": "figmaComponent",
+          "description": "Includes a link to a Figma component that has been imported to Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "FigmaComponent",
+          "options": null
+        },
+        {
+          "id": "644229",
+          "persistentId": "c6b05c53-f42e-4af8-a0f9-04973a3eba6e",
+          "designSystemVersionId": "609393",
+          "name": "Status",
+          "codeName": "status",
+          "description": "The component has a health status indicated",
+          "propertyType": "Select",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": [
+            {
+              "id": "status-healthy",
+              "name": "Healthy",
+              "backgroundColor": "#d3fedeff"
+            },
+            {
+              "id": "status-known-issues",
+              "name": "Known issues",
+              "backgroundColor": "#fcf4d6ff"
+            },
+            {
+              "id": "status-deprecated",
+              "name": "Deprecated",
+              "backgroundColor": "#fff0f0ff"
+            }
+          ]
+        },
+        {
+          "id": "644232",
+          "persistentId": "d6ed1c47-144c-447a-a764-31d1cb4c6cd9",
+          "designSystemVersionId": "609393",
+          "name": "Repository",
+          "codeName": "repository",
+          "description": "Includes a link to an external code repository",
+          "propertyType": "URL",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        }
+      ],
+      "variants": []
+    },
+    {
+      "id": "28506837",
+      "name": "Switcher",
+      "description": "",
+      "category": "Uncategorized",
+      "properties": [
+        {
+          "id": "644231",
+          "persistentId": "11a12cc9-9d40-483b-9515-80d34d4e5284",
+          "designSystemVersionId": "609393",
+          "name": "Documentation link",
+          "codeName": "documentationLink",
+          "description": "There is a connected documentation page in Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "DocumentationPage",
+          "options": null
+        },
+        {
+          "id": "644230",
+          "persistentId": "1e3fc1d9-7633-4704-b4e9-cc56eb219e0b",
+          "designSystemVersionId": "609393",
+          "name": "Documented",
+          "codeName": "isDocumented",
+          "description": "The component is fully documented",
+          "propertyType": "Boolean",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        },
+        {
+          "id": "644228",
+          "persistentId": "c11c4768-f998-4057-a2b3-676ea16ca82d",
+          "designSystemVersionId": "609393",
+          "name": "Figma component",
+          "codeName": "figmaComponent",
+          "description": "Includes a link to a Figma component that has been imported to Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "FigmaComponent",
+          "options": null
+        },
+        {
+          "id": "644229",
+          "persistentId": "c6b05c53-f42e-4af8-a0f9-04973a3eba6e",
+          "designSystemVersionId": "609393",
+          "name": "Status",
+          "codeName": "status",
+          "description": "The component has a health status indicated",
+          "propertyType": "Select",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": [
+            {
+              "id": "status-healthy",
+              "name": "Healthy",
+              "backgroundColor": "#d3fedeff"
+            },
+            {
+              "id": "status-known-issues",
+              "name": "Known issues",
+              "backgroundColor": "#fcf4d6ff"
+            },
+            {
+              "id": "status-deprecated",
+              "name": "Deprecated",
+              "backgroundColor": "#fff0f0ff"
+            }
+          ]
+        },
+        {
+          "id": "644232",
+          "persistentId": "d6ed1c47-144c-447a-a764-31d1cb4c6cd9",
+          "designSystemVersionId": "609393",
+          "name": "Repository",
+          "codeName": "repository",
+          "description": "Includes a link to an external code repository",
+          "propertyType": "URL",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        }
+      ],
+      "variants": []
+    },
+    {
+      "id": "28506870",
+      "name": "Tabs",
+      "description": "",
+      "category": "Uncategorized",
+      "properties": [
+        {
+          "id": "644231",
+          "persistentId": "11a12cc9-9d40-483b-9515-80d34d4e5284",
+          "designSystemVersionId": "609393",
+          "name": "Documentation link",
+          "codeName": "documentationLink",
+          "description": "There is a connected documentation page in Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "DocumentationPage",
+          "options": null
+        },
+        {
+          "id": "644230",
+          "persistentId": "1e3fc1d9-7633-4704-b4e9-cc56eb219e0b",
+          "designSystemVersionId": "609393",
+          "name": "Documented",
+          "codeName": "isDocumented",
+          "description": "The component is fully documented",
+          "propertyType": "Boolean",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        },
+        {
+          "id": "644228",
+          "persistentId": "c11c4768-f998-4057-a2b3-676ea16ca82d",
+          "designSystemVersionId": "609393",
+          "name": "Figma component",
+          "codeName": "figmaComponent",
+          "description": "Includes a link to a Figma component that has been imported to Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "FigmaComponent",
+          "options": null
+        },
+        {
+          "id": "644229",
+          "persistentId": "c6b05c53-f42e-4af8-a0f9-04973a3eba6e",
+          "designSystemVersionId": "609393",
+          "name": "Status",
+          "codeName": "status",
+          "description": "The component has a health status indicated",
+          "propertyType": "Select",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": [
+            {
+              "id": "status-healthy",
+              "name": "Healthy",
+              "backgroundColor": "#d3fedeff"
+            },
+            {
+              "id": "status-known-issues",
+              "name": "Known issues",
+              "backgroundColor": "#fcf4d6ff"
+            },
+            {
+              "id": "status-deprecated",
+              "name": "Deprecated",
+              "backgroundColor": "#fff0f0ff"
+            }
+          ]
+        },
+        {
+          "id": "644232",
+          "persistentId": "d6ed1c47-144c-447a-a764-31d1cb4c6cd9",
+          "designSystemVersionId": "609393",
+          "name": "Repository",
+          "codeName": "repository",
+          "description": "Includes a link to an external code repository",
+          "propertyType": "URL",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        }
+      ],
+      "variants": []
+    },
+    {
+      "id": "28506937",
+      "name": "Toast",
+      "description": "A brief, temporary notification. Noticable without disrupting a user's experience or requiring an action to be taken.",
+      "category": "Uncategorized",
+      "properties": [
+        {
+          "id": "644231",
+          "persistentId": "11a12cc9-9d40-483b-9515-80d34d4e5284",
+          "designSystemVersionId": "609393",
+          "name": "Documentation link",
+          "codeName": "documentationLink",
+          "description": "There is a connected documentation page in Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "DocumentationPage",
+          "options": null
+        },
+        {
+          "id": "644230",
+          "persistentId": "1e3fc1d9-7633-4704-b4e9-cc56eb219e0b",
+          "designSystemVersionId": "609393",
+          "name": "Documented",
+          "codeName": "isDocumented",
+          "description": "The component is fully documented",
+          "propertyType": "Boolean",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        },
+        {
+          "id": "644228",
+          "persistentId": "c11c4768-f998-4057-a2b3-676ea16ca82d",
+          "designSystemVersionId": "609393",
+          "name": "Figma component",
+          "codeName": "figmaComponent",
+          "description": "Includes a link to a Figma component that has been imported to Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "FigmaComponent",
+          "options": null
+        },
+        {
+          "id": "644229",
+          "persistentId": "c6b05c53-f42e-4af8-a0f9-04973a3eba6e",
+          "designSystemVersionId": "609393",
+          "name": "Status",
+          "codeName": "status",
+          "description": "The component has a health status indicated",
+          "propertyType": "Select",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": [
+            {
+              "id": "status-healthy",
+              "name": "Healthy",
+              "backgroundColor": "#d3fedeff"
+            },
+            {
+              "id": "status-known-issues",
+              "name": "Known issues",
+              "backgroundColor": "#fcf4d6ff"
+            },
+            {
+              "id": "status-deprecated",
+              "name": "Deprecated",
+              "backgroundColor": "#fff0f0ff"
+            }
+          ]
+        },
+        {
+          "id": "644232",
+          "persistentId": "d6ed1c47-144c-447a-a764-31d1cb4c6cd9",
+          "designSystemVersionId": "609393",
+          "name": "Repository",
+          "codeName": "repository",
+          "description": "Includes a link to an external code repository",
+          "propertyType": "URL",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        }
+      ],
+      "variants": []
+    },
+    {
+      "id": "28506975",
+      "name": "Text field",
+      "description": "A text-based input using a keyboard. ",
+      "category": "Uncategorized",
+      "properties": [
+        {
+          "id": "644231",
+          "persistentId": "11a12cc9-9d40-483b-9515-80d34d4e5284",
+          "designSystemVersionId": "609393",
+          "name": "Documentation link",
+          "codeName": "documentationLink",
+          "description": "There is a connected documentation page in Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "DocumentationPage",
+          "options": null
+        },
+        {
+          "id": "644230",
+          "persistentId": "1e3fc1d9-7633-4704-b4e9-cc56eb219e0b",
+          "designSystemVersionId": "609393",
+          "name": "Documented",
+          "codeName": "isDocumented",
+          "description": "The component is fully documented",
+          "propertyType": "Boolean",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        },
+        {
+          "id": "644228",
+          "persistentId": "c11c4768-f998-4057-a2b3-676ea16ca82d",
+          "designSystemVersionId": "609393",
+          "name": "Figma component",
+          "codeName": "figmaComponent",
+          "description": "Includes a link to a Figma component that has been imported to Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "FigmaComponent",
+          "options": null
+        },
+        {
+          "id": "644229",
+          "persistentId": "c6b05c53-f42e-4af8-a0f9-04973a3eba6e",
+          "designSystemVersionId": "609393",
+          "name": "Status",
+          "codeName": "status",
+          "description": "The component has a health status indicated",
+          "propertyType": "Select",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": [
+            {
+              "id": "status-healthy",
+              "name": "Healthy",
+              "backgroundColor": "#d3fedeff"
+            },
+            {
+              "id": "status-known-issues",
+              "name": "Known issues",
+              "backgroundColor": "#fcf4d6ff"
+            },
+            {
+              "id": "status-deprecated",
+              "name": "Deprecated",
+              "backgroundColor": "#fff0f0ff"
+            }
+          ]
+        },
+        {
+          "id": "644232",
+          "persistentId": "d6ed1c47-144c-447a-a764-31d1cb4c6cd9",
+          "designSystemVersionId": "609393",
+          "name": "Repository",
+          "codeName": "repository",
+          "description": "Includes a link to an external code repository",
+          "propertyType": "URL",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        }
+      ],
+      "variants": []
+    },
+    {
+      "id": "28506980",
+      "name": "Text area",
+      "description": "A text area lets a user input a longer amount of text than a standard text field. ",
+      "category": "Uncategorized",
+      "properties": [
+        {
+          "id": "644231",
+          "persistentId": "11a12cc9-9d40-483b-9515-80d34d4e5284",
+          "designSystemVersionId": "609393",
+          "name": "Documentation link",
+          "codeName": "documentationLink",
+          "description": "There is a connected documentation page in Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "DocumentationPage",
+          "options": null
+        },
+        {
+          "id": "644230",
+          "persistentId": "1e3fc1d9-7633-4704-b4e9-cc56eb219e0b",
+          "designSystemVersionId": "609393",
+          "name": "Documented",
+          "codeName": "isDocumented",
+          "description": "The component is fully documented",
+          "propertyType": "Boolean",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        },
+        {
+          "id": "644228",
+          "persistentId": "c11c4768-f998-4057-a2b3-676ea16ca82d",
+          "designSystemVersionId": "609393",
+          "name": "Figma component",
+          "codeName": "figmaComponent",
+          "description": "Includes a link to a Figma component that has been imported to Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "FigmaComponent",
+          "options": null
+        },
+        {
+          "id": "644229",
+          "persistentId": "c6b05c53-f42e-4af8-a0f9-04973a3eba6e",
+          "designSystemVersionId": "609393",
+          "name": "Status",
+          "codeName": "status",
+          "description": "The component has a health status indicated",
+          "propertyType": "Select",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": [
+            {
+              "id": "status-healthy",
+              "name": "Healthy",
+              "backgroundColor": "#d3fedeff"
+            },
+            {
+              "id": "status-known-issues",
+              "name": "Known issues",
+              "backgroundColor": "#fcf4d6ff"
+            },
+            {
+              "id": "status-deprecated",
+              "name": "Deprecated",
+              "backgroundColor": "#fff0f0ff"
+            }
+          ]
+        },
+        {
+          "id": "644232",
+          "persistentId": "d6ed1c47-144c-447a-a764-31d1cb4c6cd9",
+          "designSystemVersionId": "609393",
+          "name": "Repository",
+          "codeName": "repository",
+          "description": "Includes a link to an external code repository",
+          "propertyType": "URL",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        }
+      ],
+      "variants": []
+    },
+    {
+      "id": "28506981",
+      "name": "Select",
+      "description": "An input that allow users to choose from a list of options in a limited space. ",
+      "category": "Uncategorized",
+      "properties": [
+        {
+          "id": "644231",
+          "persistentId": "11a12cc9-9d40-483b-9515-80d34d4e5284",
+          "designSystemVersionId": "609393",
+          "name": "Documentation link",
+          "codeName": "documentationLink",
+          "description": "There is a connected documentation page in Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "DocumentationPage",
+          "options": null
+        },
+        {
+          "id": "644230",
+          "persistentId": "1e3fc1d9-7633-4704-b4e9-cc56eb219e0b",
+          "designSystemVersionId": "609393",
+          "name": "Documented",
+          "codeName": "isDocumented",
+          "description": "The component is fully documented",
+          "propertyType": "Boolean",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        },
+        {
+          "id": "644228",
+          "persistentId": "c11c4768-f998-4057-a2b3-676ea16ca82d",
+          "designSystemVersionId": "609393",
+          "name": "Figma component",
+          "codeName": "figmaComponent",
+          "description": "Includes a link to a Figma component that has been imported to Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "FigmaComponent",
+          "options": null
+        },
+        {
+          "id": "644229",
+          "persistentId": "c6b05c53-f42e-4af8-a0f9-04973a3eba6e",
+          "designSystemVersionId": "609393",
+          "name": "Status",
+          "codeName": "status",
+          "description": "The component has a health status indicated",
+          "propertyType": "Select",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": [
+            {
+              "id": "status-healthy",
+              "name": "Healthy",
+              "backgroundColor": "#d3fedeff"
+            },
+            {
+              "id": "status-known-issues",
+              "name": "Known issues",
+              "backgroundColor": "#fcf4d6ff"
+            },
+            {
+              "id": "status-deprecated",
+              "name": "Deprecated",
+              "backgroundColor": "#fff0f0ff"
+            }
+          ]
+        },
+        {
+          "id": "644232",
+          "persistentId": "d6ed1c47-144c-447a-a764-31d1cb4c6cd9",
+          "designSystemVersionId": "609393",
+          "name": "Repository",
+          "codeName": "repository",
+          "description": "Includes a link to an external code repository",
+          "propertyType": "URL",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        }
+      ],
+      "variants": []
+    },
+    {
+      "id": "28506982",
+      "name": "Input label",
+      "description": "A label used above input fields.",
+      "category": "Uncategorized",
+      "properties": [
+        {
+          "id": "644231",
+          "persistentId": "11a12cc9-9d40-483b-9515-80d34d4e5284",
+          "designSystemVersionId": "609393",
+          "name": "Documentation link",
+          "codeName": "documentationLink",
+          "description": "There is a connected documentation page in Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "DocumentationPage",
+          "options": null
+        },
+        {
+          "id": "644230",
+          "persistentId": "1e3fc1d9-7633-4704-b4e9-cc56eb219e0b",
+          "designSystemVersionId": "609393",
+          "name": "Documented",
+          "codeName": "isDocumented",
+          "description": "The component is fully documented",
+          "propertyType": "Boolean",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        },
+        {
+          "id": "644228",
+          "persistentId": "c11c4768-f998-4057-a2b3-676ea16ca82d",
+          "designSystemVersionId": "609393",
+          "name": "Figma component",
+          "codeName": "figmaComponent",
+          "description": "Includes a link to a Figma component that has been imported to Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "FigmaComponent",
+          "options": null
+        },
+        {
+          "id": "644229",
+          "persistentId": "c6b05c53-f42e-4af8-a0f9-04973a3eba6e",
+          "designSystemVersionId": "609393",
+          "name": "Status",
+          "codeName": "status",
+          "description": "The component has a health status indicated",
+          "propertyType": "Select",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": [
+            {
+              "id": "status-healthy",
+              "name": "Healthy",
+              "backgroundColor": "#d3fedeff"
+            },
+            {
+              "id": "status-known-issues",
+              "name": "Known issues",
+              "backgroundColor": "#fcf4d6ff"
+            },
+            {
+              "id": "status-deprecated",
+              "name": "Deprecated",
+              "backgroundColor": "#fff0f0ff"
+            }
+          ]
+        },
+        {
+          "id": "644232",
+          "persistentId": "d6ed1c47-144c-447a-a764-31d1cb4c6cd9",
+          "designSystemVersionId": "609393",
+          "name": "Repository",
+          "codeName": "repository",
+          "description": "Includes a link to an external code repository",
+          "propertyType": "URL",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        }
+      ],
+      "variants": []
+    },
+    {
+      "id": "28506983",
+      "name": "Help text",
+      "description": "An informative description or error message that gives more context about what a user needs to input.",
+      "category": "Uncategorized",
+      "properties": [
+        {
+          "id": "644231",
+          "persistentId": "11a12cc9-9d40-483b-9515-80d34d4e5284",
+          "designSystemVersionId": "609393",
+          "name": "Documentation link",
+          "codeName": "documentationLink",
+          "description": "There is a connected documentation page in Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "DocumentationPage",
+          "options": null
+        },
+        {
+          "id": "644230",
+          "persistentId": "1e3fc1d9-7633-4704-b4e9-cc56eb219e0b",
+          "designSystemVersionId": "609393",
+          "name": "Documented",
+          "codeName": "isDocumented",
+          "description": "The component is fully documented",
+          "propertyType": "Boolean",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        },
+        {
+          "id": "644228",
+          "persistentId": "c11c4768-f998-4057-a2b3-676ea16ca82d",
+          "designSystemVersionId": "609393",
+          "name": "Figma component",
+          "codeName": "figmaComponent",
+          "description": "Includes a link to a Figma component that has been imported to Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "FigmaComponent",
+          "options": null
+        },
+        {
+          "id": "644229",
+          "persistentId": "c6b05c53-f42e-4af8-a0f9-04973a3eba6e",
+          "designSystemVersionId": "609393",
+          "name": "Status",
+          "codeName": "status",
+          "description": "The component has a health status indicated",
+          "propertyType": "Select",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": [
+            {
+              "id": "status-healthy",
+              "name": "Healthy",
+              "backgroundColor": "#d3fedeff"
+            },
+            {
+              "id": "status-known-issues",
+              "name": "Known issues",
+              "backgroundColor": "#fcf4d6ff"
+            },
+            {
+              "id": "status-deprecated",
+              "name": "Deprecated",
+              "backgroundColor": "#fff0f0ff"
+            }
+          ]
+        },
+        {
+          "id": "644232",
+          "persistentId": "d6ed1c47-144c-447a-a764-31d1cb4c6cd9",
+          "designSystemVersionId": "609393",
+          "name": "Repository",
+          "codeName": "repository",
+          "description": "Includes a link to an external code repository",
+          "propertyType": "URL",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        }
+      ],
+      "variants": []
+    },
+    {
+      "id": "28507151",
+      "name": "Badge",
+      "description": "",
+      "category": "Uncategorized",
+      "properties": [
+        {
+          "id": "644231",
+          "persistentId": "11a12cc9-9d40-483b-9515-80d34d4e5284",
+          "designSystemVersionId": "609393",
+          "name": "Documentation link",
+          "codeName": "documentationLink",
+          "description": "There is a connected documentation page in Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "DocumentationPage",
+          "options": null
+        },
+        {
+          "id": "644230",
+          "persistentId": "1e3fc1d9-7633-4704-b4e9-cc56eb219e0b",
+          "designSystemVersionId": "609393",
+          "name": "Documented",
+          "codeName": "isDocumented",
+          "description": "The component is fully documented",
+          "propertyType": "Boolean",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        },
+        {
+          "id": "644228",
+          "persistentId": "c11c4768-f998-4057-a2b3-676ea16ca82d",
+          "designSystemVersionId": "609393",
+          "name": "Figma component",
+          "codeName": "figmaComponent",
+          "description": "Includes a link to a Figma component that has been imported to Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "FigmaComponent",
+          "options": null
+        },
+        {
+          "id": "644229",
+          "persistentId": "c6b05c53-f42e-4af8-a0f9-04973a3eba6e",
+          "designSystemVersionId": "609393",
+          "name": "Status",
+          "codeName": "status",
+          "description": "The component has a health status indicated",
+          "propertyType": "Select",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": [
+            {
+              "id": "status-healthy",
+              "name": "Healthy",
+              "backgroundColor": "#d3fedeff"
+            },
+            {
+              "id": "status-known-issues",
+              "name": "Known issues",
+              "backgroundColor": "#fcf4d6ff"
+            },
+            {
+              "id": "status-deprecated",
+              "name": "Deprecated",
+              "backgroundColor": "#fff0f0ff"
+            }
+          ]
+        },
+        {
+          "id": "644232",
+          "persistentId": "d6ed1c47-144c-447a-a764-31d1cb4c6cd9",
+          "designSystemVersionId": "609393",
+          "name": "Repository",
+          "codeName": "repository",
+          "description": "Includes a link to an external code repository",
+          "propertyType": "URL",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        }
+      ],
+      "variants": []
+    },
+    {
+      "id": "28507157",
+      "name": "Avatar group",
+      "description": "",
+      "category": "Uncategorized",
+      "properties": [
+        {
+          "id": "644231",
+          "persistentId": "11a12cc9-9d40-483b-9515-80d34d4e5284",
+          "designSystemVersionId": "609393",
+          "name": "Documentation link",
+          "codeName": "documentationLink",
+          "description": "There is a connected documentation page in Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "DocumentationPage",
+          "options": null
+        },
+        {
+          "id": "644230",
+          "persistentId": "1e3fc1d9-7633-4704-b4e9-cc56eb219e0b",
+          "designSystemVersionId": "609393",
+          "name": "Documented",
+          "codeName": "isDocumented",
+          "description": "The component is fully documented",
+          "propertyType": "Boolean",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        },
+        {
+          "id": "644228",
+          "persistentId": "c11c4768-f998-4057-a2b3-676ea16ca82d",
+          "designSystemVersionId": "609393",
+          "name": "Figma component",
+          "codeName": "figmaComponent",
+          "description": "Includes a link to a Figma component that has been imported to Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "FigmaComponent",
+          "options": null
+        },
+        {
+          "id": "644229",
+          "persistentId": "c6b05c53-f42e-4af8-a0f9-04973a3eba6e",
+          "designSystemVersionId": "609393",
+          "name": "Status",
+          "codeName": "status",
+          "description": "The component has a health status indicated",
+          "propertyType": "Select",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": [
+            {
+              "id": "status-healthy",
+              "name": "Healthy",
+              "backgroundColor": "#d3fedeff"
+            },
+            {
+              "id": "status-known-issues",
+              "name": "Known issues",
+              "backgroundColor": "#fcf4d6ff"
+            },
+            {
+              "id": "status-deprecated",
+              "name": "Deprecated",
+              "backgroundColor": "#fff0f0ff"
+            }
+          ]
+        },
+        {
+          "id": "644232",
+          "persistentId": "d6ed1c47-144c-447a-a764-31d1cb4c6cd9",
+          "designSystemVersionId": "609393",
+          "name": "Repository",
+          "codeName": "repository",
+          "description": "Includes a link to an external code repository",
+          "propertyType": "URL",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        }
+      ],
+      "variants": []
+    },
+    {
+      "id": "29666020",
+      "name": "Menu item",
+      "description": "",
+      "category": "Uncategorized",
+      "properties": [
+        {
+          "id": "644231",
+          "persistentId": "11a12cc9-9d40-483b-9515-80d34d4e5284",
+          "designSystemVersionId": "609393",
+          "name": "Documentation link",
+          "codeName": "documentationLink",
+          "description": "There is a connected documentation page in Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "DocumentationPage",
+          "options": null
+        },
+        {
+          "id": "644230",
+          "persistentId": "1e3fc1d9-7633-4704-b4e9-cc56eb219e0b",
+          "designSystemVersionId": "609393",
+          "name": "Documented",
+          "codeName": "isDocumented",
+          "description": "The component is fully documented",
+          "propertyType": "Boolean",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        },
+        {
+          "id": "644228",
+          "persistentId": "c11c4768-f998-4057-a2b3-676ea16ca82d",
+          "designSystemVersionId": "609393",
+          "name": "Figma component",
+          "codeName": "figmaComponent",
+          "description": "Includes a link to a Figma component that has been imported to Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "FigmaComponent",
+          "options": null
+        },
+        {
+          "id": "644229",
+          "persistentId": "c6b05c53-f42e-4af8-a0f9-04973a3eba6e",
+          "designSystemVersionId": "609393",
+          "name": "Status",
+          "codeName": "status",
+          "description": "The component has a health status indicated",
+          "propertyType": "Select",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": [
+            {
+              "id": "status-healthy",
+              "name": "Healthy",
+              "backgroundColor": "#d3fedeff"
+            },
+            {
+              "id": "status-known-issues",
+              "name": "Known issues",
+              "backgroundColor": "#fcf4d6ff"
+            },
+            {
+              "id": "status-deprecated",
+              "name": "Deprecated",
+              "backgroundColor": "#fff0f0ff"
+            }
+          ]
+        },
+        {
+          "id": "644232",
+          "persistentId": "d6ed1c47-144c-447a-a764-31d1cb4c6cd9",
+          "designSystemVersionId": "609393",
+          "name": "Repository",
+          "codeName": "repository",
+          "description": "Includes a link to an external code repository",
+          "propertyType": "URL",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        }
+      ],
+      "variants": []
+    },
+    {
+      "id": "29666040",
+      "name": "Menu heading",
+      "description": "",
+      "category": "Uncategorized",
+      "properties": [
+        {
+          "id": "644231",
+          "persistentId": "11a12cc9-9d40-483b-9515-80d34d4e5284",
+          "designSystemVersionId": "609393",
+          "name": "Documentation link",
+          "codeName": "documentationLink",
+          "description": "There is a connected documentation page in Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "DocumentationPage",
+          "options": null
+        },
+        {
+          "id": "644230",
+          "persistentId": "1e3fc1d9-7633-4704-b4e9-cc56eb219e0b",
+          "designSystemVersionId": "609393",
+          "name": "Documented",
+          "codeName": "isDocumented",
+          "description": "The component is fully documented",
+          "propertyType": "Boolean",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        },
+        {
+          "id": "644228",
+          "persistentId": "c11c4768-f998-4057-a2b3-676ea16ca82d",
+          "designSystemVersionId": "609393",
+          "name": "Figma component",
+          "codeName": "figmaComponent",
+          "description": "Includes a link to a Figma component that has been imported to Supernova",
+          "propertyType": "Link",
+          "targetElementType": "Component",
+          "linkElementType": "FigmaComponent",
+          "options": null
+        },
+        {
+          "id": "644229",
+          "persistentId": "c6b05c53-f42e-4af8-a0f9-04973a3eba6e",
+          "designSystemVersionId": "609393",
+          "name": "Status",
+          "codeName": "status",
+          "description": "The component has a health status indicated",
+          "propertyType": "Select",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": [
+            {
+              "id": "status-healthy",
+              "name": "Healthy",
+              "backgroundColor": "#d3fedeff"
+            },
+            {
+              "id": "status-known-issues",
+              "name": "Known issues",
+              "backgroundColor": "#fcf4d6ff"
+            },
+            {
+              "id": "status-deprecated",
+              "name": "Deprecated",
+              "backgroundColor": "#fff0f0ff"
+            }
+          ]
+        },
+        {
+          "id": "644232",
+          "persistentId": "d6ed1c47-144c-447a-a764-31d1cb4c6cd9",
+          "designSystemVersionId": "609393",
+          "name": "Repository",
+          "codeName": "repository",
+          "description": "Includes a link to an external code repository",
+          "propertyType": "URL",
+          "targetElementType": "Component",
+          "linkElementType": null,
+          "options": null
+        }
+      ],
+      "variants": []
+    }
+  ]
+}

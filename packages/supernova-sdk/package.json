@@ -1,0 +1,23 @@
+{
+  "name": "@supernova-test/supernova-sdk",
+  "version": "1.0.0",
+  "description": "Shared Supernova SDK utilities and scripts for fetching design tokens, components, and assets",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "fetch-tokens": "node scripts/fetch-tokens.js",
+    "fetch-components": "node scripts/fetch-components.js",
+    "fetch-assets": "node scripts/fetch-assets.js",
+    "fetch-all": "npm run fetch-tokens && npm run fetch-components && npm run fetch-assets"
+  },
+  "dependencies": {
+    "@supernovaio/supernova-sdk": "^1.9.53",
+    "dotenv": "^17.2.3"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "supernova",
+    "design-system",
+    "design-tokens"
+  ]
+}

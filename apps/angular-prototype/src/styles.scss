@@ -1,0 +1,23 @@
+// Import Supernova Design Token Aliases
+@use 'styles/tokens/token-aliases' as *;
+@use 'styles/theme.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: $font-family-primary;
+  font-size: $font-size-md;
+  line-height: $line-height-normal;
+  color: var(--cu-content-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--cu-background-secondary);
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+html, body {
+  height: 100%;
+}
