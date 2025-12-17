@@ -1,0 +1,499 @@
+// Task Screen - Matching Figma Design
+.task-screen {
+  background: #ffffff;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+// Global icon size
+.icon-16 {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+// Header
+.task-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  height: 44px;
+  border-bottom: 1px solid #e8e8e8;
+  background: #ffffff;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.06);
+  }
+
+  &.active {
+    .breadcrumb-text {
+      color: #202020;
+      font-weight: 600;
+    }
+  }
+
+  .team-icon {
+    width: 16px;
+    height: 16px;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .folder-icon,
+  .list-icon {
+    width: 16px;
+    height: 16px;
+    color: #646464;
+  }
+
+  .breadcrumb-text {
+    font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: -0.15px;
+    color: #646464;
+  }
+
+  .breadcrumb-badge {
+    background: rgba(0, 0, 0, 0.06);
+    padding: 1px 4px;
+    border-radius: 5px;
+    font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #646464;
+  }
+
+  .chevron-down {
+    width: 16px;
+    height: 16px;
+    color: #8d8d8d;
+  }
+}
+
+.breadcrumb-separator {
+  font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  color: #bbbbbb;
+  padding: 0 0;
+}
+
+.header-actions-left {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 5px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+
+  .mini-chevron {
+    width: 12px;
+    height: 12px;
+    opacity: 0.6;
+  }
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.06);
+  }
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.header-button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px;
+  background: transparent;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+
+  span {
+    font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: -0.15px;
+    color: #646464;
+  }
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.06);
+  }
+}
+
+// Task Content
+.task-content {
+  padding: 60px 32px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.task-title {
+  font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+  color: #202020;
+  margin: 0 0 24px 0;
+}
+
+// Task Fields
+.task-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 32px;
+}
+
+.field-row {
+  display: flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 4px 0;
+}
+
+.field-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 140px;
+  flex-shrink: 0;
+
+  span {
+    font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: -0.15px;
+    color: #646464;
+  }
+}
+
+.field-value {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+// Status Tag
+.status-tag {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px 4px 6px;
+  border-radius: 6px;
+
+  .status-icon {
+    width: 14px;
+    height: 14px;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  span {
+    font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    font-weight: 510;
+    line-height: 16px;
+    letter-spacing: -0.15px;
+  }
+
+  &.needs-updates {
+    background: #fff8e1;
+    span {
+      color: #ab6400;
+    }
+  }
+
+  &.in-progress {
+    background: #edf6ff;
+    span {
+      color: #0b68cb;
+    }
+  }
+}
+
+.check-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.06);
+  }
+}
+
+// Assignee
+.assignee-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  .avatar {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  span {
+    font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: -0.15px;
+    color: #202020;
+  }
+}
+
+// Dates
+.dates-value {
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.date-button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 150ms ease;
+  white-space: nowrap;
+
+  span {
+    font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: -0.15px;
+    color: #646464;
+    white-space: nowrap;
+  }
+
+  &:hover {
+    background: #f7f7f7;
+  }
+
+  &.active,
+  &.due-button.active {
+    background: #f0f0f0;
+
+    span {
+      color: #6647f0;
+    }
+  }
+}
+
+.date-arrow {
+  font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  color: #8d8d8d;
+}
+
+.due-button-wrapper {
+  position: relative;
+}
+
+.date-picker-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 1000;
+}
+
+.recurring-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #202020;
+  color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.08px;
+  white-space: normal;
+  width: 224px;
+  z-index: 1001;
+  box-shadow: 
+    0px 0px 1px 0px rgba(0, 0, 0, 0.27),
+    0px 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0px 2px 4px -2px rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+  
+  .dynamic-text {
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.4);
+    text-underline-offset: 2px;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #202020;
+  }
+}
+
+// Empty Value
+.empty-value {
+  font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: -0.15px;
+  color: #bbbbbb;
+}
+
+// Start Timer Button
+.start-timer-button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+
+  span {
+    font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: -0.15px;
+    color: #30a46c;
+  }
+
+  &:hover {
+    background: rgba(48, 164, 108, 0.1);
+  }
+}
+
+// Description
+.description-section {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #e8e8e8;
+}
+
+.description-placeholder {
+  font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.15px;
+  color: #bbbbbb;
+  margin: 0;
+}
+
+// Floating Tab Bar
+.floating-tab-bar {
+  position: absolute;
+  top: 54px;
+  right: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 2px;
+  background: #ffffff;
+  border-radius: 9px;
+  box-shadow: 
+    0px 0px 1px 0px rgba(0, 0, 0, 0.27),
+    0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+}
+
+.tab-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  background: transparent;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.06);
+  }
+
+  &.active {
+    background: rgba(0, 0, 0, 0.06);
+  }
+}

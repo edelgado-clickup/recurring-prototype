@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { DatePickerComponent } from './date-picker/date-picker.component';
+import { TaskScreenComponent } from './task-screen/task-screen.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [DatePickerComponent],
+  imports: [TaskScreenComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss',
   animations: [

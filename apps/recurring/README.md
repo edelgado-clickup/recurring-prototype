@@ -1,91 +1,99 @@
-# Recurring
+# Recurring Task Prototype
 
-A blank Angular prototype ready for your design system implementation.
+An Angular prototype demonstrating recurring task functionality with an interactive date picker and recurring configuration.
 
-## 🚀 Getting Started
+## Live Demo
 
-This prototype was created from the template and is ready to use!
+🚀 **[View Live Demo](https://edelgado-clickup.github.io/recurring-prototype/)**
 
-### Development
+## Features
 
+- **Interactive Date Picker**: Calendar view with preset options
+- **Recurring Task Setup**: Configure complex recurring schedules
+  - Multiple frequency options (Days, Weeks, Months, Quarters, Years)
+  - Day selection for weekly recurrence
+  - Custom triggers and actions
+  - Visual calendar highlighting for recurring dates
+- **Smart Date Display**: Shows day names for nearby dates, d/m/y for distant dates
+- **Recurring Tooltip**: Hover over due dates to see the full recurring sentence
+- **Task Screen**: Clean task detail view with date management
+
+## Development
+
+### Prerequisites
+- Node.js 18+ 
+- npm 10+
+
+### Install Dependencies
 ```bash
-# From the root of the monorepo
-npm run dev -w @prototypes/recurring
+npm install
+```
 
-# Or from this directory
+### Run Development Server
+```bash
 npm run dev
 ```
+Navigate to `http://localhost:4555/`
 
-Your app will be available at: http://localhost:4555
-
-## 📁 Structure
-
-```
-src/
-├── app/
-│   ├── app.ts         # Main component logic
-│   ├── app.html       # Main component template
-│   ├── app.scss       # Main component styles
-│   └── app.config.ts  # App configuration
-├── main.ts            # Application bootstrap
-├── index.html         # HTML entry point
-└── styles.scss        # Global styles
-```
-
-## 🎨 Using Supernova Design Tokens
-
-### In TypeScript/JavaScript
-
-```typescript
-import { DesignTokens } from '@prototypes/supernova-sdk/output/tokens/tokens';
-
-// Use tokens
-const primaryColor = DesignTokens.color_primary;
-```
-
-### In SCSS
-
-```scss
-@import '@prototypes/supernova-sdk/output/tokens/tokens';
-
-.my-component {
-  background: $color-primary;
-  padding: $spacing-md;
-}
-```
-
-## 🧩 Creating Components
-
-Create new components in the `src/app/` directory:
-
-```bash
-# Example component structure
-src/app/
-└── my-component/
-    ├── my-component.ts
-    ├── my-component.html
-    └── my-component.scss
-```
-
-## 📦 Building
-
+### Build for Production
 ```bash
 npm run build
 ```
 
-## 🧪 Testing
+## Deployment
 
+This prototype is automatically deployed to GitHub Pages.
+
+### Deploy to GitHub Pages
 ```bash
-npm test
+npm run deploy
 ```
 
-## 📚 Learn More
+This will:
+1. Build the production version with the correct base href
+2. Deploy to the `gh-pages` branch
+3. Make it available at https://edelgado-clickup.github.io/recurring-prototype/
 
-- [Angular Documentation](https://angular.dev)
-- [Supernova Documentation](https://learn.supernova.io/)
-- [Project README](../../README.md)
+### Manual Deployment
+```bash
+# Build with base href
+npm run build -- --base-href=/recurring-prototype/
 
----
+# Deploy to gh-pages
+npx gh-pages -d dist/recurring/browser
+```
 
-Happy prototyping! 🎨✨
+## Tech Stack
 
+- **Angular 21** with standalone components
+- **TypeScript 5.9**
+- **SCSS** for styling
+- **Supernova Design System** tokens
+- **Angular Animations** for smooth transitions
+
+## Project Structure
+
+```
+apps/recurring/
+├── src/
+│   ├── app/
+│   │   ├── app.ts              # Root component
+│   │   ├── date-picker/        # Date picker component
+│   │   └── task-screen/        # Task screen component
+│   ├── assets/                 # Static assets
+│   └── styles.scss             # Global styles
+├── angular.json                # Angular configuration
+├── package.json                # Dependencies and scripts
+└── README.md                   # This file
+```
+
+## Design System
+
+This prototype uses the Supernova design system for consistent styling:
+- Design tokens from `@prototypes/supernova-sdk`
+- SF Pro font family
+- Consistent spacing, colors, and typography
+
+## License
+
+Private prototype for internal use.

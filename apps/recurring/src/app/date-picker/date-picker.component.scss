@@ -70,6 +70,12 @@
     }
   }
 
+  &.active {
+    border-color: #6647f0;
+    background: #faf9ff;
+    box-shadow: 0 0 0 1px #6647f0;
+  }
+
   .clear-date-btn {
     display: flex;
     align-items: center;
@@ -1083,6 +1089,8 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+
 
 
 

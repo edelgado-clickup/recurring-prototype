@@ -1,4 +1,4 @@
-import { Component, HostListener, ChangeDetectorRef } from '@angular/core';
+import { Component, HostListener, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { trigger, state, style, transition, animate } from '@angular/animations';
@@ -44,6 +44,10 @@ interface ActionOption {
   ]
 })
 export class DatePickerComponent {
+  @Output() startDateChange = new EventEmitter<Date | null>();
+  @Output() dueDateChange = new EventEmitter<Date | null>();
+  @Output() recurringStatusChange = new EventEmitter<{isSetup: boolean, summary: string, summaryParts: { value: string; isDynamic: boolean; field?: string; actionId?: string }[]}>;
+  
   showRecurringForm = false;
   isRecurringSetup = false; // Track if recurring has been saved/configured
   currentDate: Date;
@@ -51,6 +55,7 @@ export class DatePickerComponent {
   currentYear: string;
   selectedStartDate: Date | null = null;
   selectedDueDate: Date | null = null;
+  activeDateField: 'start' | 'due' = 'start'; // Track which field is active for date selection
   
   weekDays = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
   dayButtons = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
@@ -200,14 +205,21 @@ export class DatePickerComponent {
 
   selectDate(date: CalendarDate) {
     if (!date.isCurrentMonth) return;
-    this.calendarDates.forEach(d => d.isSelected = false);
-    date.isSelected = true;
     
-    // Set as start date
-    this.selectedStartDate = date.date;
-    
-    // Recalculate due date if in recurring form
-    this.updateDueDate();
+    // Set date based on which field is active
+    if (this.activeDateField === 'start') {
+      this.calendarDates.forEach(d => d.isSelected = false);
+      date.isSelected = true;
+      this.selectedStartDate = date.date;
+      this.startDateChange.emit(this.selectedStartDate);
+      
+      // Recalculate due date if in recurring form
+      this.updateDueDate();
+    } else {
+      // Setting due date
+      this.selectedDueDate = date.date;
+      this.dueDateChange.emit(this.selectedDueDate);
+    }
   }
 
   getWeekOfMonth(date: Date): number {
@@ -364,13 +376,30 @@ export class DatePickerComponent {
   }
 
   selectPreset(label: string) {
-    this.selectedDueDate = this.getPresetDate(label);
+    const date = this.getPresetDate(label);
+    
+    // Set date based on active field
+    if (this.activeDateField === 'start') {
+      this.selectedStartDate = date;
+      this.startDateChange.emit(this.selectedStartDate);
+      // Update calendar selection
+      this.calendarDates.forEach(d => {
+        d.isSelected = d.date.toDateString() === date.toDateString();
+      });
+      this.updateDueDate();
+    } else {
+      this.selectedDueDate = date;
+      this.dueDateChange.emit(this.selectedDueDate);
+    }
   }
 
   onSetRecurring() {
     this.showRecurringForm = true;
+    // Switch to due date field since recurring will set the due date
+    this.activeDateField = 'due';
     // Auto-calculate the due date based on the first recurring date
     this.selectedDueDate = this.calculateFirstRecurringDate();
+    this.dueDateChange.emit(this.selectedDueDate);
   }
 
   toggleDay(index: number) {
@@ -385,6 +414,18 @@ export class DatePickerComponent {
   onSave() {
     this.isRecurringSetup = true;
     this.showRecurringForm = false;
+    this.emitRecurringStatus();
+  }
+
+  emitRecurringStatus() {
+    const summary = this.generateRecurringSummary();
+    const summaryText = summary ? summary.text : '';
+    const summaryParts = summary ? summary.parts : [];
+    this.recurringStatusChange.emit({
+      isSetup: this.isRecurringSetup,
+      summary: summaryText,
+      summaryParts: summaryParts
+    });
   }
 
   clearRecurring() {
@@ -402,6 +443,7 @@ export class DatePickerComponent {
     this.selectedTime = '8:00 AM';
     this.actions = [];
     this.selectedDays = [false, false, false, false, false, false, false];
+    this.emitRecurringStatus();
   }
 
   editRecurring() {
@@ -705,14 +747,20 @@ export class DatePickerComponent {
     return date.toLocaleDateString('en-US', options);
   }
 
+  setActiveField(field: 'start' | 'due') {
+    this.activeDateField = field;
+  }
+
   clearStartDate() {
     this.selectedStartDate = null;
+    this.startDateChange.emit(null);
     // Also clear the calendar selection
     this.calendarDates.forEach(d => d.isSelected = false);
   }
 
   clearDueDate() {
     this.selectedDueDate = null;
+    this.dueDateChange.emit(null);
   }
 
   calculateFirstRecurringDate(): Date | null {
@@ -796,6 +844,7 @@ export class DatePickerComponent {
   updateDueDate() {
     if (this.showRecurringForm) {
       this.selectedDueDate = this.calculateFirstRecurringDate();
+      this.dueDateChange.emit(this.selectedDueDate);
     }
   }
 
@@ -1213,6 +1262,8 @@ export class DatePickerComponent {
     this.generateCalendar();
   }
 }
+
+
 
 
 

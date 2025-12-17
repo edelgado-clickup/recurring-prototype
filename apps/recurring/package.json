@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "dev": "ng serve --host 0.0.0.0 --port 4555"
+    "dev": "ng serve --host 0.0.0.0 --port 4555",
+    "deploy": "ng build --base-href=/recurring-prototype/ && npx gh-pages -d dist/recurring/browser"
   },
   "prettier": {
     "printWidth": 100,

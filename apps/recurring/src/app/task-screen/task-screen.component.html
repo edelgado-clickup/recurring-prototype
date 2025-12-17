@@ -1,0 +1,205 @@
+<div class="task-screen">
+  <!-- Header -->
+  <div class="task-header">
+    <div class="header-left">
+      <div class="breadcrumbs">
+        <div class="breadcrumb-item">
+          <div class="team-icon">
+            <svg viewBox="0 0 14 14" fill="none">
+              <rect width="14" height="14" rx="3.5" fill="#30a46c"/>
+              <path d="M7 4.5C7.82843 4.5 8.5 5.17157 8.5 6C8.5 6.82843 7.82843 7.5 7 7.5C6.17157 7.5 5.5 6.82843 5.5 6C5.5 5.17157 6.17157 4.5 7 4.5Z" fill="white"/>
+              <path d="M4 10C4 8.89543 4.89543 8 6 8H8C9.10457 8 10 8.89543 10 10V10.5H4V10Z" fill="white"/>
+            </svg>
+          </div>
+          <span class="breadcrumb-text">Marketing</span>
+        </div>
+        <span class="breadcrumb-separator">/</span>
+        <div class="breadcrumb-item">
+          <img class="icon-16" src="assets/supernova/folder.svg" alt="Folder" />
+          <span class="breadcrumb-text">Projects</span>
+        </div>
+        <span class="breadcrumb-separator">/</span>
+        <div class="breadcrumb-item active">
+          <img class="icon-16" src="assets/supernova/list.svg" alt="List" />
+          <span class="breadcrumb-text">Madison</span>
+          <span class="breadcrumb-badge">+2</span>
+          <img class="icon-16" src="assets/supernova/chevron-down.svg" alt="Expand" />
+        </div>
+      </div>
+      <div class="header-actions-left">
+        <button class="icon-button">
+          <img class="icon-16" src="assets/supernova/favorite.svg" alt="Favorite" />
+          <img class="icon-16 mini-chevron" src="assets/supernova/chevron-down.svg" alt="Expand" />
+        </button>
+        <button class="icon-button">
+          <img class="icon-16" src="assets/supernova/close-small.svg" alt="Close" />
+        </button>
+      </div>
+    </div>
+    <div class="header-right">
+      <button class="header-button">
+        <img class="icon-16" src="assets/supernova/brain-ai-outlined.svg" alt="AI" />
+        <span>Ask</span>
+      </button>
+      <button class="header-button">
+        <img class="icon-16" src="assets/supernova/share.svg" alt="Share" />
+        <span>Share</span>
+      </button>
+      <button class="icon-button">
+        <img class="icon-16" src="assets/supernova/ellipsis-regular.svg" alt="More" />
+      </button>
+      <button class="icon-button">
+        <img class="icon-16" src="assets/supernova/close-small.svg" alt="Close" />
+      </button>
+    </div>
+  </div>
+
+  <!-- Task Content -->
+  <div class="task-content">
+    <!-- Task Title -->
+    <h1 class="task-title">{{ taskTitle }}</h1>
+
+    <!-- Task Fields - 2 Column Layout -->
+    <div class="task-fields">
+      <!-- Row 1 -->
+      <!-- Status -->
+      <div class="field-row">
+        <div class="field-label">
+          <img class="icon-16" src="assets/supernova/status.svg" alt="Status" />
+          <span>Status</span>
+        </div>
+        <div class="field-value">
+          <div class="status-tag in-progress">
+            <div class="status-icon">
+              <svg viewBox="0 0 14 14" fill="none">
+                <circle cx="7" cy="7" r="5.5" stroke="#0091ff" stroke-width="1.5" fill="none"/>
+                <path d="M7 4v3l2 2" stroke="#0091ff" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              </svg>
+            </div>
+            <span>In Progress</span>
+          </div>
+          <button class="check-button">
+            <img class="icon-16" src="assets/supernova/check.svg" alt="Check" />
+          </button>
+        </div>
+      </div>
+
+      <!-- Assignees -->
+      <div class="field-row">
+        <div class="field-label">
+          <img class="icon-16" src="assets/supernova/user.svg" alt="Assignees" />
+          <span>Assignees</span>
+        </div>
+        <div class="field-value">
+          <span class="empty-value">Empty</span>
+        </div>
+      </div>
+
+      <!-- Row 2 -->
+      <!-- Dates -->
+      <div class="field-row">
+        <div class="field-label">
+          <img class="icon-16" src="assets/supernova/calendar.svg" alt="Dates" />
+          <span>Dates</span>
+        </div>
+        <div class="field-value dates-value">
+          <button class="date-button start-button">
+            <img class="icon-16" src="assets/supernova/calendar.svg" alt="Calendar" />
+            <span>{{ startDate ? formatDate(startDate) : 'Start' }}</span>
+          </button>
+          <span class="date-arrow">→</span>
+          <div class="due-button-wrapper">
+            <button 
+              class="date-button due-button" 
+              [class.active]="showDatePicker" 
+              [class.has-recurring]="isRecurringSetup"
+              (click)="toggleDatePicker(); $event.stopPropagation()"
+              (mouseenter)="showRecurringTooltip = isRecurringSetup"
+              (mouseleave)="showRecurringTooltip = false">
+              <img class="icon-16" src="assets/supernova/calendar.svg" alt="Calendar" />
+              <span>{{ dueDate ? formatDate(dueDate) : 'Due' }}</span>
+            </button>
+            
+            <!-- Recurring Tooltip -->
+            <div class="recurring-tooltip" *ngIf="showRecurringTooltip && isRecurringSetup" @tooltipAnimation>
+              <span *ngFor="let part of recurringSummaryParts" [class.dynamic-text]="part.isDynamic">{{ part.value }}</span>
+            </div>
+            
+            <!-- Date Picker Dropdown -->
+            <div class="date-picker-dropdown" *ngIf="showDatePicker" @dropdownAnimation (click)="$event.stopPropagation()">
+              <app-date-picker 
+                (startDateChange)="onStartDateChange($event)"
+                (dueDateChange)="onDueDateChange($event)"
+                (recurringStatusChange)="onRecurringStatusChange($event)">
+              </app-date-picker>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Priority -->
+      <div class="field-row">
+        <div class="field-label">
+          <img class="icon-16" src="assets/supernova/flag.svg" alt="Priority" />
+          <span>Priority</span>
+        </div>
+        <div class="field-value">
+          <span class="empty-value">Empty</span>
+        </div>
+      </div>
+
+      <!-- Row 3 -->
+      <!-- Track Time -->
+      <div class="field-row">
+        <div class="field-label">
+          <img class="icon-16" src="assets/supernova/clock.svg" alt="Track Time" />
+          <span>Track time</span>
+        </div>
+        <div class="field-value">
+          <button class="start-timer-button">
+            <img class="icon-16" src="assets/supernova/play-fill.svg" alt="Start" />
+            <span>Start</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Tags -->
+      <div class="field-row">
+        <div class="field-label">
+          <img class="icon-16" src="assets/supernova/tag.svg" alt="Tags" />
+          <span>Tags</span>
+        </div>
+        <div class="field-value">
+          <span class="empty-value">Empty</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="description-section">
+      <p class="description-placeholder">Add a description, or write AI</p>
+    </div>
+  </div>
+
+  <!-- Floating Tab Bar -->
+  <div class="floating-tab-bar">
+    <button class="tab-button">
+      <img class="icon-16" src="assets/supernova/chevron-right.svg" alt="Expand" />
+    </button>
+    <button class="tab-button active">
+      <img class="icon-16" src="assets/supernova/list.svg" alt="List" />
+    </button>
+    <button class="tab-button">
+      <img class="icon-16" src="assets/supernova/github-black.svg" alt="GitHub" />
+    </button>
+    <button class="tab-button">
+      <img class="icon-16" src="assets/supernova/cf-website.svg" alt="Web" />
+    </button>
+    <button class="tab-button">
+      <img class="icon-16" src="assets/supernova/close-small.svg" alt="Close" />
+    </button>
+    <button class="tab-button">
+      <img class="icon-16" src="assets/supernova/app-collage.svg" alt="Apps" />
+    </button>
+  </div>
+</div>

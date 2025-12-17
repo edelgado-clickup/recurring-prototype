@@ -1,7 +1,10 @@
 <div class="date-picker">
   <div class="date-container">
     <div class="date-fields">
-      <div class="text-field" [class.has-value]="selectedStartDate">
+      <div class="text-field" 
+           [class.has-value]="selectedStartDate" 
+           [class.active]="activeDateField === 'start'"
+           (click)="setActiveField('start')">
         <svg class="icon" viewBox="0 0 16 16" fill="currentColor">
           <path d="M12 2h1.333A1.333 1.333 0 0 1 14.667 3.333v9.334A1.333 1.333 0 0 1 13.333 14H2.667a1.333 1.333 0 0 1-1.334-1.333V3.333A1.333 1.333 0 0 1 2.667 2H4V.667h1.333V2h5.334V.667H12V2zm1.333 4H2.667v6.667h10.666V6zM4 7.333h2.667V10H4V7.333z"/>
         </svg>
@@ -12,7 +15,10 @@
           </svg>
         </button>
       </div>
-      <div class="text-field" [class.has-value]="selectedDueDate">
+      <div class="text-field" 
+           [class.has-value]="selectedDueDate" 
+           [class.active]="activeDateField === 'due'"
+           (click)="setActiveField('due')">
         <svg class="icon" viewBox="0 0 16 16" fill="currentColor">
           <path d="M12 2h1.333A1.333 1.333 0 0 1 14.667 3.333v9.334A1.333 1.333 0 0 1 13.333 14H2.667a1.333 1.333 0 0 1-1.334-1.333V3.333A1.333 1.333 0 0 1 2.667 2H4V.667h1.333V2h5.334V.667H12V2zm1.333 4H2.667v6.667h10.666V6zM4 7.333h2.667V10H4V7.333z"/>
         </svg>
@@ -509,6 +515,8 @@
     </div>
   </div>
 </div>
+
+
 
 
 
