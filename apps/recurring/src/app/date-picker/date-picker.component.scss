@@ -1,0 +1,1091 @@
+// Date Picker - Figma Design 1:1 Match
+.date-picker {
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+  box-shadow: 
+    0px 0px 1px 0px rgba(0, 0, 0, 0.27),
+    0px 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0px 2px 4px -2px rgba(0, 0, 0, 0.1);
+  width: 576px;
+  overflow: visible;
+}
+
+.date-container {
+  background: #ffffff;
+  padding: 8px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  border-radius: 12px 12px 0 0;
+  overflow: hidden;
+}
+
+.date-fields {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.text-field {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  background: #fcfcfc;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  height: 32px;
+  cursor: pointer;
+
+  .icon {
+    width: 16px;
+    height: 16px;
+    color: #8d8d8d;
+    flex-shrink: 0;
+  }
+
+  .placeholder {
+    font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: -0.15px;
+    color: #8d8d8d;
+  }
+
+  .date-value {
+    font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: -0.15px;
+    color: #202020;
+  }
+
+  &.has-value {
+    .icon {
+      color: #e5484d;
+    }
+  }
+
+  .clear-date-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    margin-left: auto;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #8d8d8d;
+    flex-shrink: 0;
+    border-radius: 4px;
+    transition: all 150ms ease;
+
+    svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    &:hover {
+      color: #646464;
+      background: rgba(0, 0, 0, 0.06);
+    }
+  }
+}
+
+.divider {
+  height: 1px;
+  background: #e8e8e8;
+}
+
+.datepicker {
+  display: flex;
+  min-height: 268px;
+  position: relative;
+}
+
+.presets-section {
+  width: 288px;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-right: 1px solid #e8e8e8;
+  flex-shrink: 0;
+  border-radius: 0 0 0 12px;
+}
+
+.presets-list {
+  flex: 1;
+  padding: 4px 4px 4px 4px;
+  overflow-y: auto;
+}
+
+.preset-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  height: 32px;
+
+  .header-text {
+    font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: -0.15px;
+    color: #202020;
+  }
+
+  .ellipsis-icon {
+    width: 16px;
+    height: 16px;
+    color: #646464;
+  }
+}
+
+.preset-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  height: 32px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+
+  &:hover {
+    background: #f7f7f7;
+  }
+
+  .preset-label {
+    font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: -0.15px;
+    color: #202020;
+  }
+
+  .preset-shortcut {
+    font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: -0.15px;
+    color: #8d8d8d;
+  }
+
+  .chevron-icon {
+    width: 16px;
+    height: 16px;
+    color: #646464;
+  }
+}
+
+.recurring-option {
+  border-top: 1px solid #e8e8e8;
+  padding: 8px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  border-radius: 0 0 0 12px;
+
+  .preset-option {
+    width: 100%;
+  }
+}
+
+// Form Section
+.form-section {
+  width: 288px;
+  background: #ffffff;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+  border-right: 1px solid #e8e8e8;
+  border-radius: 0 0 0 12px;
+}
+
+.form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 26px;
+
+  .form-title {
+    font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.15px;
+    color: #202020;
+    margin: 0;
+  }
+}
+
+// Settings Menu
+.settings-menu-wrapper {
+  position: relative;
+}
+
+.ellipsis-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.06);
+  }
+
+  .ellipsis-icon {
+    width: 16px;
+    height: 16px;
+    color: #8d8d8d;
+  }
+}
+
+.settings-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: -8px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 
+    0px 0px 1px 0px rgba(0, 0, 0, 0.27),
+    0px 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0px 2px 4px -2px rgba(0, 0, 0, 0.1);
+  padding: 8px;
+  z-index: 1000;
+  min-width: 200px;
+}
+
+.settings-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  cursor: pointer;
+
+  .settings-label {
+    font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: -0.15px;
+    color: #202020;
+  }
+}
+
+// Toggle Switch
+.toggle-switch {
+  width: 24px;
+  height: 16px;
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+
+  .toggle-track {
+    position: absolute;
+    top: 1px;
+    left: 0;
+    right: 0;
+    bottom: 1px;
+    background: #8d8d8d;
+    border-radius: 32px;
+    transition: background-color 150ms ease;
+  }
+
+  .toggle-thumb {
+    position: absolute;
+    top: 3px;
+    left: 2px;
+    width: 10px;
+    height: 10px;
+    background: #ffffff;
+    border-radius: 50%;
+    transition: left 150ms ease;
+  }
+
+  &.on {
+    .toggle-track {
+      background: #6647f0;
+    }
+
+    .toggle-thumb {
+      left: 12px;
+    }
+  }
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 28px;
+}
+
+.form-label {
+  width: 48px;
+  max-width: 120px;
+  font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: -0.15px;
+  color: #202020;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.form-input {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  position: relative;
+}
+
+.form-input-full {
+  position: relative;
+  width: 100%;
+  flex: 1;
+
+  &.flex-grow {
+    flex: 1;
+  }
+}
+
+.flex-grow {
+  flex: 1;
+}
+
+.select-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 0 8px;
+  height: 28px;
+  min-height: 28px;
+  background: #fcfcfc;
+  border: 1px solid #e8e8e8;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+  width: 100%;
+
+  &:hover {
+    background: #f7f7f7;
+  }
+
+  &.flex-grow {
+    flex: 1;
+  }
+
+  .select-text {
+    flex: 1;
+    font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: -0.15px;
+    color: #202020;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .chevron-icon {
+    width: 16px;
+    height: 16px;
+    color: #8d8d8d;
+    flex-shrink: 0;
+  }
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 
+    0px 0px 1px 0px rgba(0, 0, 0, 0.27),
+    0px 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0px 2px 4px -2px rgba(0, 0, 0, 0.1);
+  padding: 8px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  max-height: 184px; // 6 items * 28px (item height) + 16px (padding)
+  overflow-y: auto;
+
+  // Custom scrollbar styling
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #e8e8e8;
+    border-radius: 4px;
+
+    &:hover {
+      background: #d0d0d0;
+    }
+  }
+}
+
+.dropdown-item {
+  padding: 6px 8px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: -0.15px;
+  color: #202020;
+  transition: background-color 150ms ease;
+  white-space: nowrap;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.06);
+  }
+
+  &.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    color: #8d8d8d;
+
+    &:hover {
+      background: transparent;
+    }
+  }
+
+  &.selected {
+    // Optional: add selected state styling if needed
+  }
+
+  &.has-submenu {
+    .submenu-chevron {
+      width: 16px;
+      height: 16px;
+      color: #8d8d8d;
+      margin-left: 8px;
+    }
+  }
+}
+
+.status-dropdown-menu {
+  position: absolute;
+  left: calc(100% + 8px);
+  top: 36px; // Align with "Task status is..." item (roughly)
+  min-width: 200px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 
+    0px 0px 1px 0px rgba(0, 0, 0, 0.27),
+    0px 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0px 2px 4px -2px rgba(0, 0, 0, 0.1);
+  padding: 8px;
+  z-index: 1001;
+
+  .dropdown-item {
+    padding: 6px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    
+    span {
+      text-align: left;
+      flex: 1;
+    }
+  }
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .status-svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.frequency-input {
+  gap: 8px;
+}
+
+.frequency-number {
+  width: 54px;
+  flex-shrink: 0;
+}
+
+.input-suffix {
+  font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: -0.15px;
+  color: #646464;
+  margin-left: 8px;
+}
+
+.date-select {
+  .calendar-icon {
+    width: 16px;
+    height: 16px;
+    color: #8d8d8d;
+    flex-shrink: 0;
+  }
+}
+
+.time-input {
+  gap: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.delete-button {
+  width: 24px;
+  height: 24px;
+  padding: 5px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 150ms ease;
+  flex-shrink: 0;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.06);
+  }
+
+  .delete-icon {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.number-input {
+  width: 100%;
+  height: 28px;
+  padding: 6px 8px;
+  background: #fcfcfc;
+  border: 1px solid #e8e8e8;
+  border-radius: 7px;
+  font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: -0.15px;
+  color: #202020;
+  outline: none;
+  transition: border-color 150ms ease;
+
+  &:focus {
+    border-color: #6647f0;
+  }
+}
+
+.radio-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.radio-button {
+  padding: 6px 8px;
+  background: #fcfcfc;
+  border: 1px solid #e8e8e8;
+  border-radius: 7px;
+  font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: -0.15px;
+  color: #646464;
+  cursor: pointer;
+  transition: all 150ms ease;
+  min-width: 70px;
+  text-align: center;
+
+  &:hover:not(.selected) {
+    background: #f7f7f7;
+  }
+
+  &.selected {
+    background: #6647f0;
+    color: #ffffff;
+  }
+}
+
+.day-buttons {
+  display: flex;
+  width: 100%;
+  height: 28px;
+  border: 1px solid #e8e8e8;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.day-button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 8px;
+  background: #fcfcfc;
+  border: none;
+  border-right: 1px solid #e8e8e8;
+  font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: -0.15px;
+  color: #646464;
+  cursor: pointer;
+  transition: all 150ms ease;
+
+  &:last-child {
+    border-right: none;
+  }
+
+  &:hover:not(.selected) {
+    background: #f7f7f7;
+  }
+
+  &.selected {
+    background: #6647f0;
+    color: #ffffff;
+  }
+}
+
+.calendar-section {
+  width: 288px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 4px 12px 12px 12px;
+  background: #ffffff;
+  border-radius: 0 0 12px 0;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  gap: 4px;
+  height: 32px;
+
+  .date-display {
+    flex: 1;
+    display: flex;
+    gap: 4px;
+
+    .month, .year {
+      font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 16px;
+      letter-spacing: -0.15px;
+      color: #202020;
+    }
+  }
+
+  .today-btn {
+    padding: 4px 8px;
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    color: #646464;
+    cursor: pointer;
+    transition: background-color 150ms ease;
+
+    &:hover {
+      background: #f7f7f7;
+    }
+  }
+
+  .nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 150ms ease;
+
+    &:hover {
+      background: #f7f7f7;
+    }
+
+    .chevron {
+      width: 16px;
+      height: 16px;
+      color: #646464;
+    }
+  }
+}
+
+.calendar-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.week-header {
+  display: flex;
+  justify-content: space-between;
+
+  .day-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: -0.15px;
+    color: #bbbbbb;
+    text-align: center;
+  }
+}
+
+.calendar-body {
+  display: grid;
+  grid-template-columns: repeat(7, 28px);
+  gap: 4px 0;
+  justify-content: space-between;
+}
+
+.date-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+
+  span {
+    font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: -0.15px;
+    color: #202020;
+  }
+
+  &.other-month span {
+    color: #bbbbbb;
+  }
+
+  &.highlighted {
+    background: rgba(102, 71, 240, 0.1); // cu-background/on-main-hover
+  }
+
+  &.selected {
+    background: #e5484d;
+    border-radius: 46px;
+
+    span {
+      font-weight: 500;
+      color: #ffffff;
+    }
+  }
+
+  &:hover:not(.selected) {
+    background: #f7f7f7;
+  }
+}
+
+// Recurring Summary
+.recurring-summary {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 16px;
+  background: #ffffff;
+  border-top: 1px solid #e8e8e8;
+  transition: background-color 150ms ease;
+
+  &.clickable {
+    cursor: pointer;
+    border-radius: 0 0 12px 12px;
+
+    &:hover {
+      background: #f7f7f7;
+    }
+  }
+
+  .summary-text {
+    flex: 1;
+    font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: -0.15px;
+    color: #646464;
+    margin: 0;
+    text-align: center;
+
+    span {
+      &.dynamic {
+        color: #202020;
+        text-decoration: underline;
+        text-decoration-style: dotted;
+        text-underline-offset: 2px;
+      }
+
+      &.clickable-part {
+        cursor: pointer;
+        border-radius: 3px;
+        padding: 1px 2px;
+        margin: -1px -2px;
+        transition: background-color 150ms ease, color 150ms ease;
+
+        &:hover {
+          background-color: rgba(102, 71, 240, 0.12);
+          color: #6647f0;
+        }
+
+        &:active {
+          background-color: rgba(102, 71, 240, 0.18);
+        }
+      }
+    }
+  }
+
+  .clear-recurring-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    margin-top: 2px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #8d8d8d;
+    flex-shrink: 0;
+    border-radius: 4px;
+    transition: all 150ms ease;
+
+    svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    &:hover {
+      color: #646464;
+      background: rgba(0, 0, 0, 0.06);
+    }
+  }
+}
+
+// Action Container
+.action-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  height: 44px;
+  background: #ffffff;
+  border-top: 1px solid #e8e8e8;
+  border-radius: 0 0 12px 12px;
+  overflow: hidden;
+}
+
+.action-left {
+  display: flex;
+  gap: 8px;
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 6px 6px 6px 6px;
+  background: #fcfcfc;
+  border: 1px solid #e8e8e8;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+
+  &:hover:not(:disabled) {
+    background: #f7f7f7;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .add-icon {
+    width: 10.665px;
+    height: 10.665px;
+    color: #646464;
+  }
+
+  span {
+    font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: -0.15px;
+    color: #646464;
+    padding-right: 2px;
+  }
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 6px 8px;
+  border: none;
+  border-radius: 7px;
+  font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: -0.15px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.button-secondary {
+  background: transparent;
+  color: #646464;
+
+  &:hover {
+    background: #f7f7f7;
+  }
+}
+
+.button-primary {
+  background: #6647f0;
+  color: #ffffff;
+
+  &:hover {
+    background: #5538e0;
+  }
+
+  &:active {
+    background: #4429d0;
+  }
+}
+
+// Action Row Styles
+.action-row {
+  position: relative;
+
+  .form-input {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+}
+
+.action-select-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.action-select {
+  width: 100%;
+}
+
+// Action Dropdown Menu (uses same .dropdown-item styles)
+.action-dropdown-menu {
+  min-width: 200px;
+  z-index: 1000;
+  right: auto; // Override right: 0 so it doesn't stretch
+}
+
+// Explicit hover for action dropdown items
+.action-dropdown-menu.dropdown-menu .dropdown-item:hover {
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+.action-dropdown-menu.dropdown-menu .dropdown-item.disabled:hover {
+  background-color: transparent;
+}
+
+// Nested Status Dropdown for Actions (positioned next to action dropdown)
+.action-status-menu {
+  top: calc(100% + 4px);
+  left: 204px; // 200px dropdown width + 4px gap
+  z-index: 1001;
+}
+
+// Disabled action button state
+.action-button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+
+
+
+

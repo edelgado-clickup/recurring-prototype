@@ -1,0 +1,517 @@
+<div class="date-picker">
+  <div class="date-container">
+    <div class="date-fields">
+      <div class="text-field" [class.has-value]="selectedStartDate">
+        <svg class="icon" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M12 2h1.333A1.333 1.333 0 0 1 14.667 3.333v9.334A1.333 1.333 0 0 1 13.333 14H2.667a1.333 1.333 0 0 1-1.334-1.333V3.333A1.333 1.333 0 0 1 2.667 2H4V.667h1.333V2h5.334V.667H12V2zm1.333 4H2.667v6.667h10.666V6zM4 7.333h2.667V10H4V7.333z"/>
+        </svg>
+        <span [class.placeholder]="!selectedStartDate" [class.date-value]="selectedStartDate">{{ formatStartDate() }}</span>
+        <button *ngIf="selectedStartDate" class="clear-date-btn" (click)="clearStartDate(); $event.stopPropagation()">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor">
+            <path d="M12 4L4 12M4 4l8 8" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="text-field" [class.has-value]="selectedDueDate">
+        <svg class="icon" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M12 2h1.333A1.333 1.333 0 0 1 14.667 3.333v9.334A1.333 1.333 0 0 1 13.333 14H2.667a1.333 1.333 0 0 1-1.334-1.333V3.333A1.333 1.333 0 0 1 2.667 2H4V.667h1.333V2h5.334V.667H12V2zm1.333 4H2.667v6.667h10.666V6zM4 7.333h2.667V10H4V7.333z"/>
+        </svg>
+        <span [class.placeholder]="!selectedDueDate" [class.date-value]="selectedDueDate">{{ formatDueDate() }}</span>
+        <button *ngIf="selectedDueDate" class="clear-date-btn" (click)="clearDueDate(); $event.stopPropagation()">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor">
+            <path d="M12 4L4 12M4 4l8 8" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="datepicker">
+    <!-- Presets Section -->
+    <div class="presets-section" *ngIf="!showRecurringForm">
+      <div class="presets-list">
+        <div class="preset-header">
+          <span class="header-text">Due date presets</span>
+          <div class="settings-menu-wrapper">
+            <button class="ellipsis-button" (click)="toggleSettingsDropdown(); $event.stopPropagation()">
+              <svg class="ellipsis-icon" viewBox="0 0 16 16" fill="currentColor">
+                <circle cx="3" cy="8" r="1.5"/>
+                <circle cx="8" cy="8" r="1.5"/>
+                <circle cx="13" cy="8" r="1.5"/>
+              </svg>
+            </button>
+            
+            <!-- Settings Dropdown -->
+            <div class="settings-dropdown" *ngIf="showSettingsDropdown" (click)="$event.stopPropagation()">
+              <div class="settings-item" (click)="toggleSkipWeekends()">
+                <div class="toggle-switch" [class.on]="skipWeekends">
+                  <div class="toggle-track"></div>
+                  <div class="toggle-thumb"></div>
+                </div>
+                <span class="settings-label">Skip working days</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="preset-option" *ngFor="let label of presetLabels" (click)="selectPreset(label)">
+          <span class="preset-label">{{ label }}</span>
+          <span class="preset-shortcut">{{ getPresetShortcut(label) }}</span>
+        </div>
+      </div>
+
+      <div class="recurring-option">
+        <div class="preset-option" (click)="onSetRecurring()">
+          <span class="preset-label">Set recurring</span>
+          <svg class="chevron-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+            <path d="M6 12l4-4-4-4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Section -->
+    <div class="form-section" *ngIf="showRecurringForm">
+      <!-- Header -->
+      <div class="form-header">
+        <h3 class="form-title">Recur task</h3>
+        <div class="settings-menu-wrapper">
+          <button class="ellipsis-button" (click)="toggleSettingsDropdown(); $event.stopPropagation()">
+            <svg class="ellipsis-icon" viewBox="0 0 16 16" fill="currentColor">
+              <circle cx="3" cy="8" r="1.5"/>
+              <circle cx="8" cy="8" r="1.5"/>
+              <circle cx="13" cy="8" r="1.5"/>
+            </svg>
+          </button>
+          
+          <!-- Settings Dropdown -->
+          <div class="settings-dropdown" *ngIf="showSettingsDropdown" (click)="$event.stopPropagation()">
+            <div class="settings-item" (click)="toggleSkipWeekends()">
+              <div class="toggle-switch" [class.on]="skipWeekends">
+                <div class="toggle-track"></div>
+                <div class="toggle-thumb"></div>
+              </div>
+              <span class="settings-label">Skip working days</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trigger Field -->
+      <div class="form-row">
+        <label class="form-label">Trigger</label>
+        <div class="form-input">
+          <div class="form-input-full">
+            <div class="select-field" (click)="toggleTriggerDropdown()">
+              <span class="select-text">{{ trigger }}</span>
+              <svg class="chevron-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+                <path d="M4 6l4 4 4-4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            
+            <!-- Dropdown Menu -->
+            <div class="dropdown-menu trigger-dropdown" *ngIf="showTriggerDropdown" (click)="$event.stopPropagation()">
+              <div 
+                *ngFor="let option of triggerOptions" 
+                class="dropdown-item"
+                [class.selected]="option === trigger || (option === 'Task status is...' && selectedStatus)"
+                [class.has-submenu]="option === 'Task status is...'"
+                (click)="selectTriggerOption(option)"
+                (mouseenter)="onTriggerOptionHover(option)">
+                {{ option === 'Task status is...' && selectedStatus ? 'Task status is ' + selectedStatus : option }}
+                <svg *ngIf="option === 'Task status is...'" class="submenu-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+                  <path d="M6 12l4-4-4-4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+            
+            <!-- Nested Status Dropdown (positioned outside main dropdown) -->
+            <div class="status-dropdown-menu" *ngIf="showStatusDropdown" (click)="$event.stopPropagation()">
+              <div 
+                *ngFor="let status of statusOptions" 
+                class="dropdown-item status-item"
+                [class.selected]="status.name === selectedStatus"
+                (click)="selectStatusOption(status.name)">
+                <div class="status-icon">
+                  <svg class="status-svg" viewBox="0 0 16 16" fill="none">
+                    <circle cx="8" cy="8" r="6.5" [attr.stroke]="status.color" stroke-width="1.5"/>
+                    <circle *ngIf="status.name === 'Done'" cx="8" cy="8" r="4" [attr.fill]="status.color"/>
+                    <path *ngIf="status.name === 'In Progress'" d="M8 5 L8 8 L10.5 10.5" [attr.stroke]="status.color" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path *ngIf="status.name === 'Review'" d="M8 5 L8 8 L11 8" [attr.stroke]="status.color" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <span>{{ status.name }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Frequency Field -->
+      <div class="form-row">
+        <label class="form-label">every</label>
+        <div class="form-input frequency-input">
+          <div class="frequency-number">
+            <input type="text" class="number-input" [(ngModel)]="frequency" (ngModelChange)="onFrequencyChange()">
+          </div>
+          <div class="form-input-full flex-grow">
+            <div class="select-field" (click)="togglePeriodDropdown()">
+              <span class="select-text">{{ period }}</span>
+              <svg class="chevron-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+                <path d="M4 6l4 4 4-4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            
+            <!-- Dropdown Menu -->
+            <div class="dropdown-menu" *ngIf="showPeriodDropdown" (click)="$event.stopPropagation()">
+              <div 
+                *ngFor="let option of periodOptions" 
+                class="dropdown-item"
+                [class.selected]="option === period"
+                (click)="selectPeriodOption(option)">
+                {{ option }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Radio Buttons (for Months/Quarters) -->
+      <div class="form-row" *ngIf="period === 'Months' || period === 'Quarters'">
+        <label class="form-label"></label>
+        <div class="form-input">
+          <div class="radio-buttons">
+            <button 
+              class="radio-button"
+              [class.selected]="monthlyType === 'week'"
+              (click)="monthlyType = 'week'">
+              Week
+            </button>
+            <button 
+              class="radio-button"
+              [class.selected]="monthlyType === 'date'"
+              (click)="monthlyType = 'date'">
+              Date
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Week Dropdown (for Months/Quarters when 'week' is selected) -->
+      <div class="form-row" *ngIf="(period === 'Months' || period === 'Quarters') && monthlyType === 'week'">
+        <label class="form-label">on the</label>
+        <div class="form-input">
+          <div class="form-input-full">
+            <div class="select-field" (click)="toggleWeekDropdown()">
+              <span class="select-text">{{ selectedWeek }}</span>
+              <svg class="chevron-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+                <path d="M4 6l4 4 4-4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            
+            <!-- Dropdown Menu -->
+            <div class="dropdown-menu" *ngIf="showWeekDropdown" (click)="$event.stopPropagation()">
+              <div 
+                *ngFor="let option of weekOptions" 
+                class="dropdown-item"
+                [class.selected]="option === selectedWeek"
+                (click)="selectWeekOption(option)">
+                {{ option }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Day Buttons (for Weeks, or Months/Quarters when 'week' is selected) -->
+      <div class="form-row" *ngIf="period === 'Weeks' || ((period === 'Months' || period === 'Quarters') && monthlyType === 'week')">
+        <label class="form-label">on</label>
+        <div class="form-input">
+          <div class="day-buttons">
+            <button 
+              *ngFor="let day of dayButtons; let i = index"
+              class="day-button"
+              [class.selected]="selectedDays[i]"
+              (click)="toggleDay(i)">
+              {{ day }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Day of Month Dropdown (for Months/Quarters when 'date' is selected) -->
+      <div class="form-row" *ngIf="(period === 'Months' || period === 'Quarters') && monthlyType === 'date'">
+        <label class="form-label">day</label>
+        <div class="form-input">
+          <div class="form-input-full">
+            <div class="select-field" (click)="toggleDayOfMonthDropdown()">
+              <span class="select-text">{{ selectedDayOfMonth }}</span>
+              <svg class="chevron-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+                <path d="M4 6l4 4 4-4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            
+            <!-- Dropdown Menu -->
+            <div class="dropdown-menu" *ngIf="showDayOfMonthDropdown" (click)="$event.stopPropagation()">
+              <div 
+                *ngFor="let option of dayOfMonthOptions" 
+                class="dropdown-item"
+                [class.selected]="option === selectedDayOfMonth"
+                (click)="selectDayOfMonthOption(option)">
+                {{ option }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Month Dropdown (for Years) -->
+      <div class="form-row" *ngIf="period === 'Years'">
+        <label class="form-label">in</label>
+        <div class="form-input">
+          <div class="form-input-full">
+            <div class="select-field" (click)="toggleMonthDropdown()">
+              <span class="select-text">{{ selectedMonth }}</span>
+              <svg class="chevron-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+                <path d="M4 6l4 4 4-4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            
+            <!-- Dropdown Menu -->
+            <div class="dropdown-menu" *ngIf="showMonthDropdown" (click)="$event.stopPropagation()">
+              <div 
+                *ngFor="let option of monthOptions" 
+                class="dropdown-item"
+                [class.selected]="option === selectedMonth"
+                (click)="selectMonthOption(option)">
+                {{ option }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Time Field (conditional) -->
+      <div class="form-row" *ngIf="hasTime" @slideDown>
+        <label class="form-label">at</label>
+        <div class="form-input time-input">
+          <div class="form-input-full flex-grow">
+            <div class="select-field">
+              <span class="select-text">{{ selectedTime }}</span>
+              <svg class="chevron-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+                <path d="M4 6l4 4 4-4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <button class="delete-button" (click)="removeTime()">
+            <svg class="delete-icon" viewBox="0 0 14 14" fill="none">
+              <path d="M10.5 3.5L3.5 10.5M3.5 3.5L10.5 10.5" stroke="#646464" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Action Rows -->
+      <div class="form-row action-row" *ngFor="let action of actions">
+        <label class="form-label">then</label>
+        <div class="form-input">
+          <div class="action-select-wrapper">
+            <div class="select-field action-select" (click)="toggleActionDropdown(action); $event.stopPropagation()">
+              <span class="select-text">{{ action.label }}</span>
+              <svg class="chevron-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+                <path d="M4 6l4 4 4-4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            
+            <!-- Action Dropdown Menu -->
+            <div class="dropdown-menu action-dropdown-menu" *ngIf="action.showDropdown" (click)="$event.stopPropagation()">
+              <div 
+                *ngFor="let option of availableActionOptions"
+                class="dropdown-item"
+                [class.disabled]="isActionDisabled(option.type)"
+                [class.selected]="action.type === option.type"
+                [class.has-submenu]="option.type === 'update-status'"
+                (click)="selectActionOption(action, option)"
+                (mouseenter)="onActionOptionHover(action, option)">
+                {{ option.label }}
+                <svg *ngIf="option.type === 'update-status'" class="submenu-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+                  <path d="M6 12l4-4-4-4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+            
+            <!-- Nested Status Dropdown for Action -->
+            <div class="status-dropdown-menu action-status-menu" *ngIf="action.showStatusDropdown" (click)="$event.stopPropagation()">
+              <div 
+                *ngFor="let status of statusOptions" 
+                class="dropdown-item status-item"
+                [class.selected]="action.selectedStatus === status.name"
+                (click)="selectActionStatus(action, status)">
+                <div class="status-icon">
+                  <svg class="status-svg" viewBox="0 0 16 16" fill="none">
+                    <circle cx="8" cy="8" r="6.5" [attr.stroke]="status.color" stroke-width="1.5"/>
+                    <circle *ngIf="status.name === 'Done'" cx="8" cy="8" r="4" [attr.fill]="status.color"/>
+                    <path *ngIf="status.name === 'In Progress'" d="M8 5 L8 8 L10.5 10.5" [attr.stroke]="status.color" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path *ngIf="status.name === 'Review'" d="M8 5 L8 8 L11 8" [attr.stroke]="status.color" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <span>{{ status.name }}</span>
+              </div>
+            </div>
+          </div>
+          <button class="delete-button" (click)="removeAction(action.id); $event.stopPropagation()">
+            <svg class="delete-icon" viewBox="0 0 14 14" fill="none">
+              <path d="M10.5 3.5L3.5 10.5M3.5 3.5L10.5 10.5" stroke="#646464" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- End Date Field -->
+      <div class="form-row">
+        <label class="form-label">ends</label>
+        <div class="form-input">
+          <div class="form-input-full">
+            <div class="select-field" (click)="toggleEndDropdown()">
+              <span class="select-text">{{ endDate }}</span>
+              <svg class="chevron-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+                <path d="M4 6l4 4 4-4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            
+            <!-- Dropdown Menu -->
+            <div class="dropdown-menu" *ngIf="showEndDropdown" (click)="$event.stopPropagation()">
+              <div 
+                *ngFor="let option of endOptions" 
+                class="dropdown-item"
+                [class.selected]="option === endDate"
+                (click)="selectEndOption(option)">
+                {{ option }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Repeat Count Field (shows when "After number of repeats" is selected) -->
+      <div class="form-row" *ngIf="endDate === 'After number of repeats'">
+        <label class="form-label">repeats</label>
+        <div class="form-input">
+          <div class="form-input-full">
+            <div class="frequency-number">
+              <input type="text" class="number-input" [(ngModel)]="repeatCount" (ngModelChange)="onRepeatCountChange()">
+            </div>
+            <span class="input-suffix">{{ repeatCount === '1' ? 'time' : 'times' }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- End On Date Field (shows when "On a date" is selected) -->
+      <div class="form-row" *ngIf="endDate === 'On a date'">
+        <label class="form-label">until</label>
+        <div class="form-input">
+          <div class="form-input-full">
+            <div class="select-field date-select" (click)="toggleEndDatePicker()">
+              <svg class="calendar-icon" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M12 2h1.333A1.333 1.333 0 0 1 14.667 3.333v9.334A1.333 1.333 0 0 1 13.333 14H2.667a1.333 1.333 0 0 1-1.334-1.333V3.333A1.333 1.333 0 0 1 2.667 2H4V.667h1.333V2h5.334V.667H12V2zm1.333 4H2.667v6.667h10.666V6zM4 7.333h2.667V10H4V7.333z"/>
+              </svg>
+              <span class="select-text">{{ formatEndOnDate() }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="calendar-section">
+      <div class="calendar-header">
+        <div class="date-display">
+          <span class="month">{{ currentMonth }}</span>
+          <span class="year">{{ currentYear }}</span>
+        </div>
+        <button class="today-btn">Today</button>
+        <button class="nav-btn" (click)="previousMonth()">
+          <svg class="chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+            <path d="M12 10l-4-4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button class="nav-btn" (click)="nextMonth()">
+          <svg class="chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+            <path d="M4 6l4 4 4-4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="calendar-grid">
+        <div class="week-header">
+          <div class="day-label" *ngFor="let day of weekDays">{{ day }}</div>
+        </div>
+
+        <div class="calendar-body">
+          <div 
+            *ngFor="let date of calendarDates" 
+            class="date-cell"
+            [class.other-month]="!date.isCurrentMonth"
+            [class.selected]="date.isSelected"
+            [class.highlighted]="isDateHighlighted(date)"
+            (click)="selectDate(date)">
+            <span>{{ date.day }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recurring Summary (shows when recurring is set up - both in form and on first screen) -->
+  <div 
+    class="recurring-summary" 
+    [class.clickable]="!showRecurringForm && isRecurringSetup"
+    *ngIf="generateRecurringSummary()">
+    <p class="summary-text">
+      <ng-container *ngFor="let part of generateRecurringSummary()?.parts">
+        <span 
+          [class.dynamic]="part.isDynamic"
+          [class.clickable-part]="part.isDynamic && part.field"
+          (click)="part.isDynamic && part.field ? onSummaryPartClick(part, $event) : null">{{ part.value }}</span>
+      </ng-container>
+    </p>
+    <button class="clear-recurring-btn" (click)="clearRecurring(); $event.stopPropagation()">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor">
+        <path d="M12 4L4 12M4 4l8 8" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Action Bar (only shows when recurring form is active) -->
+  <div class="action-container" *ngIf="showRecurringForm">
+    <div class="action-left">
+      <button 
+        class="action-button" 
+        [class.disabled]="!canAddMoreActions()"
+        [disabled]="!canAddMoreActions()"
+        (click)="addAction()">
+        <svg class="add-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+          <path d="M8 3.333v9.334M3.333 8h9.334" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span>Action</span>
+      </button>
+      <button class="action-button" [disabled]="hasTime" (click)="addTime()">
+        <svg class="add-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+          <path d="M8 3.333v9.334M3.333 8h9.334" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span>Time</span>
+      </button>
+    </div>
+    <div class="action-buttons">
+      <button class="button button-secondary" (click)="onCancel()">Cancel</button>
+      <button class="button button-primary" (click)="onSave()">Save</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
