@@ -1,0 +1,34 @@
+<div class="welcome-container">
+  <div class="welcome-content" @fadeIn>
+    <h1>🎨 Welcome to Your New Prototype!</h1>
+    <p class="subtitle">Your blank canvas is ready</p>
+    
+    <div class="instructions" @slideIn>
+      <h2>Next Steps:</h2>
+      <ol>
+        <li>Edit <code>src/app/app.html</code> to design your UI</li>
+        <li>Style your components in <code>src/app/app.scss</code></li>
+        <li>Add logic in <code>src/app/app.ts</code></li>
+        <li>Create new components as needed</li>
+      </ol>
+    </div>
+
+    <div class="supernova-tip">
+      <h3>💡 Using Supernova Design Tokens</h3>
+      <p>Import tokens in your TypeScript:</p>
+      <pre><code>import { DesignTokens } from '@prototypes/supernova-sdk/output/tokens/tokens';</code></pre>
+      
+      <p>Or in your SCSS files:</p>
+      <pre><code>@import '@prototypes/supernova-sdk/output/tokens/tokens';</code></pre>
+      
+      <p class="note">✨ This template already uses animations (see app.ts)</p>
+    </div>
+
+    <div class="links">
+      <a href="http://localhost:3000" target="_blank" class="link-button">📸 View Gallery</a>
+      <a href="../../DESIGN_PATTERNS.md" class="link-button">📖 Design Patterns</a>
+      <a href="../../SCRIPTS.md" class="link-button">📜 Scripts Guide</a>
+    </div>
+  </div>
+</div>
+

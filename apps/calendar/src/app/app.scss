@@ -1,0 +1,7 @@
+@use '../styles/tokens/token-aliases' as *;
+
+main {
+  min-height: 100vh;
+  background: linear-gradient(135deg, $token-50 0%, $color-background-secondary 100%);
+}
+

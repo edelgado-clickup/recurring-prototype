@@ -1,0 +1,488 @@
+// ClickUp Design System Variables (from Figma specs)
+$cu-size-1: 4px;
+$cu-label-small-font-size: 14px;
+$cu-label-xsmall-font-size: 12px;
+$cu-label-weight-regular: 400;
+$cu-label-weight-medium: 500;
+$cu-heading-title-font-size: 32px;
+$cu-heading-h2-font-size: 24px;
+$cu-heading-weight-bold: 700;
+$cu-heading-weight-semibold: 600;
+$radius-3: 6px;
+$radius-3-5: 7px;
+$radius-4: 8px;
+$radius-round: 666px;
+
+// ClickUp Colors (from Figma design tokens)
+$cu-background-main: #ffffff;
+$cu-background-primary: #6647f0;
+$cu-background-on-main: rgba(0, 0, 0, 0.06);
+$cu-background-strong: #f9f9f9;
+$cu-background-notification: #e93d82;
+$cu-content-default: #202020;
+$cu-content-secondary: #646464;
+$cu-content-placeholder: #8d8d8d;
+$cu-content-on-dark: #ffffff;
+$cu-hover-background: rgba(0, 0, 0, 0.04);
+
+// Doc Container
+.doc-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: $cu-background-main;
+  font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  transition: background 0.3s ease;
+}
+
+// Dark Theme
+:host-context(.dark-theme) {
+  .doc-container {
+    background: #1a1a1a;
+  }
+
+  .breadcrumb {
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+  }
+
+  .breadcrumb-text {
+    color: #b0b0b0;
+
+    &.active {
+      color: #ffffff;
+    }
+  }
+
+  .breadcrumb-separator {
+    color: #b0b0b0;
+  }
+
+  .doc-icon {
+    background-color: $cu-content-on-dark;
+  }
+
+  .favorite-btn:hover,
+  .icon-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .action-btn {
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    span {
+      color: #b0b0b0;
+    }
+  }
+
+  .doc-title h1 {
+    color: #b0b0b0;
+
+    &:focus {
+      color: #ffffff;
+    }
+  }
+
+  .doc-subtitle {
+    &:hover {
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    h2 {
+      color: #b0b0b0;
+    }
+  }
+
+  .author-info {
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+  }
+
+  .author-name,
+  .update-time,
+  .divider {
+    color: #b0b0b0;
+  }
+
+  .fam {
+    background: #2a2a2a;
+  }
+
+  .fam-btn {
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+  }
+}
+
+// Header
+.doc-header {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+.breadcrumb-layout {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: $cu-size-1;
+  padding: $cu-size-1;
+  border-radius: $radius-3;
+  cursor: pointer;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: $cu-hover-background;
+  }
+
+  &.active {
+    .breadcrumb-text {
+      color: $cu-content-default;
+      font-weight: 500;
+    }
+  }
+}
+
+.breadcrumb-text {
+  font-size: $cu-label-small-font-size;
+  font-weight: $cu-label-weight-regular;
+  line-height: 16px;
+  letter-spacing: -0.15px;
+  color: $cu-content-placeholder;
+  white-space: nowrap;
+}
+
+.breadcrumb-separator {
+  padding: $cu-size-1 2px;
+  font-size: $cu-label-small-font-size;
+  color: $cu-content-placeholder;
+}
+
+.doc-icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+  background-color: #0091FF;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+}
+
+.favorite-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border: none;
+  background: transparent;
+  border-radius: $radius-3-5;
+  cursor: pointer;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: $cu-hover-background;
+  }
+}
+
+.favorite-icon {
+  width: 14px;
+  height: 14px;
+  display: block;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+// Override theme toggle position for header integration
+.header-theme-toggle {
+  ::ng-deep .theme-toggle {
+    position: static;
+    width: 28px;
+    height: 28px;
+    padding: 6px;
+    margin: 0;
+    z-index: auto;
+  }
+}
+
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 6px;
+  border: none;
+  background: transparent;
+  border-radius: $radius-3-5;
+  cursor: pointer;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: $cu-hover-background;
+  }
+}
+
+.btn-icon {
+  width: 11px;
+  height: 11px;
+  display: block;
+}
+
+// Cover Area (matches Figma specs: 258px height, starts at 52px from top)
+.cover-area {
+  position: absolute;
+  top: 52px;
+  left: 0;
+  width: 100%;
+  height: 258px;
+  background: $cu-background-primary;
+  overflow: hidden;
+}
+
+// Floating Action Menu (FAM) - positioned on the right of the cover
+.fam {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 2px;
+  background: $cu-background-main;
+  border-radius: $radius-4;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.fam-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 6px;
+  border: none;
+  background: transparent;
+  border-radius: $radius-3-5;
+  cursor: pointer;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: $cu-hover-background;
+  }
+}
+
+.fam-icon {
+  width: 11px;
+  height: 11px;
+  display: block;
+}
+
+.notification-badge {
+  position: absolute;
+  top: 4px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 12px;
+  height: 12px;
+  padding: 0 2px;
+  background: $cu-background-notification;
+  border: 1.33px solid $cu-background-main;
+  border-radius: $radius-round;
+  font-size: 9px;
+  font-weight: 700;
+  color: $cu-content-on-dark;
+  line-height: 12px;
+}
+
+// Content (positioned at 358px from top as per Figma)
+.doc-content {
+  position: absolute;
+  top: 358px; // 52px (header offset) + 258px (cover height) + 48px (gap)
+  left: 50%;
+  transform: translateX(-50%);
+  width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: $cu-background-main;
+}
+
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: $cu-size-1 0;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: $cu-size-1 6px $cu-size-1 5px;
+  border: none;
+  background: transparent;
+  border-radius: $radius-3;
+  cursor: pointer;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: $cu-hover-background;
+  }
+
+  span {
+    font-size: $cu-label-xsmall-font-size;
+    font-weight: $cu-label-weight-medium;
+    line-height: 16px;
+    letter-spacing: 0px;
+    color: $cu-content-placeholder;
+    white-space: nowrap;
+  }
+}
+
+.action-icon {
+  width: 14px;
+  height: 14px;
+  display: block;
+}
+
+.doc-title {
+  padding: $cu-size-1;
+  border-radius: 5px;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: $cu-hover-background;
+  }
+
+  h1 {
+    font-size: $cu-heading-title-font-size;
+    font-weight: $cu-heading-weight-bold;
+    line-height: 1.25;
+    letter-spacing: 0.42px;
+    color: $cu-content-placeholder;
+    margin: 0;
+    outline: none;
+
+    &:focus {
+      color: $cu-content-default;
+    }
+  }
+}
+
+.doc-subtitle {
+  padding: $cu-size-1;
+  border-radius: 5px;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: $cu-hover-background;
+  }
+
+  h2 {
+    font-size: $cu-heading-h2-font-size;
+    font-weight: $cu-heading-weight-semibold;
+    line-height: 1.25;
+    letter-spacing: 0.07px;
+    color: $cu-content-placeholder;
+    margin: 0;
+    outline: none;
+  }
+}
+
+.doc-meta {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: $cu-size-1 2px;
+  flex-wrap: wrap;
+}
+
+.author-info {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px $cu-size-1 2px 2px;
+  border-radius: $radius-3;
+  cursor: pointer;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: $cu-hover-background;
+  }
+}
+
+.author-avatar {
+  width: 20px;
+  height: 20px;
+  border-radius: $radius-round;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.author-name {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0.36px;
+  color: $cu-content-placeholder;
+  white-space: nowrap;
+}
+
+.divider {
+  width: 10px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: $cu-content-placeholder;
+}
+
+.update-time {
+  padding: $cu-size-1;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0.36px;
+  color: $cu-content-placeholder;
+  white-space: nowrap;
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .doc-content {
+    width: calc(100% - 32px);
+    padding: 0 16px;
+  }
+
+  .header-actions {
+    gap: $cu-size-1;
+  }
+}

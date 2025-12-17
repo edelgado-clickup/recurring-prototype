@@ -1,0 +1,72 @@
+# Prototypes Monorepo - Cursor AI Rules
+
+## Project Context
+This is a monorepo for Angular prototypes using Supernova design system.
+
+## Key Directories
+- `apps/` - Angular prototypes (standalone components)
+- `apps/gallery/` - Gallery website on port 3000
+- `apps/prototype-template/` - Template for new prototypes
+- `packages/supernova-sdk/` - Shared design tokens & assets
+- `packages/theme-toggle/` - Reusable theme toggle component
+
+## Common Scripts
+When users say "start the gallery", run: `./start-gallery.sh`
+When users say "start all prototypes", run: `./start-all.sh`
+When users say "create a new prototype", run: `./create-prototype.sh`
+When users say "stop everything", run: `./stop-all.sh`
+
+**Important:** Always prefer .sh scripts over npm commands. Scripts handle permissions better and auto-manage ports.
+If scripts fail, npm commands can be used as fallback (e.g., `npm run dev -w @prototypes/name`).
+
+## Tech Stack
+- Angular 21 with standalone components
+- TypeScript 5.9.2
+- SCSS for styling
+- Vitest for testing
+- Supernova design tokens
+
+## Design System Standards
+- ALWAYS use Supernova design tokens (no hardcoded colors/spacing)
+- Import tokens: `@import '@prototypes/supernova-sdk/output/tokens/tokens';`
+- Never hardcode colors/spacing when DS tokens exist
+- Match Figma designs pixel-perfect. Do not guess. Use as a reference.
+- When a Figma link is given, use Figma MCP to fecth all the specs (tokens, colors, measurements, typography, etc)
+
+## Component Standards
+- Always use standalone: `standalone: true`
+- Always include provideAnimations() in app.config.ts
+- Component files: component-name.ts, .html, .scss
+- Use Angular animations from '@angular/animations'
+
+## Documentation
+All documentation is in the docs/ folder:
+- docs/SCRIPTS.md - All available scripts explained
+- docs/DESIGN_PATTERNS.md - Best practices and patterns
+- docs/QUICK_REFERENCE.md - Quick command reference
+- docs/START_HERE.md - Getting started guide
+
+## Package Naming
+- Format: `@prototypes/prototype-name`
+- Use kebab-case for names
+
+## When Creating Components
+- Include animations when appropriate
+- Use design tokens for all colors/spacing
+- Follow BEM naming in SCSS
+- Import from '@prototypes/supernova-sdk'
+
+## Common Tasks
+- Start development: `./start-prototype.sh [name]` (recommended) or `npm run dev -w @prototypes/[name]` (fallback)
+- Create prototype: `./create-prototype.sh`
+- Update gallery: `./sync-gallery.sh`
+- Check setup: `./check-prerequisites.sh`
+- Start gallery: `./start-gallery.sh`
+- Start all: `./start-all.sh`
+- Stop all: `./stop-all.sh`
+
+## Angular Patterns (All Prototypes)
+- Use standalone components (no NgModules)
+- Always include provideAnimations() in app.config.ts
+- Component structure: .ts, .html, .scss files
+- Import tokens: import { DesignTokens } from '@prototypes/supernova-sdk'

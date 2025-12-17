@@ -1,0 +1,136 @@
+// Example: Uncomment to import design tokens from Supernova
+// @import '@prototypes/supernova-sdk/output/tokens/tokens';
+
+.welcome-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  // Example: Use design tokens instead of hardcoded colors
+  // background: linear-gradient(135deg, $color-primary 0%, $color-secondary 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.welcome-content {
+  background: white;
+  border-radius: 16px;
+  padding: 3rem;
+  max-width: 800px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #2d3748;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: #718096;
+  margin-bottom: 2rem;
+}
+
+.instructions {
+  background: #f7fafc;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 2rem 0;
+  border-left: 4px solid #667eea;
+}
+
+.instructions h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: #2d3748;
+}
+
+.instructions ol {
+  margin-left: 1.5rem;
+}
+
+.instructions li {
+  margin-bottom: 0.75rem;
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+code {
+  background: #edf2f7;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  color: #d53f8c;
+}
+
+.supernova-tip {
+  background: #fffbeb;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 2rem 0;
+  border-left: 4px solid #f59e0b;
+}
+
+.supernova-tip h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #92400e;
+}
+
+.supernova-tip p {
+  margin-bottom: 0.75rem;
+  color: #78350f;
+}
+
+.supernova-tip .note {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #92400e;
+}
+
+pre {
+  background: #1a202c;
+  color: #68d391;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 0.5rem 0;
+}
+
+pre code {
+  background: transparent;
+  color: #68d391;
+  padding: 0;
+}
+
+.links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.link-button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: #667eea;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.link-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* 
+  Your custom styles go here!
+  Delete the welcome styles above once you start building your UI
+*/
+

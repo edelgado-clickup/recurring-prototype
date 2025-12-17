@@ -1,0 +1,20 @@
+{
+  "name": "@prototypes/theme-toggle",
+  "version": "1.0.0",
+  "description": "Shared theme toggle component for light/dark mode switching",
+  "main": "index.ts",
+  "type": "module",
+  "peerDependencies": {
+    "@angular/common": "^21.0.0",
+    "@angular/core": "^21.0.0"
+  },
+  "keywords": [
+    "angular",
+    "theme",
+    "dark-mode",
+    "light-mode",
+    "component"
+  ]
+}
+
+

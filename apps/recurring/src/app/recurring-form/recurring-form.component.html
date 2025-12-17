@@ -1,0 +1,196 @@
+<div class="recurring-form" (click)="closeAllDropdowns()">
+  <!-- Date Fields at Top -->
+  <div class="date-container">
+    <div class="date-fields">
+      <div class="text-field">
+        <svg class="icon" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M12 2h1.333A1.333 1.333 0 0 1 14.667 3.333v9.334A1.333 1.333 0 0 1 13.333 14H2.667a1.333 1.333 0 0 1-1.334-1.333V3.333A1.333 1.333 0 0 1 2.667 2H4V.667h1.333V2h5.334V.667H12V2zm1.333 4H2.667v6.667h10.666V6zM4 7.333h2.667V10H4V7.333z"/>
+        </svg>
+        <span class="text">Today</span>
+      </div>
+      <div class="text-field">
+        <svg class="icon" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M12 2h1.333A1.333 1.333 0 0 1 14.667 3.333v9.334A1.333 1.333 0 0 1 13.333 14H2.667a1.333 1.333 0 0 1-1.334-1.333V3.333A1.333 1.333 0 0 1 2.667 2H4V.667h1.333V2h5.334V.667H12V2zm1.333 4H2.667v6.667h10.666V6zM4 7.333h2.667V10H4V7.333z"/>
+        </svg>
+        <span class="text">Tomorrow</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content: Form + Calendar -->
+  <div class="main-content">
+    <!-- Form Section -->
+    <div class="form-section">
+      <!-- Header -->
+      <div class="form-header">
+        <h3 class="form-title">Recur task</h3>
+        <svg class="ellipsis-icon" viewBox="0 0 16 16" fill="currentColor">
+          <circle cx="3" cy="8" r="1.5"/>
+          <circle cx="8" cy="8" r="1.5"/>
+          <circle cx="13" cy="8" r="1.5"/>
+        </svg>
+      </div>
+
+      <!-- Trigger Field -->
+      <div class="form-row">
+        <label class="form-label">Trigger</label>
+        <div class="form-input">
+          <div class="select-field">
+            <span class="select-text">{{ trigger }}</span>
+            <svg class="chevron-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+              <path d="M4 6l4 4 4-4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Frequency Field -->
+      <div class="form-row">
+        <label class="form-label">every</label>
+        <div class="form-input frequency-input">
+          <div class="frequency-number">
+            <input type="text" class="number-input" [value]="frequency">
+          </div>
+          <div class="select-field flex-grow">
+            <span class="select-text">{{ period }}</span>
+            <svg class="chevron-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+              <path d="M4 6l4 4 4-4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Day Buttons -->
+      <div class="form-row">
+        <label class="form-label">on</label>
+        <div class="form-input">
+          <div class="day-buttons">
+            <button 
+              *ngFor="let day of dayButtons; let i = index"
+              class="day-button"
+              [class.selected]="selectedDays[i]"
+              (click)="toggleDay(i)">
+              {{ day }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Debug: Show actions count -->
+      <div style="color: red; font-size: 12px; padding: 4px;">DEBUG: Actions count: {{ actions.length }}</div>
+
+      <!-- Action Rows -->
+      <div class="form-row action-row" *ngFor="let action of actions">
+        <label class="form-label">then</label>
+        <div class="form-input">
+          <div class="action-select-wrapper">
+            <div class="select-field action-select" (click)="toggleActionDropdown(action, $event); $event.stopPropagation()">
+              <span class="select-text">{{ action.label }}</span>
+              <svg class="chevron-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+                <path d="M4 6l4 4 4-4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            
+            <!-- Dropdown Menu -->
+            <div class="action-dropdown" *ngIf="action.showDropdown" (click)="$event.stopPropagation()">
+              <div 
+                *ngFor="let option of getAvailableActions()"
+                class="action-dropdown-item"
+                [class.disabled]="option.disabled"
+                [class.selected]="action.type === option.type"
+                (click)="selectAction(action, option)">
+                <span>{{ option.label }}</span>
+              </div>
+            </div>
+          </div>
+          <button class="delete-button" (click)="removeAction(action.id); $event.stopPropagation()">
+            <svg class="trash-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+              <path d="M2 4h12M5.333 4V2.667a1.333 1.333 0 0 1 1.334-1.334h2.666a1.333 1.333 0 0 1 1.334 1.334V4m2 0v9.333a1.333 1.333 0 0 1-1.334 1.334H4.667a1.333 1.333 0 0 1-1.334-1.334V4h9.334z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- End Date Field -->
+      <div class="form-row">
+        <label class="form-label">ends</label>
+        <div class="form-input">
+          <div class="select-field">
+            <span class="select-text">{{ endDate }}</span>
+            <svg class="chevron-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+              <path d="M4 6l4 4 4-4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Calendar Section -->
+    <div class="calendar-section">
+      <div class="calendar-header">
+        <div class="date-display">
+          <span class="month">{{ currentMonth }}</span>
+          <span class="year">{{ currentYear }}</span>
+        </div>
+        <button class="today-btn">Today</button>
+        <button class="nav-btn" (click)="previousMonth()">
+          <svg class="chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+            <path d="M12 10l-4-4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button class="nav-btn" (click)="nextMonth()">
+          <svg class="chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+            <path d="M4 6l4 4 4-4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="calendar-grid">
+        <div class="week-header">
+          <div class="day-label" *ngFor="let day of weekDays">{{ day }}</div>
+        </div>
+
+        <div class="calendar-body">
+          <div 
+            *ngFor="let date of calendarDates" 
+            class="date-cell"
+            [class.other-month]="!date.isCurrentMonth"
+            [class.selected]="date.isSelected"
+            (click)="selectDate(date)">
+            <span>{{ date.day }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="action-container">
+    <div class="action-left">
+      <button 
+        class="action-button" 
+        type="button"
+        (click)="addAction()">
+        <svg class="add-icon" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M8 3.333v9.334M3.333 8h9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span>Action</span>
+      </button>
+      <button class="action-button">
+        <svg class="add-icon" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M8 3.333v9.334M3.333 8h9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span>Time</span>
+      </button>
+    </div>
+    <div class="action-buttons"><h1 style="color:red;font-size:50px;">HELLO WORLD TEST 12345</h1>
+      <!-- HIDDEN FOR TESTING -->
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

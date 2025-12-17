@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cover Image Specifications Guide</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      padding: 40px;
+      background: #f5f5f5;
+      margin: 0;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #202020;
+      margin-bottom: 10px;
+    }
+    .subtitle {
+      color: #646464;
+      margin-bottom: 40px;
+    }
+    .spec-section {
+      margin-bottom: 40px;
+    }
+    .spec-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #202020;
+      margin-bottom: 16px;
+    }
+    .spec-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .spec-card {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #e8e8e8;
+    }
+    .spec-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: #8d8d8d;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+    .spec-value {
+      font-size: 24px;
+      font-weight: 700;
+      color: #6647f0;
+    }
+    .spec-note {
+      font-size: 13px;
+      color: #646464;
+      margin-top: 8px;
+    }
+    .diagram {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 30px auto;
+      background: white;
+      border: 2px solid #e8e8e8;
+      border-radius: 8px;
+    }
+    .cover-preview {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1600 / 250;
+      background: linear-gradient(135deg, #6647f0 0%, #7b5ce6 100%);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .safe-zone {
+      position: absolute;
+      border: 2px dashed rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .safe-zone-top {
+      top: 64px;
+      left: 12px;
+      right: 52px;
+      height: 40px;
+    }
+    .safe-zone-center {
+      top: 64px;
+      left: 60px;
+      right: 60px;
+      bottom: 20px;
+    }
+    .label {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .label-top { top: 8px; left: 12px; }
+    .label-right { top: 8px; right: 12px; }
+    .label-center { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+    .dimension-line {
+      position: absolute;
+      background: rgba(233, 61, 130, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 600;
+      color: white;
+    }
+    .dim-h { left: 0; right: 0; height: 3px; }
+    .dim-v { top: 0; bottom: 0; width: 3px; }
+    .warning-box {
+      background: #fff4e5;
+      border-left: 4px solid #ff991f;
+      padding: 16px;
+      border-radius: 4px;
+      margin: 20px 0;
+    }
+    .success-box {
+      background: #e8f5e9;
+      border-left: 4px solid #4caf50;
+      padding: 16px;
+      border-radius: 4px;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📐 Cover Image Specifications</h1>
+    <p class="subtitle">Recommended dimensions, aspect ratios, and safe zones for doc cover images</p>
+
+    <!-- Recommended Dimensions -->
+    <div class="spec-section">
+      <div class="spec-title">🎯 Recommended Image Dimensions</div>
+      <div class="spec-grid">
+        <div class="spec-card">
+          <div class="spec-label">Optimal Size (Desktop)</div>
+          <div class="spec-value">1600 × 250px</div>
+          <div class="spec-note">Perfect for max-width containers</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-label">Aspect Ratio</div>
+          <div class="spec-value">6.4:1</div>
+          <div class="spec-note">Ultra-wide panoramic format</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-label">Mobile Height</div>
+          <div class="spec-value">260px</div>
+          <div class="spec-note">Full-width, slightly taller</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-label">File Format</div>
+          <div class="spec-value">JPG/PNG</div>
+          <div class="spec-note">WebP for better compression</div>
+        </div>
+      </div>
+
+      <div class="success-box">
+        <strong>✅ Best Practice:</strong> Export at 3200 × 500px (2x) for retina displays, then scale down with CSS.
+      </div>
+    </div>
+
+    <!-- Visual Diagram -->
+    <div class="spec-section">
+      <div class="spec-title">📍 Safe Zones & Layout</div>
+      
+      <div class="diagram">
+        <div class="cover-preview">
+          <!-- Safe zones -->
+          <div class="safe-zone safe-zone-center"></div>
+          
+          <!-- Labels -->
+          <div class="label label-top">Header Area (avoid text here)</div>
+          <div class="label label-right">FAM Menu (52px)</div>
+          <div class="label label-center">MAIN CONTENT SAFE ZONE<br>Keep important text/subjects here</div>
+          
+          <!-- Dimension markers -->
+          <div class="dimension-line dim-h" style="top: 64px;">↕ 64px from top</div>
+          <div class="dimension-line dim-v" style="right: 52px;">← 52px from right</div>
+          <div class="dimension-line dim-v" style="left: 12px;">12px →</div>
+        </div>
+      </div>
+
+      <div class="spec-grid">
+        <div class="spec-card">
+          <div class="spec-label">Top Safe Zone</div>
+          <div class="spec-value">64px</div>
+          <div class="spec-note">Avoid placing text in header area</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-label">Right Safe Zone</div>
+          <div class="spec-value">52px</div>
+          <div class="spec-note">Space for FAM (Floating Action Menu)</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-label">Left/Bottom Margin</div>
+          <div class="spec-value">12px</div>
+          <div class="spec-note">General padding around edges</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-label">Corner Radius</div>
+          <div class="spec-value">12px</div>
+          <div class="spec-note">When at max-width (1600px)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Breakpoints -->
+    <div class="spec-section">
+      <div class="spec-title">📱 Responsive Behavior</div>
+      
+      <div class="spec-card">
+        <div class="spec-label">Mobile/Tablet (< 1600px)</div>
+        <div style="margin: 12px 0;">
+          <strong>Width:</strong> 100% (full bleed)<br>
+          <strong>Height:</strong> 260px<br>
+          <strong>Border Radius:</strong> 0 (square edges)<br>
+          <strong>Top Margin:</strong> 52px
+        </div>
+      </div>
+
+      <div class="spec-card" style="margin-top: 16px;">
+        <div class="spec-label">Desktop (≥ 1601px)</div>
+        <div style="margin: 12px 0;">
+          <strong>Width:</strong> 1600px max (centered)<br>
+          <strong>Height:</strong> 250px (10px shorter, cleaner number)<br>
+          <strong>Border Radius:</strong> 12px (more pronounced rounded corners)<br>
+          <strong>Top Margin:</strong> 64px (12px more breathing room)
+        </div>
+      </div>
+
+      <div class="warning-box" style="margin-top: 20px;">
+        <strong>⚠️ Important:</strong> All transitions animate over 300ms with ease timing. Test your images at both breakpoints!
+      </div>
+    </div>
+
+    <!-- Image Tips -->
+    <div class="spec-section">
+      <div class="spec-title">💡 Image Design Tips</div>
+      
+      <ul style="color: #646464; line-height: 1.8;">
+        <li><strong>Focal Point:</strong> Keep main subject centered horizontally and vertically within safe zone</li>
+        <li><strong>Text Placement:</strong> Avoid top 56px and right 52px for any critical text or logos</li>
+        <li><strong>Edge Awareness:</strong> Design with 12px padding from all edges when at max-width</li>
+        <li><strong>Color Contrast:</strong> Ensure good contrast with white header elements (breadcrumbs, buttons)</li>
+        <li><strong>Aspect Ratio:</strong> Use 6.4:1 ratio to prevent cropping at different screen sizes</li>
+        <li><strong>Export Size:</strong> Export at 2x resolution (3200 × 500px) for crisp retina display</li>
+        <li><strong>File Size:</strong> Keep under 500KB for fast loading (use compression tools)</li>
+      </ul>
+    </div>
+
+    <!-- Quick Reference -->
+    <div class="spec-section">
+      <div class="spec-title">📋 Quick Reference</div>
+      <div style="background: #202020; color: white; padding: 20px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 13px; line-height: 1.8;">
+        <div style="color: #4caf50;">// Recommended Export Dimensions</div>
+        Standard: 1600px × 250px<br>
+        Retina (2x): 3200px × 500px<br>
+        <br>
+        <div style="color: #4caf50;">// Safe Zones (avoid placing text)</div>
+        Top: 64px from edge<br>
+        Right: 52px from edge<br>
+        Left/Bottom: 12px from edge<br>
+        <br>
+        <div style="color: #4caf50;">// Aspect Ratio</div>
+        6.4:1 (ultra-wide panoramic)
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

@@ -3,73 +3,119 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Supernova Design System - Prototype Gallery</title>
+  <title>ClickUp Prototypes - Design System Gallery</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <header class="header">
-      <h1>🌟 Supernova Design System</h1>
-      <p class="subtitle">Prototype Gallery</p>
-      <p class="description">
-        Explore our design system implementations across different frameworks.
-        Each prototype demonstrates the same components and patterns using framework-specific approaches.
-      </p>
-    </header>
-
-    <main class="main">
-      <section class="prototypes" id="prototypes">
-        <!-- Prototypes will be dynamically loaded here -->
-      </section>
-
-      <section class="add-prototype">
-        <div class="card">
-          <h2>➕ Add Your Own Prototype</h2>
-          <p>Want to create a prototype in your favorite framework?</p>
-          <ol class="instructions">
-            <li>Clone this repository</li>
-            <li>Create a new app in <code>apps/your-framework-prototype/</code></li>
-            <li>Use the shared <code>@supernova-test/supernova-sdk</code> package</li>
-            <li>Add your prototype to <code>apps/gallery/prototypes.json</code></li>
-            <li>Share with the team!</li>
-          </ol>
-          <a href="../README.md" class="button">View Documentation</a>
+  <div class="page-container">
+    <!-- Header -->
+    <div class="header">
+      <div class="header-content">
+        <div class="header-row">
+          <span class="header-title">Prototype</span>
+          <svg class="clickup-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M1.33 12.2927L3.79097 10.4076C5.09783 12.1139 6.48567 12.9001 8.03214 12.9001C9.57008 12.9001 10.9198 12.1228 12.168 10.4302L14.663 12.2701C12.8631 14.7106 10.6239 16 8.03214 16C5.44894 16 3.189 14.7197 1.33 12.2927Z" fill="url(#paint0_linear_91_1122)"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M8 4.09952L3.63687 7.86667L1.61334 5.52545L8 0L14.3882 5.52977L12.36 7.86951L8 4.09952Z" fill="url(#paint1_linear_91_1122)"/>
+            <defs>
+              <linearGradient id="paint0_linear_91_1122" x1="1.33" y1="8.04102" x2="14.663" y2="8.04102" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#8930FD"/>
+                <stop offset="1" stop-color="#49CCF9"/>
+              </linearGradient>
+              <linearGradient id="paint1_linear_91_1122" x1="1.33" y1="8" x2="14.663" y2="8" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FF02F0"/>
+                <stop offset="1" stop-color="#FFC800"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <span class="header-title">Gallery</span>
         </div>
-      </section>
+        <p class="header-subtitle">Automatically loads your prototypes from your local folder</p>
+      </div>
+      <p class="design-system-label">Things Design System</p>
+    </div>
 
-      <section class="features">
-        <h2>✨ Monorepo Features</h2>
-        <div class="features-grid">
-          <div class="feature-card">
-            <div class="feature-icon">🎨</div>
-            <h3>Shared Design Tokens</h3>
-            <p>All prototypes use the same design tokens fetched from Supernova</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">🧩</div>
-            <h3>Consistent Components</h3>
-            <p>Component specifications shared across all frameworks</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">🖼️</div>
-            <h3>Unified Assets</h3>
-            <p>Icons and images synced from Supernova design system</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">🚀</div>
-            <h3>Easy to Extend</h3>
-            <p>Add new prototypes in any framework with minimal setup</p>
+    <!-- Prototype Cards Grid -->
+    <div class="cards-grid" id="prototypes">
+      <!-- Cards grid will be dynamically loaded here -->
+    </div>
+
+    <!-- Terminal Instructions Accordion -->
+    <div class="instructions-accordion">
+      <div class="accordion-header" onclick="toggleAccordion()">
+        <div class="accordion-header-content">
+          <p class="accordion-title">In your terminal</p>
+          <p class="accordion-subtitle">Guide to help you get started.</p>
+        </div>
+        <svg class="accordion-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M4 10L8 6L12 10" stroke="#646464" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      
+      <div class="accordion-content" id="accordionContent">
+        <div class="instruction-header">
+          <p class="instruction-subtitle">Navigate to your prototype folder first.</p>
+        </div>
+
+      <div class="instruction-block">
+        <div class="instruction-row">
+          <p class="instruction-label">From your terminal:</p>
+          <div class="command-box" id="cdCommand" onclick="copyToClipboard(this.dataset.command, event)">
+            <span class="command-text" id="cdCommandText">cd ...</span>
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+              <path d="M5.33333 5.33333V3.33333C5.33333 2.59695 5.93029 2 6.66667 2H12.6667C13.403 2 14 2.59695 14 3.33333V9.33333C14 10.0697 13.403 10.6667 12.6667 10.6667H10.6667M3.33333 5.33333H9.33333C10.0697 5.33333 10.6667 5.93029 10.6667 6.66667V12.6667C10.6667 13.403 10.0697 14 9.33333 14H3.33333C2.59695 14 2 13.403 2 12.6667V6.66667C2 5.93029 2.59695 5.33333 3.33333 5.33333Z" stroke="#646464" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="copy-tooltip">Copied!</span>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
+      
+      <div class="instruction-block">
+        <div class="instruction-row">
+          <p class="instruction-label">Create a new prototype with:</p>
+          <div class="command-box" onclick="copyToClipboard('./create-prototype.sh', event)">
+            <span class="command-text">./create-prototype.sh</span>
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+              <path d="M5.33333 5.33333V3.33333C5.33333 2.59695 5.93029 2 6.66667 2H12.6667C13.403 2 14 2.59695 14 3.33333V9.33333C14 10.0697 13.403 10.6667 12.6667 10.6667H10.6667M3.33333 5.33333H9.33333C10.0697 5.33333 10.6667 5.93029 10.6667 6.66667V12.6667C10.6667 13.403 10.0697 14 9.33333 14H3.33333C2.59695 14 2 13.403 2 12.6667V6.66667C2 5.93029 2.59695 5.33333 3.33333 5.33333Z" stroke="#646464" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="copy-tooltip">Copied!</span>
+          </div>
+        </div>
+        <p class="instruction-note">Follow the instructions for naming and more.</p>
+      </div>
 
-    <footer class="footer">
-      <p>Built with ❤️ using Supernova Design System</p>
-      <p class="meta">Last updated: <span id="last-updated"></span></p>
-    </footer>
+      <div class="instruction-block">
+        <div class="instruction-row">
+          <p class="instruction-label">Start all yours prototypes with:</p>
+          <div class="command-box" onclick="copyToClipboard('./start-all.sh', event)">
+            <span class="command-text">./start-all.sh</span>
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+              <path d="M5.33333 5.33333V3.33333C5.33333 2.59695 5.93029 2 6.66667 2H12.6667C13.403 2 14 2.59695 14 3.33333V9.33333C14 10.0697 13.403 10.6667 12.6667 10.6667H10.6667M3.33333 5.33333H9.33333C10.0697 5.33333 10.6667 5.93029 10.6667 6.66667V12.6667C10.6667 13.403 10.0697 14 9.33333 14H3.33333C2.59695 14 2 13.403 2 12.6667V6.66667C2 5.93029 2.59695 5.33333 3.33333 5.33333Z" stroke="#646464" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="copy-tooltip">Copied!</span>
+          </div>
+        </div>
+        <p class="instruction-note">Automatically kills existing ports, syncs gallery, and starts all prototypes</p>
+      </div>
+
+      <div class="instruction-block">
+        <div class="instruction-row">
+          <p class="instruction-label">To run ONLY the gallery:</p>
+          <div class="command-box" onclick="copyToClipboard('./start-gallery.sh', event)">
+            <span class="command-text">./start-gallery.sh</span>
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+              <path d="M5.33333 5.33333V3.33333C5.33333 2.59695 5.93029 2 6.66667 2H12.6667C13.403 2 14 2.59695 14 3.33333V9.33333C14 10.0697 13.403 10.6667 12.6667 10.6667H10.6667M3.33333 5.33333H9.33333C10.0697 5.33333 10.6667 5.93029 10.6667 6.66667V12.6667C10.6667 13.403 10.0697 14 9.33333 14H3.33333C2.59695 14 2 13.403 2 12.6667V6.66667C2 5.93029 2.59695 5.33333 3.33333 5.33333Z" stroke="#646464" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="copy-tooltip">Copied!</span>
+          </div>
+        </div>
+        <p class="instruction-note">Opens gallery without starting any prototypes</p>
+      </div>
+      </div>
+    </div>
   </div>
 
   <script src="script.js"></script>
 </body>
 </html>
+
+

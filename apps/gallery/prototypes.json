@@ -1,27 +1,92 @@
 {
   "prototypes": [
     {
-      "id": "angular-prototype",
-      "name": "Angular Prototype",
-      "icon": "🅰️",
+      "id": "calendar",
+      "name": "Calendar",
+      "icon": "\ud83d\udcc5",
       "framework": "Angular 21",
-      "description": "Task management interface built with Angular and Supernova design tokens",
+      "description": "Calendar picker playground",
       "url": "http://localhost:4200",
       "port": 4200,
       "status": "active",
       "author": "Design System Team",
-      "lastUpdated": "2025-12-08",
+      "lastUpdated": "2025-12-10",
       "features": [
         "Design Tokens Integration",
         "Component Specifications",
         "Asset Management",
         "Responsive Design"
       ]
+    },
+    {
+      "id": "toast",
+      "name": "Toast",
+      "icon": "\ud83c\udfa8",
+      "framework": "Angular 21",
+      "description": "This is a toasty toast.",
+      "url": "http://localhost:4500",
+      "port": 4500,
+      "status": "active",
+      "author": "Edwin",
+      "lastUpdated": "2025-12-09",
+      "features": [
+        "Design Tokens Integration",
+        "Responsive Design"
+      ]
+    },
+    {
+      "id": "recurring",
+      "name": "Recurring",
+      "icon": "\ud83c\udfa8",
+      "framework": "Angular 21",
+      "description": "Recurring Task calendar picker and logic",
+      "url": "http://localhost:4555",
+      "port": 4555,
+      "status": "active",
+      "author": "Edwin Delgado",
+      "lastUpdated": "2025-12-11",
+      "features": [
+        "Design Tokens Integration",
+        "Responsive Design"
+      ]
+    },
+    {
+      "id": "docs-cover-image",
+      "name": "Docs Cover Image",
+      "icon": "\ud83c\udfa8",
+      "framework": "Angular 21",
+      "description": "Testing adding a max width to the doc cover image.",
+      "url": "http://localhost:4550",
+      "port": 4550,
+      "status": "active",
+      "author": "Edwin Delgado",
+      "lastUpdated": "2025-12-17",
+      "features": [
+        "Design Tokens Integration",
+        "Responsive Design"
+      ]
+    },
+    {
+      "id": "task-screen",
+      "name": "Task Screen",
+      "icon": "\ud83c\udfa8",
+      "framework": "Angular 21",
+      "description": "A test for the task screen",
+      "url": "http://localhost:4100",
+      "port": 4100,
+      "status": "active",
+      "author": "Edwin Delgado",
+      "lastUpdated": "2025-12-17",
+      "features": [
+        "Design Tokens Integration",
+        "Responsive Design"
+      ]
     }
   ],
   "metadata": {
     "version": "1.0.0",
-    "lastUpdated": "2025-12-08",
-    "totalPrototypes": 1
+    "lastUpdated": "2025-12-17",
+    "totalPrototypes": 5,
+    "projectPath": "/Users/edwindelgado/Documents/Projects/Prototypes"
   }
 }

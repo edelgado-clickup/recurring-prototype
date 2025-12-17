@@ -1,0 +1,98 @@
+<div class="date-picker">
+  <!-- Date Input Fields -->
+  <div class="date-container">
+    <div class="date-fields">
+      <div class="text-field">
+        <svg class="icon" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M12 2h1.333A1.333 1.333 0 0 1 14.667 3.333v9.334A1.333 1.333 0 0 1 13.333 14H2.667a1.333 1.333 0 0 1-1.334-1.333V3.333A1.333 1.333 0 0 1 2.667 2H4V.667h1.333V2h5.334V.667H12V2zm1.333 4H2.667v6.667h10.666V6zM4 7.333h2.667V10H4V7.333z"/>
+        </svg>
+        <span class="placeholder">Start date</span>
+      </div>
+      <div class="text-field">
+        <svg class="icon" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M12 2h1.333A1.333 1.333 0 0 1 14.667 3.333v9.334A1.333 1.333 0 0 1 13.333 14H2.667a1.333 1.333 0 0 1-1.334-1.333V3.333A1.333 1.333 0 0 1 2.667 2H4V.667h1.333V2h5.334V.667H12V2zm1.333 4H2.667v6.667h10.666V6zM4 7.333h2.667V10H4V7.333z"/>
+        </svg>
+        <span class="placeholder">Due date</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Datepicker Section -->
+  <div class="datepicker">
+    <!-- Left Side: Presets -->
+    <div class="presets-section">
+      <div class="presets-list">
+        <div class="preset-header">
+          <span class="header-text">Due date presets</span>
+          <svg class="ellipsis-icon" viewBox="0 0 16 16" fill="currentColor">
+            <circle cx="3" cy="8" r="1.5"/>
+            <circle cx="8" cy="8" r="1.5"/>
+            <circle cx="13" cy="8" r="1.5"/>
+          </svg>
+        </div>
+        
+        <div class="preset-option" *ngFor="let preset of presets" (click)="selectPreset(preset)">
+          <span class="preset-label">{{ preset.label }}</span>
+          <span class="preset-shortcut">{{ preset.shortcut }}</span>
+        </div>
+      </div>
+
+      <div class="recurring-option">
+        <div class="preset-option">
+          <span class="preset-label">Set recurring</span>
+          <svg class="chevron-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+            <path d="M6 12l4-4-4-4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Side: Calendar -->
+    <div class="calendar-section">
+      <div class="calendar-header">
+        <div class="date-display">
+          <span class="month">{{ currentMonth }}</span>
+          <span class="year">{{ currentYear }}</span>
+        </div>
+        <button class="today-btn">Today</button>
+        <button class="nav-btn" (click)="previousMonth()">
+          <svg class="chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+            <path d="M10 12l-4-4 4-4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button class="nav-btn" (click)="nextMonth()">
+          <svg class="chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+            <path d="M6 12l4-4-4-4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="calendar-grid">
+        <!-- Week days header -->
+        <div class="week-header">
+          <div class="day-label" *ngFor="let day of weekDays">{{ day }}</div>
+        </div>
+
+        <!-- Calendar dates -->
+        <div class="calendar-body">
+          <div 
+            *ngFor="let date of calendarDates" 
+            class="date-cell"
+            [class.other-month]="!date.isCurrentMonth"
+            [class.selected]="date.isSelected"
+            (click)="selectDate(date)">
+            <span>{{ date.day }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

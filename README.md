@@ -1,6 +1,15 @@
-# 🌟 Supernova Design System - Prototype Monorepo
+# 🌟 Prototypes - Design System Monorepo
 
 A monorepo for creating and sharing design system prototypes across multiple frameworks, powered by [Supernova](https://www.supernova.io/).
+
+
+## 📖 Documentation Guide
+
+All documentation is in the **[`docs/`](docs/)** folder:
+
+- **📜 [SCRIPTS.md](docs/SCRIPTS.md)** - Complete scripts reference
+- **📦 [AVAILABLE_PACKAGES.md](docs/AVAILABLE_PACKAGES.md)** - What's pre-installed
+
 
 ## 📋 Overview
 
@@ -14,20 +23,43 @@ This monorepo enables teams to:
 ## 🏗️ Project Structure
 
 ```
-Supernova test/
+Prototypes/
 ├── apps/                           # Application prototypes
-│   ├── angular-prototype/          # Angular implementation
+│   ├── calendar/                   # Calendar - Angular implementation
 │   ├── gallery/                    # Gallery website
 │   └── [your-framework-prototype]/ # Add more here!
 │
 ├── packages/                       # Shared packages
-│   └── supernova-sdk/              # Supernova integration utilities
-│       ├── scripts/                # Fetch scripts
-│       ├── output/                 # Generated tokens, components, assets
-│       └── .env                    # Supernova credentials
+│   ├── supernova-sdk/              # Supernova integration utilities
+│   │   ├── scripts/                # Fetch scripts
+│   │   ├── output/                 # Generated tokens, components, assets
+│   │   └── .env                    # Supernova credentials
+│   └── theme-toggle/               # Reusable light/dark mode toggle component
 │
 ├── package.json                    # Root workspace configuration
 └── README.md                       # This file
+```
+
+## ⚡ Quick Start
+
+```bash
+# Check if you have Node.js and npm
+./check-prerequisites.sh
+
+# Install dependencies (first time only)
+npm install
+
+# Update gallery with your path
+./update-gallery-path.sh
+
+# Create a new prototype
+./create-prototype.sh
+
+# Start everything
+./start-all.sh
+
+# Open gallery
+open http://localhost:3000
 ```
 
 ## 🚀 Getting Started
@@ -69,13 +101,58 @@ Supernova test/
    npm run fetch-supernova
    ```
 
-5. **Start the gallery**
+5. **Start all servers**
+   
+   **Option A: Using the startup script (Recommended)**
    ```bash
-   npm run gallery
+   ./start-all.sh
    ```
-   Visit http://localhost:3000
+   This starts both the gallery (port 3000) and Angular prototype (port 4200)
+   
+   **Option B: Start individually**
+   ```bash
+   # Gallery only
+   npm run gallery
+   
+   # Recurring Task only (in another terminal)
+   npm run dev -w @prototypes/calendar
+   ```
+   
+6. **Visit the apps**
+   - Gallery: http://localhost:3000
+   - Recurring Task: http://localhost:4200
 
 ## 📦 Available Scripts
+
+> **📜 Full documentation:** See [SCRIPTS.md](./SCRIPTS.md) for detailed info on all scripts
+
+### Quick Start Scripts
+
+```bash
+# Start the gallery AND all prototypes
+./start-all.sh
+
+# Start ONLY the gallery (no prototypes)
+./start-gallery.sh
+
+# Start a specific prototype
+./start-prototype.sh prototype-name
+
+# Stop all development servers
+./stop-all.sh
+
+# Create a new prototype (interactive)
+./create-prototype.sh
+
+# Edit prototype details
+./edit-prototype.sh prototype-name --description "New description" --author "Author Name"
+
+# Sync gallery (removes deleted prototypes)
+./sync-gallery.sh
+
+# Update gallery with correct workspace path
+./update-gallery-path.sh
+```
 
 ### Root Level
 
@@ -103,14 +180,55 @@ npm run gallery
 
 ```bash
 # Run a specific prototype
-npm run dev -w @supernova-test/angular-prototype
+npm run dev -w @prototypes/calendar
 
 # Build a specific app
-npm run build -w @supernova-test/angular-prototype
+npm run build -w @prototypes/calendar
 
 # Run tests for a specific app
-npm run test -w @supernova-test/angular-prototype
+npm run test -w @prototypes/calendar
 ```
+
+## 📚 Shared Packages
+
+### Theme Toggle Component
+
+A reusable Angular component for light/dark mode switching across all prototypes.
+
+**Quick Setup:**
+
+1. Add to `tsconfig.json`:
+   ```json
+   "paths": {
+     "@prototypes/theme-toggle": ["../../packages/theme-toggle/index.ts"]
+   }
+   ```
+
+2. Import in your component:
+   ```typescript
+   import { ThemeToggleComponent } from '@prototypes/theme-toggle';
+   
+   @Component({
+     imports: [ThemeToggleComponent]
+   })
+   ```
+
+3. Add to template:
+   ```html
+   <theme-toggle></theme-toggle>
+   ```
+
+4. Style for dark mode in your SCSS:
+   ```scss
+   :host-context(.dark-theme) {
+     .my-component {
+       background: #1a1a1a;
+       color: #ffffff;
+     }
+   }
+   ```
+
+📖 **Full documentation:** [packages/theme-toggle/USAGE.md](packages/theme-toggle/USAGE.md)
 
 ## 🎨 Working with Supernova
 
@@ -154,8 +272,8 @@ Apps can reference the shared Supernova package:
 
 ```typescript
 // In your app's TypeScript/JavaScript
-import { DesignTokens } from '@supernova-test/supernova-sdk/output/tokens/tokens';
-import { SupernovaAssets } from '@supernova-test/supernova-sdk/output/assets/assets';
+import { DesignTokens } from '@prototypes/supernova-sdk/output/tokens/tokens';
+import { SupernovaAssets } from '@prototypes/supernova-sdk/output/assets/assets';
 
 // Use tokens
 const primaryColor = DesignTokens.color_primary;
@@ -166,7 +284,7 @@ const iconPath = SupernovaAssets['icon-name'];
 
 ```scss
 // In your app's SCSS
-@import '@supernova-test/supernova-sdk/output/tokens/tokens';
+@import '@prototypes/supernova-sdk/output/tokens/tokens';
 
 .button {
   background: $color-primary;
@@ -199,7 +317,7 @@ Update your `package.json`:
 
 ```json
 {
-  "name": "@supernova-test/my-framework-prototype",
+  "name": "@prototypes/my-framework-prototype",
   "version": "1.0.0",
   "scripts": {
     "dev": "your-dev-command",
@@ -207,7 +325,7 @@ Update your `package.json`:
     "test": "your-test-command"
   },
   "dependencies": {
-    "@supernova-test/supernova-sdk": "*",
+    "@prototypes/supernova-sdk": "*",
     // ... your framework dependencies
   }
 }
@@ -219,10 +337,10 @@ Reference the shared design tokens, components, and assets:
 
 ```typescript
 // Import tokens
-import { DesignTokens } from '@supernova-test/supernova-sdk/output/tokens/tokens';
+import { DesignTokens } from '@prototypes/supernova-sdk/output/tokens/tokens';
 
 // Import assets
-import { SupernovaAssets } from '@supernova-test/supernova-sdk/output/assets/assets';
+import { SupernovaAssets } from '@prototypes/supernova-sdk/output/assets/assets';
 
 // Use in your components
 const theme = {
@@ -268,7 +386,7 @@ cd ../../
 npm install
 
 # Start your prototype
-npm run dev -w @supernova-test/my-framework-prototype
+npm run dev -w @prototypes/my-framework-prototype
 
 # View in gallery
 npm run gallery
@@ -284,68 +402,30 @@ The gallery app (`apps/gallery/`) provides a central hub to:
 
 Access it at: http://localhost:3000
 
-## 🤝 Collaboration Tips
-
-### For Contributors
-
-1. **Keep design tokens in sync**: Run `npm run fetch-supernova` regularly
-2. **Follow naming conventions**: Use `@supernova-test/[app-name]` for packages
-3. **Update the gallery**: Add your prototype to `prototypes.json`
-4. **Document your work**: Add a README to your prototype
-5. **Share screenshots**: Add preview images to your prototype folder
-
-### For Designers
-
-1. **Update Supernova**: Make changes in Supernova design system
-2. **Notify developers**: Let the team know when updates are ready
-3. **Review prototypes**: Use the gallery to see implementations
-4. **Provide feedback**: Check if implementations match designs
-
-## 🛠️ Tech Stack
-
-- **Monorepo**: npm workspaces
-- **Design System**: Supernova
-- **Frameworks**: Your choice! (Angular, React, Vue, Svelte, etc.)
-- **Shared Utilities**: `@supernova-test/supernova-sdk`
-- **Gallery**: Vanilla HTML/CSS/JS (framework-agnostic)
-
-## 📚 Useful Resources
-
-- [Supernova Documentation](https://learn.supernova.io/)
-- [Supernova SDK](https://github.com/Supernova-Studio/sdk-typescript)
-- [npm Workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces)
-
-## 🐛 Troubleshooting
-
-### "Missing environment variables" error
-
-Make sure you've created `.env` in `packages/supernova-sdk/` with valid credentials.
-
-### "Module not found" errors
-
-Run `npm install` at the root level to install all workspace dependencies.
-
-### Supernova fetch fails
-
-- Check your API token is valid
-- Verify workspace and design system IDs
-- Ensure you have network access
-
 ### Prototype doesn't appear in gallery
 
 - Check `apps/gallery/prototypes.json` has your prototype entry
 - Ensure the URL and port are correct
 - Verify your prototype is running
+- Run `./sync-gallery.sh` to refresh
 
-## 📝 License
+## 🔧 Troubleshooting
 
-[Your License Here]
+### macOS "can't be opened" or "move to trash" errors
 
-## 👥 Contributors
+When installing on a new Mac, you may see errors about binaries like `nice-darwin-arm64` or similar native packages being blocked by macOS Gatekeeper.
 
-- Design System Team
-- [Add your name!]
+**Quick Fix:**
+```bash
+# Run this after npm install
+./fix-macos-permissions.sh
+```
 
----
+This removes quarantine flags from native binaries in node_modules. The script runs automatically on `npm install`, but if you still see issues:
 
-**Ready to build?** Start by running `npm install` and `npm run fetch-supernova`! 🚀
+1. Run the script manually: `./fix-macos-permissions.sh`
+2. If still blocked, go to **System Settings → Privacy & Security → Security** and click "Allow Anyway"
+3. Try running your script again
+
+**Why this happens:** macOS Gatekeeper flags unsigned native binaries (from packages like `esbuild`, `@angular/build`, etc.) as potentially unsafe when installed via npm.
+

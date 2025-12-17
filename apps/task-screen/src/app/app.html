@@ -1,0 +1,99 @@
+<div class="doc-container">
+  <!-- Header -->
+  <header class="doc-header">
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-layout">
+      <div class="breadcrumb">
+        <span class="breadcrumb-text">Docs</span>
+      </div>
+      <div class="breadcrumb-separator">/</div>
+      <div class="breadcrumb active">
+        <span class="doc-icon" [style.mask-image]="'url(' + SupernovaAssets['view-doc-filled'] + ')'" [style.-webkit-mask-image]="'url(' + SupernovaAssets['view-doc-filled'] + ')'"></span>
+        <span class="breadcrumb-text active">Doc</span>
+      </div>
+      <button class="favorite-btn">
+        <img [src]="SupernovaAssets['favorite']" alt="" class="favorite-icon" />
+      </button>
+    </div>
+
+    <!-- Right actions -->
+    <div class="header-actions">
+      <theme-toggle class="header-theme-toggle"></theme-toggle>
+      <button class="icon-btn">
+        <img [src]="SupernovaAssets['ellipsis-regular']" alt="" class="btn-icon" />
+      </button>
+      <button class="icon-btn">
+        <img [src]="SupernovaAssets['brain-ai-colored']" alt="" class="btn-icon" />
+      </button>
+      <button class="icon-btn">
+        <img [src]="SupernovaAssets['close-regular']" alt="" class="btn-icon" />
+      </button>
+    </div>
+  </header>
+
+  <!-- Purple Cover -->
+  <div class="cover-area">
+    <!-- Floating Action Menu -->
+    <div class="fam">
+      <button class="fam-btn">
+        <img [src]="SupernovaAssets['chat-bubble']" alt="" class="fam-icon" />
+        <span class="notification-badge">3</span>
+      </button>
+      <button class="fam-btn">
+        <img [src]="SupernovaAssets['page-styles']" alt="" class="fam-icon" />
+      </button>
+      <button class="fam-btn">
+        <img [src]="SupernovaAssets['relationship']" alt="" class="fam-icon" />
+      </button>
+      <button class="fam-btn">
+        <img [src]="SupernovaAssets['templates']" alt="" class="fam-icon" />
+      </button>
+      <button class="fam-btn">
+        <img [src]="SupernovaAssets['download']" alt="" class="fam-icon" />
+      </button>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="doc-content">
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <button class="action-btn">
+        <img [src]="SupernovaAssets['relationship']" alt="" class="action-icon" />
+        <span>Link task or Doc</span>
+      </button>
+      <button class="action-btn">
+        <img [src]="SupernovaAssets['emoji']" alt="" class="action-icon" />
+        <span>Add icon</span>
+      </button>
+      <button class="action-btn">
+        <img [src]="SupernovaAssets['image']" alt="" class="action-icon" />
+        <span>Add cover</span>
+      </button>
+      <button class="action-btn">
+        <img [src]="SupernovaAssets['page-styles']" alt="" class="action-icon" />
+        <span>Page styles</span>
+      </button>
+    </div>
+
+    <!-- Title -->
+    <div class="doc-title">
+      <h1 contenteditable="true">Untitled</h1>
+    </div>
+
+    <!-- Subtitle -->
+    <div class="doc-subtitle">
+      <h2 contenteditable="true">Subtitle</h2>
+    </div>
+
+    <!-- Meta -->
+    <div class="doc-meta">
+      <div class="author-info">
+        <div class="author-avatar"></div>
+        <span class="author-name">Tom Merrilin</span>
+      </div>
+      <span class="divider">·</span>
+      <span class="update-time">Last updated at 11:47 am</span>
+    </div>
+  </div>
+</div>

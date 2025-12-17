@@ -1,5 +1,5 @@
 {
-  "name": "@supernova-test/root",
+  "name": "@prototypes/root",
   "version": "1.0.0",
   "private": true,
   "description": "Monorepo for Supernova design system prototypes",
@@ -11,11 +11,30 @@
     "dev": "npm run dev --workspaces --if-present",
     "build": "npm run build --workspaces --if-present",
     "test": "npm run test --workspaces --if-present",
-    "fetch-supernova": "npm run fetch-all -w @supernova-test/supernova-sdk",
-    "gallery": "npm run dev -w @supernova-test/gallery"
+    "fetch-supernova": "npm run fetch-all -w @prototypes/supernova-sdk",
+    "gallery": "npm run dev -w @prototypes/gallery",
+    "postinstall": "./fix-macos-permissions.sh"
   },
   "packageManager": "npm@10.9.3",
-  "devDependencies": {},
+  "dependencies": {
+    "@angular/animations": "^21.0.0",
+    "@angular/common": "^21.0.0",
+    "@angular/compiler": "^21.0.0",
+    "@angular/core": "^21.0.0",
+    "@angular/forms": "^21.0.0",
+    "@angular/platform-browser": "^21.0.0",
+    "@angular/router": "^21.0.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^21.0.0",
+    "@angular/cli": "^21.0.0",
+    "@angular/compiler-cli": "^21.0.0",
+    "jsdom": "^27.1.0",
+    "typescript": "~5.9.2",
+    "vitest": "^4.0.8"
+  },
   "engines": {
     "node": ">=18.0.0",
     "npm": ">=10.0.0"

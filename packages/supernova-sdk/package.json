@@ -1,5 +1,5 @@
 {
-  "name": "@supernova-test/supernova-sdk",
+  "name": "@prototypes/supernova-sdk",
   "version": "1.0.0",
   "description": "Shared Supernova SDK utilities and scripts for fetching design tokens, components, and assets",
   "main": "index.js",

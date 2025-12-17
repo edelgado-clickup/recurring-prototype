@@ -117,3 +117,6 @@ public/
 # Temporary folders
 tmp/
 temp/
+
+# Development server PIDs
+.dev-pids

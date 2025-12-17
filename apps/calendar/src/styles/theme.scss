@@ -1,0 +1,59 @@
+// Theme Variables for Light and Dark Mode
+// Based on Supernova Design Tokens
+
+:root {
+  // Light Mode (Default)
+  --cu-background-main: #ffffff;
+  --cu-background-primary: #ffffff;
+  --cu-background-secondary: #fcfcfc;
+  --cu-background-menu: #ffffff;
+  --cu-background-modal: #ffffff;
+  --cu-background-subtle-offset: #fcfcfc;
+  
+  --cu-border-default: #e8e8e8;
+  --cu-border-subtle: #f0f0f0;
+  --cu-border-low-contrast: #f0f0f0;
+  
+  --cu-content-primary: #202020;
+  --cu-content-secondary: #646464;
+  --cu-content-tertiary: #8d8d8d;
+  --cu-content-placeholder: #8d8d8d;
+  --cu-content-disabled: #bbbbbb;
+  
+  --cu-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --cu-shadow-md: 0 2px 4px rgba(0, 0, 0, 0.08);
+  --cu-shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.12);
+  
+  --cu-hover-background: #f5f5f5;
+  --cu-selected-background: #f0f0f0;
+  --cu-active-background: #e8e8e8;
+}
+
+// Dark Mode
+:root.dark-theme {
+  --cu-background-main: #1c1c1c;
+  --cu-background-primary: #1c1c1c;
+  --cu-background-secondary: #161616;
+  --cu-background-menu: #232323;
+  --cu-background-modal: #282828;
+  --cu-background-subtle-offset: #232323;
+  
+  --cu-border-default: #343434;
+  --cu-border-subtle: #2e2e2e;
+  --cu-border-low-contrast: #2a2a2a;
+  
+  --cu-content-primary: #ededed;
+  --cu-content-secondary: #a0a0a0;
+  --cu-content-tertiary: #7e7e7e;
+  --cu-content-placeholder: #707070;
+  --cu-content-disabled: #555555;
+  
+  --cu-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --cu-shadow-md: 0 2px 4px rgba(0, 0, 0, 0.4);
+  --cu-shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.5);
+  
+  --cu-hover-background: #2e2e2e;
+  --cu-selected-background: #343434;
+  --cu-active-background: #3e3e3e;
+}
+

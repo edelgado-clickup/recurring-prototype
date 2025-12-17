@@ -1,0 +1,43 @@
+.theme-toggle {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border: none;
+  background: transparent;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  z-index: 1000;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.04);
+  }
+
+  .theme-icon {
+    width: 16px;
+    height: 16px;
+    display: block;
+    color: #646464;
+  }
+}
+
+// Dark theme hover state
+:host-context(.dark-theme) {
+  .theme-toggle {
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .theme-icon {
+      color: #b0b0b0;
+    }
+  }
+}
+
+

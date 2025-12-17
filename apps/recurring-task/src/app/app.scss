@@ -1,0 +1,34 @@
+// Design tokens from Figma (Supernova)
+:root {
+  --cu-content-placeholder: #8d8d8d;
+  --cu-label-small-font-size: 14px;
+  --cu-label-weight-regular: 400;
+  --cu-label-weight-semibold: 600;
+  --cu-label-weight-medium: 500;
+  --cu-label-xsmall-font-size: 12px;
+  --cu-size-1: 4px;
+  --cu-size-2: 8px;
+  --cu-size-3: 12px;
+  --radius-4: 8px;
+  --radius-6: 12px;
+  --cu-background-subtle-offset: #fcfcfc;
+  --cu-background-menu: #ffffff;
+  --cu-background-modal: #ffffff;
+  --cu-background-danger: #e5484d;
+  --cu-border-default: #e8e8e8;
+  --cu-content-default: #202020;
+  --cu-content-secondary: #646464;
+  --cu-content-disabled: #bbbbbb;
+  --cu-content-on-primary: #ffffff;
+  --typeface: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: #fafafa;
+}
+

@@ -1,0 +1,27 @@
+<header class="app-header">
+  <div class="header-container">
+    <div class="logo">
+      <span class="logo-icon">✓</span>
+      <h1>Supernova Test</h1>
+    </div>
+    
+    <div class="tabs">
+      <button 
+        class="tab" 
+        [class.active]="currentPage === 'calendar'"
+        (click)="switchPage('calendar')"
+      >
+        Calendar Picker
+      </button>
+      <button 
+        class="tab" 
+        [class.active]="currentPage === 'task'"
+        (click)="switchPage('task')"
+      >
+        Task Details
+      </button>
+    </div>
+    
+    <theme-toggle></theme-toggle>
+  </div>
+</header>
