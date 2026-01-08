@@ -105,66 +105,16 @@
         </div>
       </div>
 
-      <!-- Trigger Field -->
-      <div class="form-row">
-        <label class="form-label">Trigger</label>
-        <div class="form-input">
-          <div class="form-input-full">
-            <div class="select-field" (click)="toggleTriggerDropdown()">
-              <span class="select-text">{{ trigger }}</span>
-              <svg class="chevron-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor">
-                <path d="M4 6l4 4 4-4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            
-            <!-- Dropdown Menu -->
-            <div class="dropdown-menu trigger-dropdown" *ngIf="showTriggerDropdown" (click)="$event.stopPropagation()">
-              <div 
-                *ngFor="let option of triggerOptions" 
-                class="dropdown-item"
-                [class.selected]="option === trigger || (option === 'Task status is...' && selectedStatus)"
-                [class.has-submenu]="option === 'Task status is...'"
-                (click)="selectTriggerOption(option)"
-                (mouseenter)="onTriggerOptionHover(option)">
-                {{ option === 'Task status is...' && selectedStatus ? 'Task status is ' + selectedStatus : option }}
-                <svg *ngIf="option === 'Task status is...'" class="submenu-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor">
-                  <path d="M6 12l4-4-4-4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-            </div>
-            
-            <!-- Nested Status Dropdown (positioned outside main dropdown) -->
-            <div class="status-dropdown-menu" *ngIf="showStatusDropdown" (click)="$event.stopPropagation()">
-              <div 
-                *ngFor="let status of statusOptions" 
-                class="dropdown-item status-item"
-                [class.selected]="status.name === selectedStatus"
-                (click)="selectStatusOption(status.name)">
-                <div class="status-icon">
-                  <svg class="status-svg" viewBox="0 0 16 16" fill="none">
-                    <circle cx="8" cy="8" r="6.5" [attr.stroke]="status.color" stroke-width="1.5"/>
-                    <circle *ngIf="status.name === 'Done'" cx="8" cy="8" r="4" [attr.fill]="status.color"/>
-                    <path *ngIf="status.name === 'In Progress'" d="M8 5 L8 8 L10.5 10.5" [attr.stroke]="status.color" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path *ngIf="status.name === 'Review'" d="M8 5 L8 8 L11 8" [attr.stroke]="status.color" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </div>
-                <span>{{ status.name }}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <!-- Frequency Field -->
       <div class="form-row">
-        <label class="form-label">every</label>
+        <label class="form-label">Every</label>
         <div class="form-input frequency-input">
           <div class="frequency-number">
             <input type="text" class="number-input" [(ngModel)]="frequency" (ngModelChange)="onFrequencyChange()">
           </div>
           <div class="form-input-full flex-grow">
             <div class="select-field" (click)="togglePeriodDropdown()">
-              <span class="select-text">{{ period }}</span>
+              <span class="select-text">{{ getPeriodDisplayLabel(period) }}</span>
               <svg class="chevron-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor">
                 <path d="M4 6l4 4 4-4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -177,7 +127,7 @@
                 class="dropdown-item"
                 [class.selected]="option === period"
                 (click)="selectPeriodOption(option)">
-                {{ option }}
+                {{ getPeriodDisplayLabel(option) }}
               </div>
             </div>
           </div>
@@ -188,19 +138,27 @@
       <div class="form-row" *ngIf="period === 'Months' || period === 'Quarters'">
         <label class="form-label"></label>
         <div class="form-input">
-          <div class="radio-buttons">
-            <button 
-              class="radio-button"
-              [class.selected]="monthlyType === 'week'"
-              (click)="monthlyType = 'week'">
-              Week
-            </button>
-            <button 
-              class="radio-button"
-              [class.selected]="monthlyType === 'date'"
-              (click)="monthlyType = 'date'">
-              Date
-            </button>
+          <div class="radio-group">
+            <label class="radio-option" [class.selected]="monthlyType === 'week'">
+              <input 
+                type="radio" 
+                name="monthlyType" 
+                value="week"
+                [checked]="monthlyType === 'week'"
+                (change)="monthlyType = 'week'">
+              <span class="radio-circle"></span>
+              <span class="radio-label">Week</span>
+            </label>
+            <label class="radio-option" [class.selected]="monthlyType === 'date'">
+              <input 
+                type="radio" 
+                name="monthlyType" 
+                value="date"
+                [checked]="monthlyType === 'date'"
+                (change)="monthlyType = 'date'">
+              <span class="radio-circle"></span>
+              <span class="radio-label">Date</span>
+            </label>
           </div>
         </div>
       </div>
@@ -372,6 +330,56 @@
               <path d="M10.5 3.5L3.5 10.5M3.5 3.5L10.5 10.5" stroke="#646464" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </button>
+        </div>
+      </div>
+
+      <!-- Trigger Field -->
+      <div class="form-row">
+        <label class="form-label">trigger</label>
+        <div class="form-input">
+          <div class="form-input-full">
+            <div class="select-field" (click)="toggleTriggerDropdown()">
+              <span class="select-text">{{ trigger }}</span>
+              <svg class="chevron-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+                <path d="M4 6l4 4 4-4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            
+            <!-- Dropdown Menu -->
+            <div class="dropdown-menu trigger-dropdown" *ngIf="showTriggerDropdown" (click)="$event.stopPropagation()">
+              <div 
+                *ngFor="let option of triggerOptions" 
+                class="dropdown-item"
+                [class.selected]="option === trigger || (option === 'Task status is...' && selectedStatus)"
+                [class.has-submenu]="option === 'Task status is...'"
+                (click)="selectTriggerOption(option)"
+                (mouseenter)="onTriggerOptionHover(option)">
+                {{ option === 'Task status is...' && selectedStatus ? 'Task status is ' + selectedStatus : option }}
+                <svg *ngIf="option === 'Task status is...'" class="submenu-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+                  <path d="M6 12l4-4-4-4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+            
+            <!-- Nested Status Dropdown (positioned outside main dropdown) -->
+            <div class="status-dropdown-menu" *ngIf="showStatusDropdown" (click)="$event.stopPropagation()">
+              <div 
+                *ngFor="let status of statusOptions" 
+                class="dropdown-item status-item"
+                [class.selected]="status.name === selectedStatus"
+                (click)="selectStatusOption(status.name)">
+                <div class="status-icon">
+                  <svg class="status-svg" viewBox="0 0 16 16" fill="none">
+                    <circle cx="8" cy="8" r="6.5" [attr.stroke]="status.color" stroke-width="1.5"/>
+                    <circle *ngIf="status.name === 'Done'" cx="8" cy="8" r="4" [attr.fill]="status.color"/>
+                    <path *ngIf="status.name === 'In Progress'" d="M8 5 L8 8 L10.5 10.5" [attr.stroke]="status.color" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path *ngIf="status.name === 'Review'" d="M8 5 L8 8 L11 8" [attr.stroke]="status.color" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <span>{{ status.name }}</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

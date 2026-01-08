@@ -142,12 +142,62 @@ export class DatePickerComponent {
 
   calendarDates: CalendarDate[] = [];
 
+  private readonly STORAGE_KEY = 'recurringFormSettings';
+
   constructor(private cdr: ChangeDetectorRef) {
     // Initialize to June 2022 (matching the design)
     this.currentDate = new Date(2022, 5, 1); // June 2022
     this.currentMonth = this.monthNames[this.currentDate.getMonth()];
     this.currentYear = this.currentDate.getFullYear().toString();
     this.generateCalendar();
+    this.loadSettingsFromStorage();
+  }
+
+  private saveSettingsToStorage() {
+    const settings = {
+      isRecurringSetup: this.isRecurringSetup,
+      trigger: this.trigger,
+      frequency: this.frequency,
+      period: this.period,
+      selectedDays: this.selectedDays,
+      monthlyType: this.monthlyType,
+      selectedWeek: this.selectedWeek,
+      selectedMonth: this.selectedMonth,
+      selectedDayOfMonth: this.selectedDayOfMonth,
+      endDate: this.endDate,
+      repeatCount: this.repeatCount,
+      hasTime: this.hasTime,
+      selectedTime: this.selectedTime,
+      skipWeekends: this.skipWeekends,
+      selectedStatus: this.selectedStatus
+    };
+    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(settings));
+  }
+
+  private loadSettingsFromStorage() {
+    const stored = localStorage.getItem(this.STORAGE_KEY);
+    if (stored) {
+      try {
+        const settings = JSON.parse(stored);
+        this.isRecurringSetup = settings.isRecurringSetup ?? this.isRecurringSetup;
+        this.trigger = settings.trigger ?? this.trigger;
+        this.frequency = settings.frequency ?? this.frequency;
+        this.period = settings.period ?? this.period;
+        this.selectedDays = settings.selectedDays ?? this.selectedDays;
+        this.monthlyType = settings.monthlyType ?? this.monthlyType;
+        this.selectedWeek = settings.selectedWeek ?? this.selectedWeek;
+        this.selectedMonth = settings.selectedMonth ?? this.selectedMonth;
+        this.selectedDayOfMonth = settings.selectedDayOfMonth ?? this.selectedDayOfMonth;
+        this.endDate = settings.endDate ?? this.endDate;
+        this.repeatCount = settings.repeatCount ?? this.repeatCount;
+        this.hasTime = settings.hasTime ?? this.hasTime;
+        this.selectedTime = settings.selectedTime ?? this.selectedTime;
+        this.skipWeekends = settings.skipWeekends ?? this.skipWeekends;
+        this.selectedStatus = settings.selectedStatus ?? this.selectedStatus;
+      } catch (e) {
+        console.warn('Failed to load recurring settings from storage', e);
+      }
+    }
   }
 
   generateCalendar() {
@@ -405,6 +455,7 @@ export class DatePickerComponent {
   toggleDay(index: number) {
     this.selectedDays[index] = !this.selectedDays[index];
     this.updateDueDate();
+    this.saveSettingsToStorage();
   }
 
   onCancel() {
@@ -415,6 +466,7 @@ export class DatePickerComponent {
     this.isRecurringSetup = true;
     this.showRecurringForm = false;
     this.emitRecurringStatus();
+    this.saveSettingsToStorage();
   }
 
   emitRecurringStatus() {
@@ -444,6 +496,7 @@ export class DatePickerComponent {
     this.actions = [];
     this.selectedDays = [false, false, false, false, false, false, false];
     this.emitRecurringStatus();
+    this.saveSettingsToStorage();
   }
 
   editRecurring() {
@@ -474,6 +527,7 @@ export class DatePickerComponent {
   toggleSkipWeekends() {
     this.skipWeekends = !this.skipWeekends;
     this.updateDueDate();
+    this.saveSettingsToStorage();
   }
 
   toggleTriggerDropdown() {
@@ -491,6 +545,7 @@ export class DatePickerComponent {
     this.selectedStatus = '';
     this.showTriggerDropdown = false;
     this.showStatusDropdown = false;
+    this.saveSettingsToStorage();
   }
 
   onTriggerOptionHover(option: string) {
@@ -507,6 +562,7 @@ export class DatePickerComponent {
     this.selectedStatus = status;
     this.showTriggerDropdown = false;
     this.showStatusDropdown = false;
+    this.saveSettingsToStorage();
   }
 
   togglePeriodDropdown() {
@@ -519,6 +575,35 @@ export class DatePickerComponent {
     this.period = option;
     this.showPeriodDropdown = false;
     this.updateDueDate();
+    this.saveSettingsToStorage();
+  }
+
+  getPeriodDisplayLabel(period: string): string {
+    const freq = parseInt(this.frequency) || 1;
+    
+    if (freq === 1) {
+      // Singular form
+      switch (period) {
+        case 'Days': return 'Day';
+        case 'Weeks': return 'Week';
+        case 'Months': return 'Month';
+        case 'Quarters': return 'Quarter';
+        case 'Years': return 'Year';
+        case 'Days after': return 'Day after';
+        default: return period;
+      }
+    } else {
+      // Plural form
+      switch (period) {
+        case 'Days': return 'Days';
+        case 'Weeks': return 'Weeks';
+        case 'Months': return 'Months';
+        case 'Quarters': return 'Quarters';
+        case 'Years': return 'Years';
+        case 'Days after': return 'Days after';
+        default: return period;
+      }
+    }
   }
 
   toggleEndDropdown() {
@@ -537,6 +622,7 @@ export class DatePickerComponent {
       this.endOnDate = new Date();
       this.endOnDate.setMonth(this.endOnDate.getMonth() + 1);
     }
+    this.saveSettingsToStorage();
   }
 
   onRepeatCountChange() {
@@ -545,6 +631,7 @@ export class DatePickerComponent {
     if (count < 1) {
       this.repeatCount = '1';
     }
+    this.saveSettingsToStorage();
   }
 
   toggleEndDatePicker() {
@@ -576,6 +663,7 @@ export class DatePickerComponent {
     this.selectedWeek = option;
     this.showWeekDropdown = false;
     this.updateDueDate();
+    this.saveSettingsToStorage();
   }
 
   toggleMonthDropdown() {
@@ -588,6 +676,7 @@ export class DatePickerComponent {
     this.selectedMonth = option;
     this.showMonthDropdown = false;
     this.updateDueDate();
+    this.saveSettingsToStorage();
   }
 
   toggleDayOfMonthDropdown() {
@@ -600,14 +689,17 @@ export class DatePickerComponent {
     this.selectedDayOfMonth = option;
     this.showDayOfMonthDropdown = false;
     this.updateDueDate();
+    this.saveSettingsToStorage();
   }
 
   addTime() {
     this.hasTime = true;
+    this.saveSettingsToStorage();
   }
 
   removeTime() {
     this.hasTime = false;
+    this.saveSettingsToStorage();
   }
 
   // Action Methods
@@ -850,6 +942,7 @@ export class DatePickerComponent {
 
   onFrequencyChange() {
     this.updateDueDate();
+    this.saveSettingsToStorage();
   }
 
   // Generate the recurring summary sentence

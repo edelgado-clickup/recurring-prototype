@@ -633,34 +633,69 @@
   }
 }
 
-.radio-buttons {
+.radio-group {
   display: flex;
-  gap: 8px;
+  gap: 16px;
 }
 
-.radio-button {
-  padding: 6px 8px;
-  background: #fcfcfc;
-  border: 1px solid #e8e8e8;
-  border-radius: 7px;
-  font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 16px;
-  letter-spacing: -0.15px;
-  color: #646464;
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   cursor: pointer;
-  transition: all 150ms ease;
-  min-width: 70px;
-  text-align: center;
+  user-select: none;
 
-  &:hover:not(.selected) {
-    background: #f7f7f7;
+  input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+
+  .radio-circle {
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid #c8c8c8;
+    border-radius: 50%;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 150ms ease;
+    flex-shrink: 0;
+
+    &::after {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: transparent;
+      transition: background-color 150ms ease;
+    }
+  }
+
+  .radio-label {
+    font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: -0.15px;
+    color: #202020;
+  }
+
+  &:hover .radio-circle {
+    border-color: #8d8d8d;
   }
 
   &.selected {
-    background: #6647f0;
-    color: #ffffff;
+    .radio-circle {
+      border-color: #6647f0;
+
+      &::after {
+        background: #6647f0;
+      }
+    }
   }
 }
 
