@@ -368,6 +368,9 @@
   position: relative;
   width: 100%;
   flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 
   &.flex-grow {
     flex: 1;
@@ -1124,6 +1127,9 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+
+
 
 
 

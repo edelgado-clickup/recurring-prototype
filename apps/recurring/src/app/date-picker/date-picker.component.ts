@@ -483,20 +483,26 @@ export class DatePickerComponent {
   clearRecurring() {
     this.isRecurringSetup = false;
     this.showRecurringForm = false;
-    // Reset to defaults
+    // Reset ALL settings to defaults
     this.trigger = 'Task is complete';
     this.frequency = '1';
     this.period = 'Weeks';
+    this.selectedDays = [false, false, false, false, false, false, false];
+    this.monthlyType = 'week';
+    this.selectedWeek = 'First';
+    this.selectedMonth = 'January';
+    this.selectedDayOfMonth = '1';
     this.endDate = 'Never';
     this.repeatCount = '3';
     this.endOnDate = null;
-    this.selectedStatus = '';
     this.hasTime = false;
     this.selectedTime = '8:00 AM';
+    this.skipWeekends = true;
+    this.selectedStatus = '';
     this.actions = [];
-    this.selectedDays = [false, false, false, false, false, false, false];
+    // Clear localStorage so fresh start
+    localStorage.removeItem('recurringFormSettings');
     this.emitRecurringStatus();
-    this.saveSettingsToStorage();
   }
 
   editRecurring() {
@@ -952,24 +958,13 @@ export class DatePickerComponent {
     
     const parts: { value: string; isDynamic: boolean; field?: string; actionId?: string }[] = [];
     
-    // TRIGGER part
-    parts.push({ value: 'Recur when ', isDynamic: false });
-    
-    if (this.trigger === 'Task is complete') {
-      parts.push({ value: 'task is complete', isDynamic: true, field: 'trigger' });
-    } else if (this.trigger.startsWith('Task status is')) {
-      parts.push({ value: `task status is "${this.selectedStatus}"`, isDynamic: true, field: 'trigger' });
-    } else if (this.trigger === 'On a schedule') {
-      parts.push({ value: 'on a schedule', isDynamic: true, field: 'trigger' });
-    }
-    
     // Collect all actions as arrays of parts (including the implicit "set due date" action)
     const allActionParts: { value: string; isDynamic: boolean; field?: string; actionId?: string }[][] = [];
     
     // DATE_RULE parts (always present - this is the core recurring rule)
     const dateRuleParts = this.generateDateRuleParts();
     const dueDateParts: { value: string; isDynamic: boolean; field?: string; actionId?: string }[] = [
-      { value: 'set due date ', isDynamic: false },
+      { value: 'Set due date ', isDynamic: false },
       ...dateRuleParts
     ];
     allActionParts.push(dueDateParts);
@@ -990,7 +985,7 @@ export class DatePickerComponent {
     // Add actions with proper conjunctions
     allActionParts.forEach((actionParts, index) => {
       if (index === 0) {
-        parts.push({ value: ', ', isDynamic: false });
+        // First action - no prefix needed
       } else if (index === allActionParts.length - 1 && allActionParts.length > 1) {
         parts.push({ value: ', and ', isDynamic: false });
       } else {
@@ -1003,6 +998,17 @@ export class DatePickerComponent {
     if (this.hasTime) {
       parts.push({ value: ' at ', isDynamic: false });
       parts.push({ value: this.selectedTime, isDynamic: true, field: 'time' });
+    }
+    
+    // TRIGGER part (now at the end to match form order)
+    parts.push({ value: ', when ', isDynamic: false });
+    
+    if (this.trigger === 'Task is complete') {
+      parts.push({ value: 'task is complete', isDynamic: true, field: 'trigger' });
+    } else if (this.trigger.startsWith('Task status is')) {
+      parts.push({ value: `task status is "${this.selectedStatus}"`, isDynamic: true, field: 'trigger' });
+    } else if (this.trigger === 'On a schedule') {
+      parts.push({ value: 'on a schedule', isDynamic: true, field: 'trigger' });
     }
     
     parts.push({ value: '.', isDynamic: false });

@@ -428,4 +428,3 @@ This removes quarantine flags from native binaries in node_modules. The script r
 3. Try running your script again
 
 **Why this happens:** macOS Gatekeeper flags unsigned native binaries (from packages like `esbuild`, `@angular/build`, etc.) as potentially unsafe when installed via npm.
-

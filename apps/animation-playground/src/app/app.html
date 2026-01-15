@@ -1,0 +1,543 @@
+<div class="app-container">
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <h1 class="header-title">
+        Animation Playground
+      </h1>
+      <p class="header-subtitle">Compare Angular Animations vs Motion One</p>
+    </div>
+    
+    <!-- Tabs -->
+    <div class="tabs">
+      <button 
+        class="tab" 
+        [class.active]="activeTab === 'angular'"
+        (click)="setTab('angular')">
+        Angular
+        <span class="tab-badge">{{ angularAnimations.length }}</span>
+      </button>
+      <button 
+        class="tab" 
+        [class.active]="activeTab === 'motion'"
+        (click)="setTab('motion')">
+        Motion One
+        <span class="tab-badge">{{ motionAnimations.length }}</span>
+      </button>
+      <button 
+        class="tab" 
+        [class.active]="activeTab === 'showcase'"
+        (click)="setTab('showcase')">
+        Showcase
+        <span class="tab-badge">5</span>
+      </button>
+      <button 
+        class="tab" 
+        [class.active]="activeTab === 'playground'"
+        (click)="setTab('playground')">
+        Playground
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Angular Tab -->
+    <div class="tab-content" *ngIf="activeTab === 'angular'">
+      <div class="section-header">
+        <h2>Angular Animations</h2>
+        <p>Built-in Angular animation system using @angular/animations</p>
+      </div>
+      
+      <div class="cards-grid">
+        <div 
+          class="animation-card" 
+          *ngFor="let anim of angularAnimations; trackBy: trackByAnimId"
+          (click)="playAngularAnimation(anim.id)">
+          
+          <div class="card-preview">
+            <!-- Entrance animations -->
+            <ng-container *ngIf="!isStateAnimation(anim.id)">
+              <div class="preview-box">
+                <div 
+                  *ngIf="visibleCards[anim.id]"
+                  [ngSwitch]="anim.id"
+                  class="box-wrapper">
+                  <div *ngSwitchCase="'fadeIn'" @fadeIn class="box"></div>
+                  <div *ngSwitchCase="'fadeInUp'" @fadeInUp class="box"></div>
+                  <div *ngSwitchCase="'fadeInDown'" @fadeInDown class="box"></div>
+                  <div *ngSwitchCase="'slideInLeft'" @slideInLeft class="box"></div>
+                  <div *ngSwitchCase="'slideInRight'" @slideInRight class="box"></div>
+                  <div *ngSwitchCase="'scaleIn'" @scaleIn class="box"></div>
+                  <div *ngSwitchCase="'scaleInBounce'" @scaleInBounce class="box"></div>
+                  <div *ngSwitchCase="'bounce'" @bounce class="box"></div>
+                  <div *ngSwitchCase="'rotateIn'" @rotateIn class="box"></div>
+                  <div *ngSwitchCase="'flipInX'" @flipInX class="box"></div>
+                  <div *ngSwitchCase="'flipInY'" @flipInY class="box"></div>
+                  <div *ngSwitchCase="'zoomIn'" @zoomIn class="box"></div>
+                </div>
+              </div>
+            </ng-container>
+            
+            <!-- State-based animations -->
+            <ng-container *ngIf="isStateAnimation(anim.id)">
+              <div class="preview-box" [ngSwitch]="anim.id">
+                <div *ngSwitchCase="'shake'" [@shake]="animationStates['shake']" class="box"></div>
+                <div *ngSwitchCase="'pulse'" [@pulse]="animationStates['pulse']" class="box"></div>
+                <div *ngSwitchCase="'swing'" [@swing]="animationStates['swing']" class="box"></div>
+                <div *ngSwitchCase="'rubberBand'" [@rubberBand]="animationStates['rubberBand']" class="box"></div>
+              </div>
+            </ng-container>
+          </div>
+          
+          <div class="card-content">
+            <span class="card-name">{{ anim.name }}</span>
+            <p class="card-description">{{ anim.description }}</p>
+            <div class="card-inputs" (click)="$event.stopPropagation()">
+              <div class="input-row">
+                <label>Duration</label>
+                <div class="input-with-suffix">
+                  <input 
+                    type="number" 
+                    [(ngModel)]="anim.duration" 
+                    min="100" 
+                    max="3000" 
+                    step="50"
+                    class="timing-input" />
+                  <span class="input-suffix">ms</span>
+                </div>
+              </div>
+              <div class="input-row">
+                <label>Bezier</label>
+                <div class="bezier-inputs">
+                  <input type="number" [(ngModel)]="anim.bezier[0]" step="0.01" min="0" max="1" class="bezier-input" />
+                  <input type="number" [(ngModel)]="anim.bezier[1]" step="0.01" min="-2" max="2" class="bezier-input" />
+                  <input type="number" [(ngModel)]="anim.bezier[2]" step="0.01" min="0" max="1" class="bezier-input" />
+                  <input type="number" [(ngModel)]="anim.bezier[3]" step="0.01" min="-2" max="2" class="bezier-input" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Motion One Tab -->
+    <div class="tab-content" *ngIf="activeTab === 'motion'">
+      <div class="section-header">
+        <h2>Motion One</h2>
+        <p>Lightweight animation library with spring physics • <a href="https://motion.dev" target="_blank">motion.dev</a></p>
+      </div>
+      
+      <div class="cards-grid">
+        <div 
+          class="animation-card motion-card" 
+          *ngFor="let anim of motionAnimations; trackBy: trackByAnimId"
+          (click)="playMotionAnimation(anim.id, $event)">
+          
+          <div class="card-preview" [class.spring-preview]="anim.type === 'spring'">
+            <div class="preview-box">
+              <div class="box motion-box"></div>
+            </div>
+          </div>
+          
+          <div class="card-content">
+            <div class="card-header-row">
+              <span class="card-name">{{ anim.name }}</span>
+              <span class="type-badge" [class.spring]="anim.type === 'spring'" [class.tween]="anim.type === 'tween'">
+                {{ anim.type }}
+              </span>
+            </div>
+            <p class="card-description">{{ anim.description }}</p>
+            <div class="card-inputs" (click)="$event.stopPropagation()">
+              <div class="input-row">
+                <label>Duration</label>
+                <div class="input-with-suffix">
+                  <input 
+                    type="number" 
+                    [(ngModel)]="anim.duration" 
+                    min="100" 
+                    max="3000" 
+                    step="50"
+                    class="timing-input" />
+                  <span class="input-suffix">ms</span>
+                </div>
+              </div>
+              <div class="input-row">
+                <label>Bezier</label>
+                <div class="bezier-inputs">
+                  <input type="number" [(ngModel)]="anim.bezier[0]" step="0.01" min="-2" max="2" class="bezier-input" />
+                  <input type="number" [(ngModel)]="anim.bezier[1]" step="0.01" min="-2" max="2" class="bezier-input" />
+                  <input type="number" [(ngModel)]="anim.bezier[2]" step="0.01" min="-2" max="2" class="bezier-input" />
+                  <input type="number" [(ngModel)]="anim.bezier[3]" step="0.01" min="-2" max="2" class="bezier-input" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Showcase Tab -->
+    <div class="tab-content" *ngIf="activeTab === 'showcase'">
+      <div class="section-header">
+        <h2>Interactive Showcase</h2>
+        <p>Real-world animation patterns powered by Motion</p>
+      </div>
+      
+      <div class="showcase-grid">
+        <!-- Carousel -->
+        <div class="showcase-card">
+          <div class="showcase-header">
+            <h3>Carousel</h3>
+            <p>Smooth slide transitions</p>
+          </div>
+          <div class="showcase-demo" #carouselDemo>
+            <div class="carousel">
+              <div class="carousel-track">
+                <div 
+                  *ngFor="let item of carouselItems; let i = index" 
+                  class="carousel-slide"
+                  [style.backgroundColor]="item.color">
+                  {{ item.label }}
+                </div>
+              </div>
+            </div>
+            <div class="carousel-controls">
+              <button class="carousel-btn" (click)="prevSlide(carouselDemo)">←</button>
+              <div class="carousel-dots">
+                <span 
+                  *ngFor="let item of carouselItems; let i = index"
+                  class="dot"
+                  [class.active]="i === carouselIndex">
+                </span>
+              </div>
+              <button class="carousel-btn" (click)="nextSlide(carouselDemo)">→</button>
+            </div>
+          </div>
+          <div class="showcase-inputs">
+            <div class="input-row">
+              <label>Duration</label>
+              <div class="input-with-suffix">
+                <input type="number" [(ngModel)]="carouselSettings.duration" min="100" max="2000" step="50" class="timing-input" />
+                <span class="input-suffix">ms</span>
+              </div>
+            </div>
+            <div class="input-row">
+              <label>Bezier</label>
+              <div class="bezier-inputs">
+                <input type="number" [(ngModel)]="carouselSettings.bezier[0]" step="0.01" min="-2" max="2" class="bezier-input" />
+                <input type="number" [(ngModel)]="carouselSettings.bezier[1]" step="0.01" min="-2" max="2" class="bezier-input" />
+                <input type="number" [(ngModel)]="carouselSettings.bezier[2]" step="0.01" min="-2" max="2" class="bezier-input" />
+                <input type="number" [(ngModel)]="carouselSettings.bezier[3]" step="0.01" min="-2" max="2" class="bezier-input" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notifications -->
+        <div class="showcase-card">
+          <div class="showcase-header">
+            <h3>Notification Stack</h3>
+            <p>Toast animations with dismiss</p>
+          </div>
+          <div class="showcase-demo notifications-demo">
+            <button class="add-notification-btn" (click)="addNotification()">
+              + Add Notification
+            </button>
+            <div class="notifications-container">
+              <div 
+                *ngFor="let notif of notifications"
+                class="notification"
+                [class.success]="notif.type === 'success'"
+                [class.info]="notif.type === 'info'"
+                [class.warning]="notif.type === 'warning'"
+                [attr.data-notification-id]="notif.id"
+                (click)="dismissNotification(notif.id)">
+                <span class="notif-message">{{ notif.message }}</span>
+                <span class="notif-close">×</span>
+              </div>
+            </div>
+          </div>
+          <div class="showcase-inputs">
+            <div class="input-row">
+              <label>Duration</label>
+              <div class="input-with-suffix">
+                <input type="number" [(ngModel)]="notificationSettings.duration" min="100" max="2000" step="50" class="timing-input" />
+                <span class="input-suffix">ms</span>
+              </div>
+            </div>
+            <div class="input-row">
+              <label>Bezier</label>
+              <div class="bezier-inputs">
+                <input type="number" [(ngModel)]="notificationSettings.bezier[0]" step="0.01" min="-2" max="2" class="bezier-input" />
+                <input type="number" [(ngModel)]="notificationSettings.bezier[1]" step="0.01" min="-2" max="2" class="bezier-input" />
+                <input type="number" [(ngModel)]="notificationSettings.bezier[2]" step="0.01" min="-2" max="2" class="bezier-input" />
+                <input type="number" [(ngModel)]="notificationSettings.bezier[3]" step="0.01" min="-2" max="2" class="bezier-input" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Todo List -->
+        <div class="showcase-card">
+          <div class="showcase-header">
+            <h3>Todo List</h3>
+            <p>Check animations & add items</p>
+          </div>
+          <div class="showcase-demo todo-demo">
+            <div class="todo-list">
+              <div 
+                *ngFor="let todo of todos"
+                class="todo-item"
+                [class.done]="todo.done"
+                [attr.data-todo-id]="todo.id"
+                (click)="toggleTodo(todo)">
+                <div class="todo-checkbox" [class.checked]="todo.done">
+                </div>
+                <span class="todo-text">{{ todo.text }}</span>
+              </div>
+            </div>
+            <button class="add-todo-btn" (click)="addTodo()">
+              + Add Task
+            </button>
+          </div>
+          <div class="showcase-inputs">
+            <div class="input-row">
+              <label>Duration</label>
+              <div class="input-with-suffix">
+                <input type="number" [(ngModel)]="todoSettings.duration" min="100" max="2000" step="50" class="timing-input" />
+                <span class="input-suffix">ms</span>
+              </div>
+            </div>
+            <div class="input-row">
+              <label>Bezier</label>
+              <div class="bezier-inputs">
+                <input type="number" [(ngModel)]="todoSettings.bezier[0]" step="0.01" min="-2" max="2" class="bezier-input" />
+                <input type="number" [(ngModel)]="todoSettings.bezier[1]" step="0.01" min="-2" max="2" class="bezier-input" />
+                <input type="number" [(ngModel)]="todoSettings.bezier[2]" step="0.01" min="-2" max="2" class="bezier-input" />
+                <input type="number" [(ngModel)]="todoSettings.bezier[3]" step="0.01" min="-2" max="2" class="bezier-input" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab Select -->
+        <div class="showcase-card">
+          <div class="showcase-header">
+            <h3>Tab Selector</h3>
+            <p>Sliding indicator animation</p>
+          </div>
+          <div class="showcase-demo tabs-demo" #tabsDemo>
+            <div class="showcase-tabs">
+              <div class="tab-indicator"></div>
+              <button 
+                *ngFor="let tab of showcaseTabs; let i = index"
+                class="showcase-tab-btn"
+                [class.active]="i === showcaseTabIndex"
+                (click)="selectShowcaseTab(i, tabsDemo)">
+                {{ tab }}
+              </button>
+            </div>
+            <div class="tab-content-preview">
+              <div class="tab-content-text">
+                {{ showcaseTabs[showcaseTabIndex] }} content goes here
+              </div>
+            </div>
+          </div>
+          <div class="showcase-inputs">
+            <div class="input-row">
+              <label>Duration</label>
+              <div class="input-with-suffix">
+                <input type="number" [(ngModel)]="tabSettings.duration" min="100" max="2000" step="50" class="timing-input" />
+                <span class="input-suffix">ms</span>
+              </div>
+            </div>
+            <div class="input-row">
+              <label>Bezier</label>
+              <div class="bezier-inputs">
+                <input type="number" [(ngModel)]="tabSettings.bezier[0]" step="0.01" min="-2" max="2" class="bezier-input" />
+                <input type="number" [(ngModel)]="tabSettings.bezier[1]" step="0.01" min="-2" max="2" class="bezier-input" />
+                <input type="number" [(ngModel)]="tabSettings.bezier[2]" step="0.01" min="-2" max="2" class="bezier-input" />
+                <input type="number" [(ngModel)]="tabSettings.bezier[3]" step="0.01" min="-2" max="2" class="bezier-input" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tilt Card -->
+        <div class="showcase-card">
+          <div class="showcase-header">
+            <h3>Tilt Card</h3>
+            <p>3D tilt on mouse movement</p>
+          </div>
+          <div class="showcase-demo tilt-demo">
+            <div class="tilt-container" 
+                 #tiltCard
+                 (mousemove)="onTiltMove($event, tiltCard)"
+                 (mouseleave)="onTiltLeave(tiltCard)">
+              <div class="tilt-inner">
+                <div class="tilt-shine"></div>
+                <div class="tilt-content">
+                  <h4>Hover me!</h4>
+                  <p>Move your mouse around</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="showcase-inputs">
+            <div class="input-row">
+              <label>Duration</label>
+              <div class="input-with-suffix">
+                <input type="number" [(ngModel)]="tiltSettings.duration" min="50" max="500" step="10" class="timing-input" />
+                <span class="input-suffix">ms</span>
+              </div>
+            </div>
+            <div class="input-row">
+              <label>Bezier</label>
+              <div class="bezier-inputs">
+                <input type="number" [(ngModel)]="tiltSettings.bezier[0]" step="0.01" min="-2" max="2" class="bezier-input" />
+                <input type="number" [(ngModel)]="tiltSettings.bezier[1]" step="0.01" min="-2" max="2" class="bezier-input" />
+                <input type="number" [(ngModel)]="tiltSettings.bezier[2]" step="0.01" min="-2" max="2" class="bezier-input" />
+                <input type="number" [(ngModel)]="tiltSettings.bezier[3]" step="0.01" min="-2" max="2" class="bezier-input" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Playground Tab -->
+    <div class="tab-content" *ngIf="activeTab === 'playground'">
+      <div class="section-header">
+        <h2>Basic Animations</h2>
+        <p>Practice implementing these animation patterns</p>
+      </div>
+      
+      <div class="cards-grid">
+        <div class="animation-card playground-card" *ngFor="let anim of angularAnimations">
+          <div class="card-preview">
+            <div class="preview-box">
+              <div class="box"></div>
+            </div>
+          </div>
+          
+          <div class="card-content">
+            <div class="card-header-row">
+              <span class="card-name">{{ anim.name }}</span>
+            </div>
+            <p class="card-description">{{ anim.description }}</p>
+            <div class="card-meta">
+              <span class="meta-tag">{{ anim.duration }}</span>
+              <span class="meta-tag">{{ anim.easing }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Showcase Section -->
+      <div class="section-header showcase-section-header">
+        <h2>Interactive Patterns</h2>
+        <p>More complex, real-world animation challenges</p>
+      </div>
+
+      <div class="showcase-grid playground-showcase">
+        <!-- Carousel -->
+        <div class="showcase-card playground-showcase-card">
+          <div class="showcase-header">
+            <h3>Carousel</h3>
+            <p>Smooth slide transitions</p>
+          </div>
+          <div class="showcase-demo">
+            <div class="carousel">
+              <div class="carousel-track" style="transform: translateX(0)">
+                <div class="carousel-slide" style="background: #6366f1">Slide 1</div>
+              </div>
+            </div>
+            <div class="carousel-controls">
+              <button class="carousel-btn" disabled>←</button>
+              <div class="carousel-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+              <button class="carousel-btn" disabled>→</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notifications -->
+        <div class="showcase-card playground-showcase-card">
+          <div class="showcase-header">
+            <h3>Notification Stack</h3>
+            <p>Toast animations with dismiss</p>
+          </div>
+          <div class="showcase-demo notifications-demo">
+            <button class="add-notification-btn" disabled>+ Add Notification</button>
+            <div class="notifications-container">
+              <div class="notification success">
+                <span class="notif-message">Example notification</span>
+                <span class="notif-close">×</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Todo List -->
+        <div class="showcase-card playground-showcase-card">
+          <div class="showcase-header">
+            <h3>Todo List</h3>
+            <p>Check animations & add items</p>
+          </div>
+          <div class="showcase-demo todo-demo">
+            <div class="todo-list">
+              <div class="todo-item">
+                <div class="todo-checkbox"></div>
+                <span class="todo-text">Example task</span>
+              </div>
+            </div>
+            <button class="add-todo-btn" disabled>+ Add Task</button>
+          </div>
+        </div>
+
+        <!-- Tab Select -->
+        <div class="showcase-card playground-showcase-card">
+          <div class="showcase-header">
+            <h3>Tab Selector</h3>
+            <p>Sliding indicator animation</p>
+          </div>
+          <div class="showcase-demo tabs-demo">
+            <div class="showcase-tabs">
+              <div class="tab-indicator"></div>
+              <button class="showcase-tab-btn active" disabled>Home</button>
+              <button class="showcase-tab-btn" disabled>Profile</button>
+              <button class="showcase-tab-btn" disabled>Settings</button>
+            </div>
+            <div class="tab-content-preview">
+              <div class="tab-content-text">Tab content goes here</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tilt Card -->
+        <div class="showcase-card playground-showcase-card">
+          <div class="showcase-header">
+            <h3>Tilt Card</h3>
+            <p>3D tilt on mouse movement</p>
+          </div>
+          <div class="showcase-demo tilt-demo">
+            <div class="tilt-container">
+              <div class="tilt-inner">
+                <div class="tilt-shine"></div>
+                <div class="tilt-content">
+                  <h4>Hover me!</h4>
+                  <p>Move your mouse around</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

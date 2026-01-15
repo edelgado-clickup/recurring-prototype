@@ -81,12 +81,28 @@
         "Design Tokens Integration",
         "Responsive Design"
       ]
+    },
+    {
+      "id": "animation-playground",
+      "name": "Animation playground",
+      "icon": "\ud83c\udfa8",
+      "framework": "Angular 21",
+      "description": "A place to test animations",
+      "url": "http://localhost:4600",
+      "port": 4600,
+      "status": "active",
+      "author": "Edwin Delgado",
+      "lastUpdated": "2026-01-14",
+      "features": [
+        "Design Tokens Integration",
+        "Responsive Design"
+      ]
     }
   ],
   "metadata": {
     "version": "1.0.0",
-    "lastUpdated": "2025-12-17",
-    "totalPrototypes": 5,
+    "lastUpdated": "2026-01-13",
+    "totalPrototypes": 6,
     "projectPath": "/Users/edwindelgado/Documents/Projects/Prototypes"
   }
 }
